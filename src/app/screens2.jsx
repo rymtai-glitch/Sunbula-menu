@@ -10,9 +10,9 @@ function Product({ t, lang, itemId, cart, onBack, onAdd, onInc, onDec, onOpenIte
   if (!item) return null;
 
   const det = (window.DETAILS && window.DETAILS[item.id]) || null;
-  const name = lang === 'ru' ? item.nameRu : item.nameKz;
-  const shortDesc = lang === 'ru' ? item.descRu : item.descKz;
-  const fullDesc = det ? (det.desc[lang] || det.desc.ru) : (shortDesc + (lang === 'ru' ? '. Готовится из отборных продуктов и подаётся свежим.' : '. Таңдаулы өнімдерден дайындалады.'));
+  const name = nameFor(item, lang);
+  const shortDesc = descFor(item, lang);
+  const fullDesc = det ? (det.desc[lang] || det.desc.ru) : (shortDesc + (lang === 'en' ? '. Made from quality ingredients and served fresh.' : lang === 'ru' ? '. Готовится из отборных продуктов и подаётся свежим.' : '. Таңдаулы өнімдерден дайындалады.'));
   const qty = cart[item.id] || 0;
   const [kcal, prot, fat, carb] = det ? det.nutri : item.nutri;
   const compose = det ? det.compose : null;
@@ -48,7 +48,7 @@ function Product({ t, lang, itemId, cart, onBack, onAdd, onInc, onDec, onOpenIte
         </div>
 
         <div style={{ background: 'var(--ivory)', borderRadius: '26px 26px 0 0', marginTop: -26, position: 'relative', zIndex: 3, padding: '26px 22px 0' }}>
-          <div className="eyebrow" style={{ marginBottom: 9 }}>{lang === 'ru' ? cat.nameRu : cat.nameKz}</div>
+          <div className="eyebrow" style={{ marginBottom: 9 }}>{nameFor(cat, lang)}</div>
           <div className="serif" style={{ fontSize: 33, lineHeight: 1.05 }}>{name}</div>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, marginTop: 12 }}>
             <span className="price" style={{ fontSize: 23 }}>{fmtPrice(item.price)}</span>
@@ -96,7 +96,7 @@ function Product({ t, lang, itemId, cart, onBack, onAdd, onInc, onDec, onOpenIte
                 return (
                   <div key={r.id} onClick={() => onOpenItem(r.id)} style={{ width: 134, flexShrink: 0, cursor: 'pointer' }}>
                     <Photo tone={rt} icon={catIconName[rc]} src={photoFor(r.id)} style={{ height: 96, borderRadius: 16 }} />
-                    <div style={{ fontSize: 12.5, fontWeight: 600, marginTop: 8, lineHeight: 1.3, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{lang === 'ru' ? r.nameRu : r.nameKz}</div>
+                    <div style={{ fontSize: 12.5, fontWeight: 600, marginTop: 8, lineHeight: 1.3, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{nameFor(r, lang)}</div>
                     <div className="price" style={{ fontSize: 13, marginTop: 4 }}>{fmtPrice(r.price)}</div>
                   </div>
                 );
@@ -177,10 +177,10 @@ function Cart({ t, lang, table, show, groups, currentUser, total, count,
                       <div key={item.id} style={{ display: 'flex', gap: 12, padding: '12px 0', borderBottom: '1px solid var(--line-soft)' }}>
                         <Photo tone={cat.tone} icon={catIconName[cat.id]} src={photoFor(item.id)} style={{ width: 54, height: 54, flexShrink: 0 }} radius="12px" />
                         <div style={{ flex: 1, minWidth: 0 }}>
-                          <div style={{ fontSize: 13, fontWeight: 600, lineHeight: 1.3 }}>{lang === 'ru' ? item.nameRu : item.nameKz}</div>
+                          <div style={{ fontSize: 13, fontWeight: 600, lineHeight: 1.3 }}>{nameFor(item, lang)}</div>
                           <div className="price" style={{ fontSize: 12, color: 'var(--navy-55)', fontWeight: 600, marginTop: 2 }}>{fmtPrice(item.price)}</div>
                           <input value={comment} onChange={(e) => onCommentFor(g.name, item.id, e.target.value)}
-                            placeholder={lang === 'ru' ? 'Пожелание к блюду…' : 'Тілек…'}
+                            placeholder={lang === 'en' ? 'Special request…' : lang === 'ru' ? 'Пожелание к блюду…' : 'Тілек…'}
                             style={{ marginTop: 6, width: '100%', border: 'none', borderBottom: '1px solid var(--line)', background: 'transparent', fontFamily: 'var(--sans)', fontSize: 12, color: 'var(--navy)', padding: '3px 0', outline: 'none' }} />
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', justifyContent: 'space-between' }}>
@@ -253,7 +253,7 @@ function Success({ t, lang, show, orderNo, table, count, total, guests, onBack }
 
         <div className="anim-up" style={{ animationDelay: '.55s', width: '100%', maxWidth: 320, marginTop: 26, background: 'var(--paper)', borderRadius: 'var(--r)', padding: '18px 20px', boxShadow: 'var(--shadow-soft)' }}>
           {[
-            [lang === 'ru' ? 'Заказ' : 'Тапсырыс', '№ ' + orderNo],
+            [lang === 'en' ? 'Order' : lang === 'ru' ? 'Заказ' : 'Тапсырыс', '№ ' + orderNo],
             [t.table, '№ ' + table],
             [t.items, String(count)],
           ].map(([k, v], i) => (
@@ -402,7 +402,7 @@ function ModifierSheet({ t, lang, itemId, show, onClose, onConfirm }) {
     const modText = modifiers.map(m => {
       const opt = m.options.find(o => o.id === modSels[m.id]);
       if (!opt) return null;
-      return (lang === 'ru' ? m.nameRu : m.nameKz) + ': ' + (lang === 'ru' ? opt.nameRu : opt.nameKz);
+      return nameFor(m, lang) + ': ' + nameFor(opt, lang);
     }).filter(Boolean).join(', ');
     onConfirm(item.id, modText || undefined);
   };
@@ -411,13 +411,13 @@ function ModifierSheet({ t, lang, itemId, show, onClose, onConfirm }) {
       <div className="sheet">
         <div className="grab" />
         <div style={{ padding: '14px 22px 6px' }}>
-          <div className="eyebrow-muted" style={{ marginBottom: 6 }}>{lang === 'ru' ? 'Выберите вариант' : 'Нұсқаны таңдаңыз'}</div>
-          <div className="serif" style={{ fontSize: 24, lineHeight: 1.1 }}>{lang === 'ru' ? item.nameRu : item.nameKz}</div>
+          <div className="eyebrow-muted" style={{ marginBottom: 6 }}>{lang === 'en' ? 'Choose option' : lang === 'ru' ? 'Выберите вариант' : 'Нұсқаны таңдаңыз'}</div>
+          <div className="serif" style={{ fontSize: 24, lineHeight: 1.1 }}>{nameFor(item, lang)}</div>
         </div>
         <div style={{ padding: '16px 22px calc(24px + env(safe-area-inset-bottom, 0px))' }}>
           {modifiers.map(mod => (
             <div key={mod.id} style={{ marginBottom: 18 }}>
-              <div className="eyebrow-muted" style={{ marginBottom: 10 }}>{lang === 'ru' ? mod.nameRu : mod.nameKz}</div>
+              <div className="eyebrow-muted" style={{ marginBottom: 10 }}>{nameFor(mod, lang)}</div>
               <div style={{ display: 'flex', gap: 10 }}>
                 {mod.options.map(opt => {
                   const on = modSels[mod.id] === opt.id;
@@ -430,7 +430,7 @@ function ModifierSheet({ t, lang, itemId, show, onClose, onConfirm }) {
                         fontFamily: 'var(--sans)', fontSize: 15, fontWeight: 700,
                         transition: 'border-color .18s, background .18s, color .18s',
                         boxShadow: on ? '0 0 0 3px rgba(2,80,206,.12)' : 'none' }}>
-                      {lang === 'ru' ? opt.nameRu : opt.nameKz}
+                      {nameFor(opt, lang)}
                     </button>
                   );
                 })}
@@ -439,7 +439,7 @@ function ModifierSheet({ t, lang, itemId, show, onClose, onConfirm }) {
           ))}
           <button className="btn btn-cta" onClick={handleConfirm}
             style={{ display: 'flex', justifyContent: 'space-between', marginTop: 4 }}>
-            <span>{lang === 'ru' ? 'В корзину' : 'Себетке'}</span>
+            <span>{lang === 'en' ? 'Add to cart' : lang === 'ru' ? 'В корзину' : 'Себетке'}</span>
             <span>{item && typeof fmtPrice !== 'undefined' ? fmtPrice(item.price) : ''}</span>
           </button>
         </div>
@@ -460,7 +460,7 @@ function OrderHistorySheet({ show, lang, table, onClose }) {
   const fmtTime = (ts) => new Date(ts).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
   const fmtDate = (ts) => {
     const d = new Date(ts), today = new Date();
-    if (d.toDateString() === today.toDateString()) return lang === 'ru' ? 'Сегодня' : 'Бүгін';
+    if (d.toDateString() === today.toDateString()) return lang === 'en' ? 'Today' : lang === 'ru' ? 'Сегодня' : 'Бүгін';
     return d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'short' });
   };
 
@@ -470,8 +470,8 @@ function OrderHistorySheet({ show, lang, table, onClose }) {
         <div className="grab" />
         <div style={{ padding: '14px 22px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
           <div>
-            <div className="eyebrow-muted" style={{ marginBottom: 4 }}>{lang === 'ru' ? 'Стол' : 'Үстел'} {table}</div>
-            <div className="serif" style={{ fontSize: 24 }}>{lang === 'ru' ? 'Мой заказ' : 'Менің тапсырысым'}</div>
+            <div className="eyebrow-muted" style={{ marginBottom: 4 }}>{lang === 'en' ? 'Table' : lang === 'ru' ? 'Стол' : 'Үстел'} {table}</div>
+            <div className="serif" style={{ fontSize: 24 }}>{lang === 'en' ? 'My orders' : lang === 'ru' ? 'Мой заказ' : 'Менің тапсырысым'}</div>
           </div>
           <button onClick={onClose} style={{ width: 36, height: 36, borderRadius: '50%', border: '1.3px solid var(--line)', background: 'var(--paper)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: 'var(--navy)' }}>
             <Icon name="close" size={16} />
@@ -481,8 +481,8 @@ function OrderHistorySheet({ show, lang, table, onClose }) {
           {history.length === 0 ? (
             <div style={{ textAlign: 'center', padding: '48px 0', color: 'var(--navy-38)' }}>
               <div style={{ fontSize: 42, marginBottom: 12 }}>🧾</div>
-              <div style={{ fontWeight: 700, fontSize: 15 }}>{lang === 'ru' ? 'Заказов пока нет' : 'Тапсырыс жоқ'}</div>
-              <div style={{ fontSize: 13, marginTop: 6 }}>{lang === 'ru' ? 'Здесь появятся ваши заказы' : 'Тапсырыстарыңыз осында көрінеді'}</div>
+              <div style={{ fontWeight: 700, fontSize: 15 }}>{lang === 'en' ? 'No orders yet' : lang === 'ru' ? 'Заказов пока нет' : 'Тапсырыс жоқ'}</div>
+              <div style={{ fontSize: 13, marginTop: 6 }}>{lang === 'en' ? 'Your orders will appear here' : lang === 'ru' ? 'Здесь появятся ваши заказы' : 'Тапсырыстарыңыз осында көрінеді'}</div>
             </div>
           ) : history.map((order, i) => (
             <div key={i} style={{ background: 'var(--paper)', borderRadius: 'var(--r)', padding: '16px', marginBottom: 12, boxShadow: 'var(--shadow-soft)' }}>
@@ -495,7 +495,7 @@ function OrderHistorySheet({ show, lang, table, onClose }) {
               </div>
               {order.items.map((item, j) => (
                 <div key={j} style={{ fontSize: 13, fontWeight: 500, color: 'var(--navy-70)', padding: '3px 0', display: 'flex', justifyContent: 'space-between', gap: 8 }}>
-                  <span>{(lang === 'ru' ? item.nameRu : (item.nameKz || item.nameRu))} ×{item.qty}{item.comment ? ' · ' + item.comment : ''}</span>
+                  <span>{nameFor(item, lang)} ×{item.qty}{item.comment ? ' · ' + item.comment : ''}</span>
                   <span style={{ fontWeight: 700, color: 'var(--navy)', whiteSpace: 'nowrap' }}>{fmtPrice(item.price * item.qty)}</span>
                 </div>
               ))}

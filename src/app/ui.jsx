@@ -1,6 +1,10 @@
 // app/ui.jsx — Sunbula primitives: icons, photo placeholders, controls, skeletons, toast
 const { useState, useEffect, useRef } = React;
 
+// ---------- language helpers ----------
+window.nameFor = (o, lang) => lang === 'en' ? (o.nameEn || o.nameRu) : lang === 'kz' ? o.nameKz : o.nameRu;
+window.descFor = (o, lang) => lang === 'en' ? (o.descEn || o.descRu) : lang === 'kz' ? o.descKz : o.descRu;
+
 // ---------- formatting ----------
 const fmtPrice = (n) => n.toLocaleString('ru-RU').replace(/,/g, ' ') + ' ₸';
 

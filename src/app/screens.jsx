@@ -92,12 +92,12 @@ function NameScreen({ t, table, onConfirm }) {
 }
 
 function MenuCard({ cat, item, lang, qty, onOpen, onAdd, onInc, onDec }) {
-  const name = lang === 'ru' ? item.nameRu : item.nameKz;
-  const desc = lang === 'ru' ? item.descRu : item.descKz;
+  const name = nameFor(item, lang);
+  const desc = descFor(item, lang);
   return (
     <div className="card anim-in" onClick={onOpen} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column' }}>
       {item.isNew && <span className="tag-new">New</span>}
-      <Photo tone={cat.tone} icon={catIconName[cat.id]} src={photoFor(item.id)} tag={lang === 'ru' ? cat.nameRu : cat.nameKz}
+      <Photo tone={cat.tone} icon={catIconName[cat.id]} src={photoFor(item.id)} tag={nameFor(cat, lang)}
         style={{ height: 134 }} radius="0" />
       <div style={{ padding: '12px 13px 13px', display: 'flex', flexDirection: 'column', flex: 1 }}>
         <div style={{ fontSize: 13.5, fontWeight: 600, lineHeight: 1.28, letterSpacing: '.1px' }}>{name}</div>
@@ -114,8 +114,8 @@ function MenuCard({ cat, item, lang, qty, onOpen, onAdd, onInc, onDec }) {
 }
 
 function WideRow({ cat, item, lang, qty, onOpen, onAdd, onInc, onDec }) {
-  const name = lang === 'ru' ? item.nameRu : item.nameKz;
-  const desc = lang === 'ru' ? item.descRu : item.descKz;
+  const name = nameFor(item, lang);
+  const desc = descFor(item, lang);
   return (
     <div className="card anim-in" onClick={onOpen} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', borderRadius: 'var(--r-sm)' }}>
       <div style={{ position: 'relative', flexShrink: 0 }}>
@@ -182,7 +182,7 @@ function Menu({ t, lang, table, currentUser, cart, cartCount, cartTotal, loading
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>
               </svg>
-              {lang === 'ru' ? 'Заказы' : 'Тапсырыстар'}
+              {lang === 'en' ? 'Orders' : lang === 'ru' ? 'Заказы' : 'Тапсырыстар'}
             </button>
             <button onClick={onWaiter} aria-label="waiter" style={{
               width: 38, height: 38, borderRadius: '50%', border: '1.3px solid var(--line)', background: 'var(--paper)',
@@ -191,7 +191,7 @@ function Menu({ t, lang, table, currentUser, cart, cartCount, cartTotal, loading
             <button onClick={onToggleLang} style={{
               height: 38, padding: '0 14px', borderRadius: 30, border: '1.3px solid var(--line)', background: 'var(--paper)',
               fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 800, letterSpacing: '1px', cursor: 'pointer', color: 'var(--navy)',
-            }}>{lang === 'ru' ? 'ҚАЗ' : 'РУС'}</button>
+            }}>{lang === 'ru' ? 'ҚАЗ' : lang === 'kz' ? 'ENG' : 'РУС'}</button>
           </div>
         </div>
         {currentUser && (
@@ -213,7 +213,7 @@ function Menu({ t, lang, table, currentUser, cart, cartCount, cartTotal, loading
             <button className={'chip' + (active === 'all' ? ' on' : '')} onClick={() => goCat('all')}>{t.all}</button>
             {MENU.map(c => (
               <button key={c.id} className={'chip' + (active === c.id ? ' on' : '')} onClick={() => goCat(c.id)}>
-                {lang === 'ru' ? c.nameRu : c.nameKz}
+                {nameFor(c, lang)}
               </button>
             ))}
           </div>
@@ -227,8 +227,8 @@ function Menu({ t, lang, table, currentUser, cart, cartCount, cartTotal, loading
           <section key={cat.id} id={'sec-' + cat.id} style={{ marginBottom: 30, scrollMarginTop: 8 }}>
             <div style={{ padding: '0 20px', marginBottom: 14, display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
               <div>
-                <div className="eyebrow" style={{ marginBottom: 5 }}>{lang === 'ru' ? cat.nameKz : cat.nameRu}</div>
-                <div className="serif" style={{ fontSize: 27 }}>{lang === 'ru' ? cat.nameRu : cat.nameKz}</div>
+                <div className="eyebrow" style={{ marginBottom: 5 }}>{lang === 'en' ? cat.nameRu : lang === 'ru' ? cat.nameKz : cat.nameEn || cat.nameRu}</div>
+                <div className="serif" style={{ fontSize: 27 }}>{nameFor(cat, lang)}</div>
               </div>
               <span className="eyebrow-muted" style={{ paddingBottom: 4 }}>{cat.items.length}</span>
             </div>

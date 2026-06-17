@@ -74,7 +74,7 @@ function App() {
   const [historyOpen, setHistoryOpen] = uS(false);
   const toastTimer = uR(null);
 
-  const tr = (lang === 'kz' ? TR.kz : TR.ru);
+  const tr = lang === 'kz' ? TR.kz : lang === 'en' ? TR.en : TR.ru;
 
   uE(() => {
     if (screen === 'menu' || currentUser) {
@@ -137,7 +137,7 @@ function App() {
     setScreen('menu'); setLoading(true); setTimeout(() => setLoading(false), 850);
   };
   const openItem = (id) => setProductId(id);
-  const toggleLang = () => setLang(l => l === 'ru' ? 'kz' : 'ru');
+  const toggleLang = () => setLang(l => l === 'ru' ? 'kz' : l === 'kz' ? 'en' : 'ru');
   const waiter = () => setWaiterOpen(true);
   const sendWaiter = (label, customText) => {
     const detail = customText ? ('\n✍️ ' + customText) : '';
@@ -258,7 +258,7 @@ function App() {
         <TweakSlider label="Скругление" value={t.radius} min={6} max={28} unit="px"
           onChange={(v) => setTweak('radius', v)} />
         <TweakRadio label="Язык" value={lang}
-          options={['ru', 'kz']}
+          options={['ru', 'kz', 'en']}
           onChange={(v) => { setLang(v); setTweak('lang', v); }} />
       </TweaksPanel>
     </div>
