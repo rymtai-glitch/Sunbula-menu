@@ -92,17 +92,7 @@ window.MENU = [
    {"id": 21, "nameRu": "Курица в сливочном соусе", "nameKz": "Кілегейлі соусындағы тауық", "nameEn": "Chicken in Cream Sauce", "descRu": "NEW — с картофелем", "descKz": "NEW", "descEn": "NEW — with potatoes", "price": 3190, "isNew": true, "nutri": [610,42,30,38]},
    {"id": 22, "nameRu": "Судак с ароматным рисом", "nameKz": "Хош иісті күріш қосылған судак", "nameEn": "Pike Perch with Aromatic Rice", "descRu": "Нежное филе", "descKz": "Жұмсақ судак", "descEn": "Tender fillet", "price": 3690, "nutri": [610,42,30,38]},
    {"id": 23, "nameRu": "Имбирный цыплёнок", "nameKz": "Зімбір қосылған балапан", "nameEn": "Ginger Chicken", "descRu": "В имбирном маринаде", "descKz": "Зімбір маринадында", "descEn": "In ginger marinade", "price": 3490, "nutri": [610,42,30,38]},
-   {"id": 24, "nameRu": "Томлёное мясо с картофелем", "nameKz": "Зауытша бүктырылған ет", "nameEn": "Slow-Cooked Meat with Potatoes", "descRu": "NEW — по-деревенски", "descKz": "NEW", "descEn": "NEW — rustic style", "price": 3490, "isNew": true, "nutri": [610,42,30,38]}
-  ],
-  "tone": "roast"
- },
- {
-  "id": "kurinye",
-  "nameRu": "Котлеты",
-  "nameKz": "Котлеттер",
-  "nameEn": "Cutlets",
-  "wide": false,
-  "items": [
+   {"id": 24, "nameRu": "Томлёное мясо с картофелем", "nameKz": "Зауытша бүктырылған ет", "nameEn": "Slow-Cooked Meat with Potatoes", "descRu": "NEW — по-деревенски", "descKz": "NEW", "descEn": "NEW — rustic style", "price": 3490, "isNew": true, "nutri": [610,42,30,38]},
    {"id": 25, "nameRu": "Куриные котлеты с пюре", "nameKz": "Картоп езбесімен тауық котлеттері", "nameEn": "Chicken Cutlets with Mash", "descRu": "С картофельным пюре", "descKz": "Картоп езбесімен", "descEn": "With mashed potatoes", "price": 4290, "nutri": [610,42,30,38]}
   ],
   "tone": "roast"
@@ -192,7 +182,6 @@ window.MENU = [
   "items": [
    {"id": 52, "nameRu": "Нитро-классик", "nameKz": "Нитро-классик", "nameEn": "Nitro Classic", "descRu": "Нитро кофе", "descKz": "Нитро кофе", "descEn": "Nitro coffee", "price": 2290, "nutri": [180,5,28,6]},
    {"id": 53, "nameRu": "Нитро-апельсин", "nameKz": "Нитро-апельсин", "nameEn": "Nitro Orange", "descRu": "С апельсиновым вкусом", "descKz": "Апельсин дәмімен", "descEn": "With orange flavor", "price": 2290, "nutri": [180,5,28,6]},
-   {"id": 54, "nameRu": "Нитро-брусничный", "nameKz": "Нитро-бүлдірген", "nameEn": "Nitro Lingonberry", "descRu": "С брусникой", "descKz": "Бүлдірген", "descEn": "With lingonberry", "price": 2290, "nutri": [180,5,28,6]},
    {"id": 55, "nameRu": "Айс-латте Крем-брюлле", "nameKz": "Айс-латте Крем-брюлле", "nameEn": "Iced Crème Brûlée Latte", "descRu": "Холодный латте", "descKz": "Суық латте", "descEn": "Iced latte", "price": 2290, "nutri": [180,5,28,6]},
 {"id": 57, "nameRu": "Матча манго-маракуйя", "nameKz": "Матча манго-маракуйя", "nameEn": "Matcha Mango Passion Fruit", "descRu": "Тропическая матча", "descKz": "Тропикалық", "descEn": "Tropical matcha", "price": 2290, "nutri": [180,5,28,6]},
    {"id": 58, "nameRu": "Матча с малиной", "nameKz": "Таңқурайлы матча", "nameEn": "Matcha with Raspberry", "descRu": "+290 малиновая шапка", "descKz": "+290 таңқурай қасы", "descEn": "+290 raspberry topping", "price": 2290, "nutri": [180,5,28,6]},
