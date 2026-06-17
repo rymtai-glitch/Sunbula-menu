@@ -16,6 +16,6 @@ window.PHOTOS = {
  61: "images/61.png", 62: "images/62.png", 63: "images/63.jpg",
  64: "images/64.jpg", 65: "images/65.jpg", 66: "images/66.jpg", 67: "images/67.jpg", 68: "images/68.png",
  69: "images/69.jpg", 70: "images/70.jpg", 71: "images/71.jpg", 72: "images/72.jpg",
- 73: "images/73.jpg", 74: "images/74.jpg", 75: "images/75.jpg"
+ 73: "images/73.jpg", 74: "images/74.jpg", 75: "images/75.jpg", 76: "images/76.png"
 };
 window.photoFor = function(id){ return window.PHOTOS[id] || null; };

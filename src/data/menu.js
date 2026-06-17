@@ -116,6 +116,7 @@ window.MENU = [
   "nameEn": "Pizzas",
   "wide": false,
   "items": [
+   {"id": 76, "nameRu": "Сырная пицца", "nameKz": "Ірімшікті пицца", "nameEn": "Cheese Pizza", "descRu": "Моцарелла, четыре сыра", "descKz": "Моцарелла, төрт ірімшік", "descEn": "Mozzarella, four cheese", "price": 2290, "isNew": true, "nutri": [610,28,26,58]},
    {"id": 28, "nameRu": "Моно Пепперони", "nameKz": "Моно Пепперони", "nameEn": "Mono Pepperoni", "descRu": "NEW", "descKz": "NEW", "descEn": "NEW", "price": 2690, "isNew": true, "nutri": [610,42,30,38]},
    {"id": 29, "nameRu": "Моно грибная с трюфелем", "nameKz": "Моно саңырауқұлақты трюфель майымен", "nameEn": "Mono Mushroom with Truffle", "descRu": "NEW", "descKz": "NEW", "descEn": "NEW", "price": 2390, "isNew": true, "nutri": [610,42,30,38]},
    {"id": 30, "nameRu": "Моно лосось Крем Чіз", "nameKz": "Моно лосось Крем Ірімшігімен", "nameEn": "Mono Salmon Cream Cheese", "descRu": "NEW", "descKz": "NEW", "descEn": "NEW", "price": 3090, "isNew": true, "nutri": [610,42,30,38]},
