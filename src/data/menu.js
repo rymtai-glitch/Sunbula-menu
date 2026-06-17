@@ -185,7 +185,6 @@ window.MENU = [
    {"id": 55, "nameRu": "Айс-латте Крем-брюлле", "nameKz": "Айс-латте Крем-брюлле", "nameEn": "Iced Crème Brûlée Latte", "descRu": "Холодный латте", "descKz": "Суық латте", "descEn": "Iced latte", "price": 2290, "nutri": [180,5,28,6]},
 {"id": 57, "nameRu": "Матча-манго", "nameKz": "Матча-манго", "nameEn": "Matcha Mango", "descRu": "Тропическая матча", "descKz": "Тропикалық", "descEn": "Tropical matcha", "price": 2290, "nutri": [180,5,28,6]},
    {"id": 58, "nameRu": "Матча с малиной", "nameKz": "Таңқурайлы матча", "nameEn": "Matcha with Raspberry", "descRu": "+290 малиновая шапка", "descKz": "+290 таңқурай қасы", "descEn": "+290 raspberry topping", "price": 2290, "nutri": [180,5,28,6]},
-   {"id": 59, "nameRu": "Матча с клубникой", "nameKz": "Құлпынайлы матча", "nameEn": "Matcha with Strawberry", "descRu": "+290 клубничная шапка", "descKz": "+290 құлпынай қасы", "descEn": "+290 strawberry topping", "price": 2290, "nutri": [180,5,28,6]},
    {"id": 60, "nameRu": "Матча бамбл", "nameKz": "Матча бамбл", "nameEn": "Matcha Bumble", "descRu": "NEW", "descKz": "NEW", "descEn": "NEW", "price": 2290, "isNew": true, "nutri": [180,5,28,6]},
    {"id": 61, "nameRu": "Кофе бамбл", "nameKz": "Кофе бамбл", "nameEn": "Coffee Bumble", "descRu": "NEW", "descKz": "NEW", "descEn": "NEW", "price": 2290, "isNew": true, "nutri": [180,5,28,6]},
    {"id": 62, "nameRu": "Матча-банан", "nameKz": "Матча-банан", "nameEn": "Matcha Banana", "descRu": "NEW", "descKz": "NEW", "descEn": "NEW", "price": 2290, "isNew": true, "nutri": [180,5,28,6]}

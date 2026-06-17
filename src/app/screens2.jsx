@@ -430,7 +430,7 @@ function ModifierSheet({ t, lang, itemId, show, onClose, onConfirm }) {
           {modifiers.map(mod => (
             <div key={mod.id} style={{ marginBottom: 18 }}>
               <div className="eyebrow-muted" style={{ marginBottom: 10 }}>{nameFor(mod, lang)}</div>
-              <div style={{ display: 'flex', gap: 10 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: mod.options.length === 4 ? '1fr 1fr' : `repeat(${mod.options.length}, 1fr)`, gap: 10 }}>
                 {mod.options.map(opt => {
                   const on = modSels[mod.id] === opt.id;
                   return (
