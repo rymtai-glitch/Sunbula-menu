@@ -91,9 +91,9 @@ function App() {
 
   const changeQty = (name, id, delta) => {
     setOrders(o => {
-      const u = o[name] ? { cart: { ...o[name].cart }, comments: { ...o[name].comments } } : { cart: {}, comments: {} };
+      const u = o[name] ? { cart: { ...o[name].cart }, comments: { ...o[name].comments }, prices: { ...(o[name].prices || {}) } } : { cart: {}, comments: {}, prices: {} };
       const n = (u.cart[id] || 0) + delta;
-      if (n <= 0) { delete u.cart[id]; delete u.comments[id]; } else u.cart[id] = n;
+      if (n <= 0) { delete u.cart[id]; delete u.comments[id]; delete u.prices[id]; } else u.cart[id] = n;
       return { ...o, [name]: u };
     });
   };
@@ -109,13 +109,17 @@ function App() {
   const incFor = (name, id) => changeQty(name, id, +1);
   const decFor = (name, id) => changeQty(name, id, -1);
   const setCommentFor = (name, id, v) => setOrders(o => {
-    const u = o[name] ? { cart: { ...o[name].cart }, comments: { ...o[name].comments } } : { cart: {}, comments: {} };
+    const u = o[name] ? { cart: { ...o[name].cart }, comments: { ...o[name].comments }, prices: { ...(o[name].prices || {}) } } : { cart: {}, comments: {}, prices: {} };
     u.comments[id] = v; return { ...o, [name]: u };
+  });
+  const setPriceFor = (name, id, price) => setOrders(o => {
+    const u = o[name] ? { cart: { ...o[name].cart }, comments: { ...o[name].comments }, prices: { ...(o[name].prices || {}) } } : { cart: {}, comments: {}, prices: {} };
+    if (price) u.prices[id] = price; return { ...o, [name]: u };
   });
 
   const myCart = (orders[currentUser] && orders[currentUser].cart) || {};
 
-  const userTotal = (name) => Object.entries((orders[name] && orders[name].cart) || {}).reduce((s, [id, q]) => { const f = findItem(parseInt(id)); return s + (f ? f.item.price * q : 0); }, 0);
+  const userTotal = (name) => Object.entries((orders[name] && orders[name].cart) || {}).reduce((s, [id, q]) => { const f = findItem(parseInt(id)); const p = (orders[name].prices || {})[id]; return s + (f ? (p || f.item.price) * q : 0); }, 0);
   const userCount = (name) => Object.values((orders[name] && orders[name].cart) || {}).reduce((a, b) => a + b, 0);
   const tableTotal = Object.keys(orders).reduce((s, n) => s + userTotal(n), 0);
   const tableCount = Object.keys(orders).reduce((s, n) => s + userCount(n), 0);
@@ -127,13 +131,13 @@ function App() {
     isCurrent: name === currentUser,
     subtotal: userTotal(name),
     count: userCount(name),
-    items: Object.entries(orders[name].cart).map(([id, qty]) => { const f = findItem(parseInt(id)); return { ...f, qty, comment: (orders[name].comments || {})[id] || '' }; }).filter(x => x.item),
+    items: Object.entries(orders[name].cart).map(([id, qty]) => { const f = findItem(parseInt(id)); const priceOverride = (orders[name].prices || {})[id]; return { ...f, qty, comment: (orders[name].comments || {})[id] || '', priceOverride }; }).filter(x => x.item),
   }));
 
   const startName = () => setScreen('name');
   const confirmName = (name) => {
     setCurrentUser(name);
-    setOrders(o => o[name] ? o : { ...o, [name]: { cart: {}, comments: {} } });
+    setOrders(o => o[name] ? o : { ...o, [name]: { cart: {}, comments: {}, prices: {} } });
     setScreen('menu'); setLoading(true); setTimeout(() => setLoading(false), 850);
   };
   const openItem = (id) => setProductId(id);
@@ -159,8 +163,8 @@ function App() {
     L.push('');
     groups.forEach(g => {
       L.push('👤 <b>' + g.name + '</b> (' + g.count + ')');
-      g.items.forEach(({ item, qty, comment }) => {
-        L.push('   • ' + item.nameRu + ' \xd7' + qty + ' — ' + fmtPrice(item.price * qty));
+      g.items.forEach(({ item, qty, comment, priceOverride }) => {
+        L.push('   • ' + item.nameRu + ' \xd7' + qty + ' — ' + fmtPrice((priceOverride || item.price) * qty));
         if (comment && comment.trim()) L.push('     💬 ' + comment.trim());
       });
       L.push('   <i>Подытог: ' + fmtPrice(g.subtotal) + '</i>');
@@ -176,7 +180,7 @@ function App() {
     const orderNo = 1000 + Math.floor(Math.random() * 9000);
     pushHistory(table, {
       orderNo, ts: Date.now(), table, total: tableTotal,
-      items: groups.flatMap(g => g.items.map(({ item, qty, comment }) => ({ nameRu: item.nameRu, nameKz: item.nameKz, qty, price: item.price, comment }))),
+      items: groups.flatMap(g => g.items.map(({ item, qty, comment, priceOverride }) => ({ nameRu: item.nameRu, nameKz: item.nameKz, qty, price: priceOverride || item.price, comment }))),
     });
     tgSend(buildOrderText());
     setCartOpen(false);
@@ -230,9 +234,10 @@ function App() {
 
         <ModifierSheet t={tr} lang={lang} itemId={modSheet && modSheet.itemId} show={!!modSheet}
           onClose={() => setModSheet(null)}
-          onConfirm={(id, mod) => {
+          onConfirm={(id, mod, price) => {
             changeQty(currentUser, id, +1);
             if (mod) setCommentFor(currentUser, id, mod);
+            if (price) setPriceFor(currentUser, id, price);
             setModSheet(null);
             flash(tr.addedToCart);
           }} />

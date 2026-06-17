@@ -173,18 +173,18 @@ function Cart({ t, lang, table, show, groups, currentUser, total, count,
                     <span className="price" style={{ fontSize: 14, color: 'var(--blue)' }}>{fmtPrice(g.subtotal)}</span>
                   </div>
                   <div style={{ padding: '2px 4px 0' }}>
-                    {g.items.map(({ item, cat, qty, comment }) => (
+                    {g.items.map(({ item, cat, qty, comment, priceOverride }) => (
                       <div key={item.id} style={{ display: 'flex', gap: 12, padding: '12px 0', borderBottom: '1px solid var(--line-soft)' }}>
                         <Photo tone={cat.tone} icon={catIconName[cat.id]} src={photoFor(item.id)} style={{ width: 54, height: 54, flexShrink: 0 }} radius="12px" />
                         <div style={{ flex: 1, minWidth: 0 }}>
                           <div style={{ fontSize: 13, fontWeight: 600, lineHeight: 1.3 }}>{nameFor(item, lang)}</div>
-                          <div className="price" style={{ fontSize: 12, color: 'var(--navy-55)', fontWeight: 600, marginTop: 2 }}>{fmtPrice(item.price)}</div>
+                          <div className="price" style={{ fontSize: 12, color: 'var(--navy-55)', fontWeight: 600, marginTop: 2 }}>{fmtPrice(priceOverride || item.price)}</div>
                           <input value={comment} onChange={(e) => onCommentFor(g.name, item.id, e.target.value)}
                             placeholder={lang === 'en' ? 'Special request…' : lang === 'ru' ? 'Пожелание к блюду…' : 'Тілек…'}
                             style={{ marginTop: 6, width: '100%', border: 'none', borderBottom: '1px solid var(--line)', background: 'transparent', fontFamily: 'var(--sans)', fontSize: 12, color: 'var(--navy)', padding: '3px 0', outline: 'none' }} />
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', justifyContent: 'space-between' }}>
-                          <span className="price" style={{ fontSize: 13.5 }}>{fmtPrice(item.price * qty)}</span>
+                          <span className="price" style={{ fontSize: 13.5 }}>{fmtPrice((priceOverride || item.price) * qty)}</span>
                           <AddControl qty={qty} onInc={() => onIncFor(g.name, item.id)} onDec={() => onDecFor(g.name, item.id)} />
                         </div>
                       </div>
@@ -398,13 +398,25 @@ function ModifierSheet({ t, lang, itemId, show, onClose, onConfirm }) {
     setModSels(defs);
   }, [show, itemId]);
   if (!show || !item) return null;
+  const selectedPrice = (() => {
+    for (const m of modifiers) {
+      const opt = m.options.find(o => o.id === modSels[m.id]);
+      if (opt && opt.price) return opt.price;
+    }
+    return item ? item.price : 0;
+  })();
   const handleConfirm = () => {
     const modText = modifiers.map(m => {
       const opt = m.options.find(o => o.id === modSels[m.id]);
       if (!opt) return null;
       return nameFor(m, lang) + ': ' + nameFor(opt, lang);
     }).filter(Boolean).join(', ');
-    onConfirm(item.id, modText || undefined);
+    let priceOverride = null;
+    for (const m of modifiers) {
+      const opt = m.options.find(o => o.id === modSels[m.id]);
+      if (opt && opt.price) { priceOverride = opt.price; break; }
+    }
+    onConfirm(item.id, modText || undefined, priceOverride);
   };
   return (
     <div className="overlay show" style={{ zIndex: 350 }} onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
@@ -440,7 +452,7 @@ function ModifierSheet({ t, lang, itemId, show, onClose, onConfirm }) {
           <button className="btn btn-cta" onClick={handleConfirm}
             style={{ display: 'flex', justifyContent: 'space-between', marginTop: 4 }}>
             <span>{lang === 'en' ? 'Add to cart' : lang === 'ru' ? 'В корзину' : 'Себетке'}</span>
-            <span>{item && typeof fmtPrice !== 'undefined' ? fmtPrice(item.price) : ''}</span>
+            <span>{typeof fmtPrice !== 'undefined' ? fmtPrice(selectedPrice) : ''}</span>
           </button>
         </div>
       </div>
