@@ -12,7 +12,7 @@ window.PHOTOS = {
  40: "images/40.jpg", 41: "images/41.jpg", 42: "images/42.jpg", 43: "images/43.jpg",
  44: "images/44.jpg", 45: "images/45.jpg", 46: "images/46.jpg", 47: "images/47.jpg",
  52: "images/52.jpg", 53: "images/53.jpg", 54: "images/54.jpg", 55: "images/55.jpg",
- 57: "images/57.jpg", 58: "images/58.jpg", 59: "images/59.jpg", 60: "images/60.png",
+ 57: "images/57.png", 58: "images/58.jpg", 59: "images/59.jpg", 60: "images/60.png",
  61: "images/61.png", 62: "images/62.png", 63: "images/63.jpg",
  64: "images/64.jpg", 65: "images/65.jpg", 66: "images/66.jpg", 67: "images/67.jpg", 68: "images/68.png",
  69: "images/69.jpg", 70: "images/70.jpg", 71: "images/71.jpg", 72: "images/72.jpg",
