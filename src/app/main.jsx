@@ -197,8 +197,8 @@ function App() {
   return (
     <div style={themeStyle}>
       <div className="sb-phone">
-        {screen === 'welcome' && <Welcome t={tr} table={table} onOpen={startName} />}
-        {screen === 'name' && <NameScreen t={tr} table={table} onConfirm={confirmName} />}
+        {screen === 'welcome' && <Welcome t={tr} lang={lang} table={table} onOpen={startName} onSetLang={setLang} />}
+        {screen === 'name' && <NameScreen t={tr} lang={lang} table={table} onConfirm={confirmName} onSetLang={setLang} />}
 
         {screen === 'menu' && (
           <Menu t={tr} lang={lang} table={table} currentUser={currentUser} cart={myCart}

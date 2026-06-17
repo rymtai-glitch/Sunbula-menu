@@ -12,10 +12,31 @@ function BrandBackdrop() {
   );
 }
 
-function Welcome({ t, table, onOpen }) {
+function LangPicker({ lang, onSetLang }) {
+  return (
+    <div style={{ position: 'absolute', top: 18, right: 18, zIndex: 10, display: 'flex', gap: 6 }}>
+      {['ru', 'kz', 'en'].map(l => (
+        <button key={l} onClick={() => onSetLang(l)} style={{
+          padding: '6px 10px', borderRadius: 20,
+          background: lang === l ? 'var(--yellow)' : 'rgba(255,255,255,.15)',
+          border: '1px solid ' + (lang === l ? 'var(--yellow)' : 'rgba(255,255,255,.3)'),
+          color: lang === l ? '#0B1020' : 'rgba(255,255,255,.9)',
+          fontFamily: 'var(--sans)', fontWeight: 700, fontSize: 11, letterSpacing: .8,
+          cursor: 'pointer', textTransform: 'uppercase',
+        }}>
+          {l === 'ru' ? 'РУС' : l === 'kz' ? 'ҚАЗ' : 'ENG'}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function Welcome({ t, lang, table, onOpen, onSetLang }) {
+  const tagline = lang === 'en' ? <>A morning worth<br />savoring</> : lang === 'kz' ? <>Созғыңыз келетін<br />таң</> : <>Утро, которое<br />хочется продлить</>;
   return (
     <div className="sb-app" style={{ background: 'var(--blue)' }}>
       <BrandBackdrop />
+      <LangPicker lang={lang} onSetLang={onSetLang} />
       <div className="anim-up" style={{ position: 'relative', zIndex: 2, textAlign: 'center', paddingTop: 96 }}>
         <img src={LOGO_WHITE} alt="Sunbula" style={{ width: 210, height: 'auto', display: 'inline-block' }} />
       </div>
@@ -23,7 +44,7 @@ function Welcome({ t, table, onOpen }) {
         <div className="anim-up" style={{ animationDelay: '.12s' }}>
           <div className="eyebrow" style={{ color: 'var(--yellow)', marginBottom: 14 }}>{t.greet}</div>
           <div className="serif" style={{ fontSize: 38, color: '#fff', lineHeight: 1.0 }}>
-            Утро, которое<br />хочется продлить
+            {tagline}
           </div>
           <p style={{ marginTop: 16, fontSize: 14, lineHeight: 1.65, color: 'rgba(255,255,255,.82)', fontWeight: 500, maxWidth: 320 }}>
             {t.welcomeSub}
@@ -49,7 +70,7 @@ function Welcome({ t, table, onOpen }) {
   );
 }
 
-function NameScreen({ t, table, onConfirm }) {
+function NameScreen({ t, lang, table, onConfirm, onSetLang }) {
   const [name, setName] = useS('');
   const [err, setErr] = useS(false);
   const submit = () => {
@@ -59,6 +80,7 @@ function NameScreen({ t, table, onConfirm }) {
   return (
     <div className="sb-app" style={{ background: 'var(--blue)', zIndex: 120 }}>
       <BrandBackdrop />
+      <LangPicker lang={lang} onSetLang={onSetLang} />
       <div className="sb-scroll" style={{ position: 'relative', zIndex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 30px', flex: 1 }}>
         <div className="anim-up" style={{ textAlign: 'center', marginBottom: 30 }}>
           <img src={LOGO_WHITE} alt="Sunbula" style={{ width: 132, height: 'auto' }} />
