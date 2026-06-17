@@ -1,7 +1,7 @@
 // app/main.jsx — Sunbula app shell: state, navigation, per-guest table orders, checkout, tweaks
 const { useState: uS, useEffect: uE, useRef: uR } = React;
 
-const BOT_TOKEN = '8887485175:AAFR7HoGUrV5_o8JdHD6LKlY3f7XjNn4Ym8';
+const BOT_TOKEN = '8887485175:AAHHzVqYEckiiW-91xomf9VB6LkPkWsAo1o';
 const CHAT_ID = '-1003958886663';
 async function tgSend(text) {
   try {
