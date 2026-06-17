@@ -227,7 +227,7 @@ function Menu({ t, lang, table, currentUser, cart, cartCount, cartTotal, loading
           <section key={cat.id} id={'sec-' + cat.id} style={{ marginBottom: 30, scrollMarginTop: 8 }}>
             <div style={{ padding: '0 20px', marginBottom: 14, display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
               <div>
-                <div className="eyebrow" style={{ marginBottom: 5 }}>{lang === 'en' ? cat.nameRu : lang === 'ru' ? cat.nameKz : cat.nameEn || cat.nameRu}</div>
+                <div className="eyebrow" style={{ marginBottom: 5 }}>{lang === 'kz' ? (cat.nameEn || cat.nameRu) : cat.nameKz}</div>
                 <div className="serif" style={{ fontSize: 27 }}>{nameFor(cat, lang)}</div>
               </div>
               <span className="eyebrow-muted" style={{ paddingBottom: 4 }}>{cat.items.length}</span>
