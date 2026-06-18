@@ -1,20 +1,11 @@
-const https = require('https');
+const apiBase = 'https://api.iiko.services';
 
-function post(url, body, token) {
-  return new Promise((resolve, reject) => {
-    const data = JSON.stringify(body);
-    const u = new URL(url);
-    const headers = { 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(data) };
-    if (token) headers['Authorization'] = 'Bearer ' + token;
-    const req = https.request({ hostname: u.hostname, path: u.pathname, method: 'POST', headers }, (res) => {
-      let raw = '';
-      res.on('data', c => raw += c);
-      res.on('end', () => resolve({ status: res.statusCode, body: raw }));
-    });
-    req.on('error', reject);
-    req.write(data);
-    req.end();
-  });
+async function iikoPost(path, body, token) {
+  const headers = { 'Content-Type': 'application/json' };
+  if (token) headers['Authorization'] = 'Bearer ' + token;
+  const r = await fetch(apiBase + path, { method: 'POST', headers, body: JSON.stringify(body) });
+  const text = await r.text();
+  return { status: r.status, data: JSON.parse(text) };
 }
 
 module.exports = async function handler(req, res) {
@@ -24,25 +15,23 @@ module.exports = async function handler(req, res) {
   if (!apiKey) return res.status(500).json({ error: 'IIKO_API_KEY not set' });
 
   try {
-    const auth = await post('https://api.iiko.services/api/1/access_token', { apiLogin: apiKey });
-    if (auth.status !== 200) return res.status(502).json({ error: 'iiko auth failed', status: auth.status, detail: auth.body });
-    const { token } = JSON.parse(auth.body);
+    const auth = await iikoPost('/api/1/access_token', { apiLogin: apiKey });
+    if (auth.status !== 200) return res.status(502).json({ error: 'iiko auth failed', status: auth.status, detail: auth.data });
+    const { token } = auth.data;
 
-    const orgs = await post('https://api.iiko.services/api/1/organizations', { organizationIds: null }, token);
-    const orgsData = JSON.parse(orgs.body);
-    const orgId = orgsData.organizations?.[0]?.id;
-    if (!orgId) return res.status(502).json({ error: 'No org found', orgsData });
+    const orgs = await iikoPost('/api/1/organizations', { organizationIds: null }, token);
+    const orgId = orgs.data.organizations?.[0]?.id;
+    if (!orgId) return res.status(502).json({ error: 'No org found', orgs: orgs.data });
 
-    const menu = await post('https://api.iiko.services/api/1/nomenclature', { organizationId: orgId }, token);
-    const menuData = JSON.parse(menu.body);
+    const menu = await iikoPost('/api/1/nomenclature', { organizationId: orgId }, token);
 
-    const products = (menuData.products || [])
+    const products = (menu.data.products || [])
       .filter(p => !p.deleted && p.type === 'Dish')
       .map(p => ({ id: p.id, name: p.name, code: p.code }))
       .sort((a, b) => (a.name || '').localeCompare(b.name || '', 'ru'));
 
     res.status(200).json({ orgId, count: products.length, products });
   } catch (e) {
-    res.status(500).json({ error: e.message });
+    res.status(500).json({ error: e.message, cause: e.cause?.message || null });
   }
 };
