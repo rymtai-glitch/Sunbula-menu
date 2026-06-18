@@ -15,7 +15,7 @@ module.exports = async function handler(req, res) {
   if (!apiKey) return res.status(500).json({ error: 'IIKO_API_KEY not set' });
 
   try {
-    const auth = await iikoPost('/api/1/access_token', { apiLogin: apiKey });
+    const auth = await iikoPost('/api/v2/access_token', { apiLogin: apiKey });
     if (auth.status !== 200) return res.status(502).json({ error: 'iiko auth failed', status: auth.status, detail: auth.data });
     const { token } = auth.data;
 
