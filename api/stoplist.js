@@ -1,47 +1,45 @@
-// Vercel serverless function — fetches iiko stop list every call
-// Deployed at: /api/stoplist
-export default async function handler(req, res) {
+const https = require('https');
+
+function post(url, body, token) {
+  return new Promise((resolve, reject) => {
+    const data = JSON.stringify(body);
+    const u = new URL(url);
+    const headers = { 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(data) };
+    if (token) headers['Authorization'] = 'Bearer ' + token;
+    const req = https.request({ hostname: u.hostname, path: u.pathname, method: 'POST', headers }, (res) => {
+      let raw = '';
+      res.on('data', c => raw += c);
+      res.on('end', () => resolve({ status: res.statusCode, body: raw }));
+    });
+    req.on('error', reject);
+    req.write(data);
+    req.end();
+  });
+}
+
+module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Cache-Control', 'no-store');
 
+  const apiKey = process.env.IIKO_API_KEY;
+  if (!apiKey) return res.status(500).json({ error: 'IIKO_API_KEY not set' });
+
   try {
-    // 1. Get auth token (IIKO_API_KEY = the API key from iiko Cloud API settings)
-    const authRes = await fetch('https://api.iiko.services/api/1/access_token', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ apiLogin: process.env.IIKO_API_KEY }),
-    });
-    if (!authRes.ok) {
-      const txt = await authRes.text();
-      return res.status(502).json({ error: 'iiko auth failed', detail: txt });
-    }
-    const { token } = await authRes.json();
+    const auth = await post('https://api.iiko.services/api/1/access_token', { apiLogin: apiKey });
+    if (auth.status !== 200) return res.status(502).json({ error: 'iiko auth failed', status: auth.status, detail: auth.body });
+    const { token } = JSON.parse(auth.body);
 
-    // 2. Get organization ID
-    const orgsRes = await fetch('https://api.iiko.services/api/1/organizations', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
-      body: JSON.stringify({ organizationIds: null, returnAdditionalInfo: false, includeDisabled: false }),
-    });
-    const orgsData = await orgsRes.json();
-    const orgId = orgsData.organizations?.[0]?.id;
-    if (!orgId) return res.status(502).json({ error: 'No organization found' });
+    const orgs = await post('https://api.iiko.services/api/1/organizations', { organizationIds: null }, token);
+    const orgId = JSON.parse(orgs.body).organizations?.[0]?.id;
+    if (!orgId) return res.status(502).json({ error: 'No org found' });
 
-    // 3. Get stop list
-    const stopRes = await fetch('https://api.iiko.services/api/1/stop_lists', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
-      body: JSON.stringify({ organizationIds: [orgId] }),
-    });
-    const stopData = await stopRes.json();
+    const stop = await post('https://api.iiko.services/api/1/stop_lists', { organizationIds: [orgId] }, token);
+    const stopData = JSON.parse(stop.body);
 
-    // Collect all stopped product IDs across terminal groups
     const stoppedIikoIds = [];
     for (const tg of (stopData.terminalGroupStopLists || [])) {
       for (const item of (tg.items || [])) {
-        if (!stoppedIikoIds.includes(item.productId)) {
-          stoppedIikoIds.push(item.productId);
-        }
+        if (!stoppedIikoIds.includes(item.productId)) stoppedIikoIds.push(item.productId);
       }
     }
 
@@ -49,4 +47,4 @@ export default async function handler(req, res) {
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
-}
+};
