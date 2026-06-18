@@ -35,8 +35,16 @@ module.exports = async function handler(req, res) {
 
   try {
     // Auth with iiko
-    const { token } = await iikoPost('/api/1/access_token', { apiLogin: apiKey });
-    if (!token) return res.status(200).json({ ok: false, error: 'No token from iiko' });
+    const authResp = await iikoPost('/api/1/access_token', { apiLogin: apiKey });
+    const token = authResp.token;
+    if (!token) {
+      await fetch(`${sbUrl}/rest/v1/webhook_log`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'apikey': sbKey, 'Authorization': `Bearer ${sbKey}`, 'Prefer': 'return=minimal' },
+        body: JSON.stringify({ body: { _debug: 'auth_failed', authResp } }),
+      }).catch(() => {});
+      return res.status(200).json({ ok: false, error: 'Auth failed', authResp });
+    }
 
     // Get org ID
     const orgs = await iikoPost('/api/1/organizations', { organizationIds: null }, token);
