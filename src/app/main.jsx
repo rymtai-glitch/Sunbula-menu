@@ -72,7 +72,28 @@ function App() {
   const [toast, setToast] = uS({ show: false, msg: '' });
   const [modSheet, setModSheet] = uS(null);
   const [historyOpen, setHistoryOpen] = uS(false);
+  const [stopList, setStopList] = uS(new Set());
   const toastTimer = uR(null);
+
+  uE(() => {
+    const load = async () => {
+      try {
+        const r = await fetch('/api/stoplist');
+        if (!r.ok) return;
+        const { stoppedIikoIds } = await r.json();
+        const map = window.IIKO_MAP || {};
+        const stopped = new Set();
+        for (const iikoId of (stoppedIikoIds || [])) {
+          const menuId = map[iikoId];
+          if (menuId) stopped.add(menuId);
+        }
+        setStopList(stopped);
+      } catch {}
+    };
+    load();
+    const id = setInterval(load, 30 * 60 * 1000);
+    return () => clearInterval(id);
+  }, []);
 
   const tr = lang === 'kz' ? TR.kz : lang === 'en' ? TR.en : TR.ru;
 
@@ -98,6 +119,7 @@ function App() {
     });
   };
   const add = (id) => {
+    if (stopList.has(id)) return;
     const _det = window.DETAILS && window.DETAILS[id];
     const _mods = _det ? (_det.modifiers || []) : [];
     if (_mods.length > 0) { setModSheet({ itemId: id }); return; }
@@ -207,6 +229,7 @@ function App() {
         {screen === 'menu' && (
           <Menu t={tr} lang={lang} table={table} currentUser={currentUser} cart={myCart}
             cartCount={tableCount} cartTotal={tableTotal} loading={loading} hidden={!!productId}
+            stopList={stopList}
             onToggleLang={toggleLang} onWaiter={waiter} onOpenItem={openItem}
             onAdd={add} onInc={inc} onDec={dec} onOpenCart={() => setCartOpen(true)}
             onOpenHistory={() => setHistoryOpen(true)} />

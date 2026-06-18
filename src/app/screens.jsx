@@ -113,44 +113,54 @@ function NameScreen({ t, lang, table, onConfirm, onSetLang }) {
   );
 }
 
-function MenuCard({ cat, item, lang, qty, onOpen, onAdd, onInc, onDec }) {
+function MenuCard({ cat, item, lang, qty, stopList, onOpen, onAdd, onInc, onDec }) {
   const name = nameFor(item, lang);
   const desc = descFor(item, lang);
+  const unavailable = stopList ? stopList.has(item.id) : false;
+  const soldOut = lang === 'en' ? 'Sold out' : lang === 'kz' ? 'Таусылды' : 'Нет в наличии';
   return (
-    <div className="card anim-in" onClick={onOpen} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column' }}>
-      {item.isNew && <span className="tag-new">New</span>}
+    <div className="card anim-in" onClick={!unavailable ? onOpen : undefined}
+      style={{ cursor: unavailable ? 'default' : 'pointer', display: 'flex', flexDirection: 'column', opacity: unavailable ? 0.45 : 1 }}>
+      {item.isNew && !unavailable && <span className="tag-new">New</span>}
       <Photo tone={cat.tone} icon={catIconName[cat.id]} src={photoFor(item.id)} tag={nameFor(cat, lang)}
         style={{ height: 134 }} radius="0" />
       <div style={{ padding: '12px 13px 13px', display: 'flex', flexDirection: 'column', flex: 1 }}>
         <div style={{ fontSize: 13.5, fontWeight: 600, lineHeight: 1.28, letterSpacing: '.1px' }}>{name}</div>
-        <div style={{ fontSize: 11.5, color: 'var(--navy-55)', lineHeight: 1.4, marginTop: 4, minHeight: 32,
-          display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{desc}</div>
+        <div style={{ fontSize: 11.5, color: unavailable ? 'var(--navy-38)' : 'var(--navy-55)', lineHeight: 1.4, marginTop: 4, minHeight: 32,
+          display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+          {unavailable ? soldOut : desc}
+        </div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'auto', paddingTop: 11 }}
           onClick={(e) => e.stopPropagation()}>
           <span className="price" style={{ fontSize: 14.5 }}>{fmtPrice(item.price)}</span>
-          <AddControl qty={qty} onAdd={onAdd} onInc={onInc} onDec={onDec} />
+          {!unavailable && <AddControl qty={qty} onAdd={onAdd} onInc={onInc} onDec={onDec} />}
         </div>
       </div>
     </div>
   );
 }
 
-function WideRow({ cat, item, lang, qty, onOpen, onAdd, onInc, onDec }) {
+function WideRow({ cat, item, lang, qty, stopList, onOpen, onAdd, onInc, onDec }) {
   const name = nameFor(item, lang);
   const desc = descFor(item, lang);
+  const unavailable = stopList ? stopList.has(item.id) : false;
+  const soldOut = lang === 'en' ? 'Sold out' : lang === 'kz' ? 'Таусылды' : 'Нет в наличии';
   return (
-    <div className="card anim-in" onClick={onOpen} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', borderRadius: 'var(--r-sm)' }}>
+    <div className="card anim-in" onClick={!unavailable ? onOpen : undefined}
+      style={{ cursor: unavailable ? 'default' : 'pointer', display: 'flex', alignItems: 'center', borderRadius: 'var(--r-sm)', opacity: unavailable ? 0.45 : 1 }}>
       <div style={{ position: 'relative', flexShrink: 0 }}>
-        {item.isNew && <span className="tag-new" style={{ top: 7, left: 7, fontSize: 8, padding: '3px 7px' }}>New</span>}
+        {item.isNew && !unavailable && <span className="tag-new" style={{ top: 7, left: 7, fontSize: 8, padding: '3px 7px' }}>New</span>}
         <Photo tone={cat.tone} icon={catIconName[cat.id]} src={photoFor(item.id)} style={{ width: 92, height: 92 }} radius="0" />
       </div>
       <div style={{ flex: 1, minWidth: 0, padding: '12px 14px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <div style={{ fontSize: 14, fontWeight: 600, lineHeight: 1.25 }}>{name}</div>
-        <div style={{ fontSize: 11.5, color: 'var(--navy-55)', lineHeight: 1.4, marginTop: 3, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{desc}</div>
+        <div style={{ fontSize: 11.5, color: unavailable ? 'var(--navy-38)' : 'var(--navy-55)', lineHeight: 1.4, marginTop: 3, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+          {unavailable ? soldOut : desc}
+        </div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 10 }}
           onClick={(e) => e.stopPropagation()}>
           <span className="price" style={{ fontSize: 14.5 }}>{fmtPrice(item.price)}</span>
-          <AddControl qty={qty} onAdd={onAdd} onInc={onInc} onDec={onDec} />
+          {!unavailable && <AddControl qty={qty} onAdd={onAdd} onInc={onInc} onDec={onDec} />}
         </div>
       </div>
     </div>
@@ -158,7 +168,7 @@ function WideRow({ cat, item, lang, qty, onOpen, onAdd, onInc, onDec }) {
 }
 
 function Menu({ t, lang, table, currentUser, cart, cartCount, cartTotal, loading, hidden,
-  onToggleLang, onWaiter, onOpenItem, onAdd, onInc, onDec, onOpenCart, onOpenHistory }) {
+  stopList, onToggleLang, onWaiter, onOpenItem, onAdd, onInc, onDec, onOpenCart, onOpenHistory }) {
   const [active, setActive] = useS('all');
   const [query, setQuery] = useS('');
   const scrollRef = useR(null);
@@ -257,14 +267,14 @@ function Menu({ t, lang, table, currentUser, cart, cartCount, cartTotal, loading
             {cat.wide ? (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10, padding: '0 20px' }}>
                 {cat.items.map(item => (
-                  <WideRow key={item.id} cat={cat} item={item} lang={lang} qty={cart[item.id]}
+                  <WideRow key={item.id} cat={cat} item={item} lang={lang} qty={cart[item.id]} stopList={stopList}
                     onOpen={() => onOpenItem(item.id)} onAdd={() => onAdd(item.id)} onInc={() => onInc(item.id)} onDec={() => onDec(item.id)} />
                 ))}
               </div>
             ) : (
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 13, padding: '0 20px' }}>
                 {cat.items.map(item => (
-                  <MenuCard key={item.id} cat={cat} item={item} lang={lang} qty={cart[item.id]}
+                  <MenuCard key={item.id} cat={cat} item={item} lang={lang} qty={cart[item.id]} stopList={stopList}
                     onOpen={() => onOpenItem(item.id)} onAdd={() => onAdd(item.id)} onInc={() => onInc(item.id)} onDec={() => onDec(item.id)} />
                 ))}
               </div>
