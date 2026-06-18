@@ -1,34 +1,19 @@
-const apiBase = 'https://api.iiko.services';
-
-async function iikoPost(path, body, token) {
-  const headers = { 'Content-Type': 'application/json' };
-  if (token) headers['Authorization'] = 'Bearer ' + token;
-  const r = await fetch(apiBase + path, { method: 'POST', headers, body: JSON.stringify(body) });
-  return r.json();
-}
-
+// Returns stopped menu item iiko IDs from Supabase (populated by iiko-webhook.js)
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Cache-Control', 'no-store');
 
-  const apiKey = process.env.IIKO_API_KEY;
-  if (!apiKey) return res.status(500).json({ error: 'IIKO_API_KEY not set' });
+  const sbUrl = process.env.SUPABASE_URL;
+  const sbKey = process.env.SUPABASE_ANON_KEY;
+
+  if (!sbUrl || !sbKey) return res.status(500).json({ error: 'Supabase env vars not set' });
 
   try {
-    const { token } = await iikoPost('/api/1/access_token', { apiLogin: apiKey });
-    const orgs = await iikoPost('/api/1/organizations', { organizationIds: null }, token);
-    const orgId = orgs.organizations?.[0]?.id;
-    if (!orgId) return res.status(502).json({ error: 'No org found' });
-
-    const stopData = await iikoPost('/api/1/stop_lists', { organizationIds: [orgId] }, token);
-
-    const stoppedIikoIds = [];
-    for (const tg of (stopData.terminalGroupStopLists || [])) {
-      for (const item of (tg.items || [])) {
-        if (!stoppedIikoIds.includes(item.productId)) stoppedIikoIds.push(item.productId);
-      }
-    }
-
+    const r = await fetch(`${sbUrl}/rest/v1/stop_list?select=iiko_id,name`, {
+      headers: { 'apikey': sbKey, 'Authorization': `Bearer ${sbKey}` },
+    });
+    const items = await r.json();
+    const stoppedIikoIds = (items || []).map(i => i.iiko_id);
     res.status(200).json({ stoppedIikoIds, updatedAt: new Date().toISOString() });
   } catch (e) {
     res.status(500).json({ error: e.message });
