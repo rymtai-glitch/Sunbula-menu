@@ -35,7 +35,7 @@ module.exports = async function handler(req, res) {
 
   try {
     // Auth with iiko
-    const authResp = await iikoPost('/api/v2/access_token', { apiLogin: apiKey });
+    const authResp = await iikoPost('/api/v2/access_token', { apiLogin: process.env.IIKO_API_LOGIN || 'sunbula-qrmenu', clientSecret: apiKey });
     const token = authResp.token;
     if (!token) {
       await fetch(`${sbUrl}/rest/v1/webhook_log`, {
