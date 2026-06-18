@@ -15,7 +15,9 @@ module.exports = async function handler(req, res) {
   if (!apiKey) return res.status(500).json({ error: 'IIKO_API_KEY not set' });
 
   try {
-    const auth = await iikoPost('/api/v2/access_token', { apiLogin: process.env.IIKO_API_LOGIN || 'sunbula-qrmenu', clientSecret: apiKey });
+    const authBody = { apiLogin: process.env.IIKO_API_LOGIN || 'sunbula-qrmenu', clientSecret: apiKey };
+    if (process.env.IIKO_APP_ID) authBody.appId = process.env.IIKO_APP_ID;
+    const auth = await iikoPost('/api/v2/access_token', authBody);
     if (auth.status !== 200) return res.status(502).json({ error: 'iiko auth failed', status: auth.status, detail: auth.data });
     const { token } = auth.data;
 
