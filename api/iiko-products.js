@@ -1,4 +1,4 @@
-const apiBase = 'https://api.iiko.services';
+const apiBase = 'https://api-ru.iiko.services';
 
 async function iikoPost(path, body, token) {
   const headers = { 'Content-Type': 'application/json' };
