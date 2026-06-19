@@ -87,12 +87,33 @@ async function handleUpdate(update) {
       return;
     }
 
-    await tg('sendMessage', {
-      chat_id: chatId,
-      text: '🌿 *Sunbula — Стоп-лист*\n\nВыберите категорию:',
-      parse_mode: 'Markdown',
-      reply_markup: catsKeyboard(),
-    });
+    const mainKeyboard = {
+      keyboard: [[{ text: '🛑 Стоп лист' }]],
+      resize_keyboard: true,
+      persistent: true,
+    };
+
+    if (text === '/start') {
+      await tg('sendMessage', {
+        chat_id: chatId,
+        text: '🌿 *Sunbula — управление стоп-листом*\n\nНажмите кнопку ниже 👇',
+        parse_mode: 'Markdown',
+        reply_markup: mainKeyboard,
+      });
+    } else if (text === '🛑 Стоп лист') {
+      await tg('sendMessage', {
+        chat_id: chatId,
+        text: '🌿 *Sunbula — Стоп-лист*\n\nВыберите категорию:',
+        parse_mode: 'Markdown',
+        reply_markup: catsKeyboard(),
+      });
+    } else {
+      await tg('sendMessage', {
+        chat_id: chatId,
+        text: 'Нажмите кнопку ниже 👇',
+        reply_markup: mainKeyboard,
+      });
+    }
     return;
   }
 
