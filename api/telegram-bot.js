@@ -1,5 +1,6 @@
 const SB_URL = process.env.SUPABASE_URL;
 const SB_KEY = process.env.SUPABASE_ANON_KEY;
+const SB_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_ANON_KEY;
 const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const ALLOWED = (process.env.TELEGRAM_ALLOWED_IDS || '').split(',').map(s => s.trim()).filter(Boolean);
 
@@ -42,13 +43,13 @@ async function toggleItem(menuId) {
   if (stopped.has(menuId)) {
     await fetch(`${SB_URL}/rest/v1/menu_stop_list?menu_id=eq.${menuId}`, {
       method: 'DELETE',
-      headers: { apikey: SB_KEY, Authorization: `Bearer ${SB_KEY}` },
+      headers: { apikey: SB_SERVICE_KEY, Authorization: `Bearer ${SB_SERVICE_KEY}`, Prefer: 'return=minimal' },
     });
     return false;
   } else {
     await fetch(`${SB_URL}/rest/v1/menu_stop_list`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', apikey: SB_KEY, Authorization: `Bearer ${SB_KEY}`, Prefer: 'return=minimal' },
+      headers: { 'Content-Type': 'application/json', apikey: SB_SERVICE_KEY, Authorization: `Bearer ${SB_SERVICE_KEY}`, Prefer: 'return=minimal' },
       body: JSON.stringify({ menu_id: menuId }),
     });
     return true;
@@ -81,6 +82,7 @@ async function handleUpdate(update) {
   if (update.message) {
     const msg = update.message;
     const chatId = String(msg.chat.id);
+    const text = msg.text || '';
 
     if (ALLOWED.length && !ALLOWED.includes(chatId)) {
       await tg('sendMessage', { chat_id: chatId, text: `Ваш ID: ${chatId}\nДоступ закрыт. Сообщите этот ID администратору.` });
@@ -110,7 +112,7 @@ async function handleUpdate(update) {
     } else {
       await tg('sendMessage', {
         chat_id: chatId,
-        text: 'Нажмите кнопку ниже 👇',
+        text: '🌿 Sunbula — стоп-лист\n\nНажмите кнопку ниже 👇',
         reply_markup: mainKeyboard,
       });
     }

@@ -92,7 +92,7 @@ function App() {
       } catch {}
     };
     load();
-    const id = setInterval(load, 30 * 60 * 1000);
+    const id = setInterval(load, 60 * 1000);
     return () => clearInterval(id);
   }, []);
 
