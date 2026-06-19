@@ -80,13 +80,14 @@ function App() {
       try {
         const r = await fetch('/api/stoplist');
         if (!r.ok) return;
-        const { stoppedIikoIds } = await r.json();
+        const { stoppedIikoIds, stoppedMenuIds } = await r.json();
         const map = window.IIKO_MAP || {};
         const stopped = new Set();
         for (const iikoId of (stoppedIikoIds || [])) {
           const menuId = map[iikoId];
           if (menuId) stopped.add(menuId);
         }
+        for (const menuId of (stoppedMenuIds || [])) stopped.add(menuId);
         setStopList(stopped);
       } catch {}
     };
