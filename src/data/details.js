@@ -1,7 +1,7 @@
 // app/details.js — реальные составы, КБЖУ и описания (на основе ТТК кухни Sunbula)
 // nutri: [ккал, белки, жиры, углеводы] на порцию. compose: состав. desc: описание {ru, kz}
 
-const _MILK = {id:'milk',nameRu:'Молоко',nameKz:'Сүт',nameEn:'Milk',options:[
+window._COFFEE_MILK = {id:'milk',nameRu:'Молоко',nameKz:'Сүт',nameEn:'Milk',options:[
   {id:'regular',  nameRu:'Обычное',        nameKz:'Кәдімгі',      nameEn:'Regular',       isDefault:true},
   {id:'almond',   nameRu:'Миндальное',     nameKz:'Бадам сүті',   nameEn:'Almond'},
   {id:'lactfree', nameRu:'Безлактозное',   nameKz:'Лактозасыз',   nameEn:'Lactose-free'},
@@ -11,7 +11,7 @@ const _MILK = {id:'milk',nameRu:'Молоко',nameKz:'Сүт',nameEn:'Milk',opt
   {id:'hazelnut', nameRu:'Фундучное',      nameKz:'Жаңғақ сүті',  nameEn:'Hazelnut'},
 ]};
 
-const _SYRUP = {id:'syrup',nameRu:'Сироп',nameKz:'Сироп',nameEn:'Syrup',options:[
+window._COFFEE_SYRUP = {id:'syrup',nameRu:'Сироп',nameKz:'Сироп',nameEn:'Syrup',options:[
   {id:'none',         nameRu:'Без сиропа',      nameKz:'Сиропсыз',       nameEn:'No syrup',       isDefault:true},
   {id:'caramel',      nameRu:'Карамель',         nameKz:'Карамель',        nameEn:'Caramel'},
   {id:'saltcaramel',  nameRu:'Солёная карамель', nameKz:'Тұзды карамель',  nameEn:'Salted caramel'},
@@ -171,14 +171,4 @@ window.DETAILS = {
    desc:{ru:'Нежный грибной крем-суп из шампиньонов с гренками.',
           kz:'Шампиньоннан жасалған майда саңырауқұлақ крем-сорпасы, гренкимен.'} },
 
- // Кофе — молоко + сироп
- 38: { modifiers:[_SYRUP] },
- 39: { modifiers:[_MILK, _SYRUP] },
- 40: { modifiers:[_MILK, _SYRUP] },
- 41: { modifiers:[_MILK, _SYRUP] },
- 42: { modifiers:[_MILK, _SYRUP] },
- 43: { modifiers:[_MILK, _SYRUP] },
- 44: { modifiers:[_MILK, _SYRUP] },
- 45: { modifiers:[_MILK, _SYRUP] },
- 47: { modifiers:[_MILK, _SYRUP] },
 };
