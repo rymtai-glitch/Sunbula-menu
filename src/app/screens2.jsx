@@ -420,26 +420,26 @@ function ModifierSheet({ t, lang, itemId, show, onClose, onConfirm }) {
   };
   return (
     <div className="overlay show" style={{ zIndex: 350 }} onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
-      <div className="sheet">
-        <div className="grab" />
-        <div style={{ padding: '14px 22px 6px' }}>
+      <div className="sheet" style={{ maxHeight: '88vh', display: 'flex', flexDirection: 'column' }}>
+        <div className="grab" style={{ flexShrink: 0 }} />
+        <div style={{ padding: '14px 22px 6px', flexShrink: 0 }}>
           <div className="eyebrow-muted" style={{ marginBottom: 6 }}>{lang === 'en' ? 'Choose option' : lang === 'ru' ? 'Выберите вариант' : 'Нұсқаны таңдаңыз'}</div>
           <div className="serif" style={{ fontSize: 24, lineHeight: 1.1 }}>{nameFor(item, lang)}</div>
         </div>
-        <div style={{ padding: '16px 22px calc(24px + env(safe-area-inset-bottom, 0px))' }}>
+        <div className="sb-scroll" style={{ padding: '16px 22px 8px', overflowY: 'auto', flex: 1 }}>
           {modifiers.map(mod => (
             <div key={mod.id} style={{ marginBottom: 18 }}>
               <div className="eyebrow-muted" style={{ marginBottom: 10 }}>{nameFor(mod, lang)}</div>
-              <div style={{ display: 'grid', gridTemplateColumns: mod.options.length >= 3 ? '1fr 1fr' : `repeat(${mod.options.length}, 1fr)`, gap: 10 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: mod.options.length >= 3 ? '1fr 1fr' : `repeat(${mod.options.length}, 1fr)`, gap: 8 }}>
                 {mod.options.map(opt => {
                   const on = modSels[mod.id] === opt.id;
                   return (
                     <button key={opt.id} type="button" onClick={() => setModSels(s => ({ ...s, [mod.id]: opt.id }))}
-                      style={{ flex: 1, padding: '16px 10px', borderRadius: 16, cursor: 'pointer',
+                      style={{ flex: 1, padding: '12px 10px', borderRadius: 14, cursor: 'pointer',
                         border: on ? '2px solid var(--blue)' : '1.5px solid var(--line)',
                         background: on ? 'var(--blue-tint)' : 'var(--paper)',
                         color: on ? 'var(--blue)' : 'var(--navy)',
-                        fontFamily: 'var(--sans)', fontSize: 15, fontWeight: 700,
+                        fontFamily: 'var(--sans)', fontSize: 14, fontWeight: 700,
                         transition: 'border-color .18s, background .18s, color .18s',
                         boxShadow: on ? '0 0 0 3px rgba(2,80,206,.12)' : 'none' }}>
                       {nameFor(opt, lang)}
@@ -449,8 +449,10 @@ function ModifierSheet({ t, lang, itemId, show, onClose, onConfirm }) {
               </div>
             </div>
           ))}
+        </div>
+        <div style={{ padding: '12px 22px calc(20px + env(safe-area-inset-bottom, 0px))', flexShrink: 0, borderTop: '1px solid var(--line)' }}>
           <button className="btn btn-cta" onClick={handleConfirm}
-            style={{ display: 'flex', justifyContent: 'space-between', marginTop: 4 }}>
+            style={{ display: 'flex', justifyContent: 'space-between' }}>
             <span>{lang === 'en' ? 'Add to cart' : lang === 'ru' ? 'В корзину' : 'Себетке'}</span>
             <span>{typeof fmtPrice !== 'undefined' ? fmtPrice(selectedPrice) : ''}</span>
           </button>
