@@ -167,10 +167,10 @@ window.MENU = [
   "nameEn": "Filter Coffee",
   "wide": true,
   "items": [
-   {"id": 48, "nameRu": "Батч-брю", "nameKz": "Батч-брю", "nameEn": "Batch Brew", "descRu": "Заваренный фильтр", "descKz": "Сүзгі кофе", "descEn": "Filter coffee", "price": 1290, "nutri": [90,4,9,4]},
+   {"id": 48, "nameRu": "Батч-брю", "nameKz": "Батч-брю", "nameEn": "Batch Brew", "descRu": "250 мл · Заваренный фильтр", "descKz": "250 мл · Сүзгі кофе", "descEn": "250 ml · Filter coffee", "price": 1290, "nutri": [90,4,9,4]},
    {"id": 49, "nameRu": "Колд-брю", "nameKz": "Колд-брю", "nameEn": "Cold Brew", "descRu": "Холодный экстракт", "descKz": "Суық экстракт", "descEn": "Cold extract", "price": 1490, "nutri": [90,4,9,4]},
    {"id": 50, "nameRu": "Колд-брю малина", "nameKz": "Колд-брю таңқурай", "nameEn": "Cold Brew Raspberry", "descRu": "С малиновым сиропом", "descKz": "Таңқурай сиропымен", "descEn": "With raspberry syrup", "price": 1590, "nutri": [90,4,9,4]},
-   {"id": 51, "nameRu": "V-60 / Origami", "nameKz": "V-60 / Origami", "nameEn": "V-60 / Origami", "descRu": "Альтернативная заварка", "descKz": "Балама демдеу", "descEn": "Pour-over", "price": 1790, "nutri": [90,4,9,4]}
+   {"id": 51, "nameRu": "V-60 / Origami", "nameKz": "V-60 / Origami", "nameEn": "V-60 / Origami", "descRu": "250 мл · Альтернативная заварка", "descKz": "250 мл · Балама демдеу", "descEn": "250 ml · Pour-over", "price": 1790, "nutri": [90,4,9,4]}
   ],
   "tone": "espresso"
  },

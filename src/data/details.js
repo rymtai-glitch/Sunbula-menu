@@ -1,5 +1,28 @@
 // app/details.js — реальные составы, КБЖУ и описания (на основе ТТК кухни Sunbula)
 // nutri: [ккал, белки, жиры, углеводы] на порцию. compose: состав. desc: описание {ru, kz}
+
+const _MILK = {id:'milk',nameRu:'Молоко',nameKz:'Сүт',nameEn:'Milk',options:[
+  {id:'regular',  nameRu:'Обычное',        nameKz:'Кәдімгі',      nameEn:'Regular',       isDefault:true},
+  {id:'almond',   nameRu:'Миндальное',     nameKz:'Бадам сүті',   nameEn:'Almond'},
+  {id:'lactfree', nameRu:'Безлактозное',   nameKz:'Лактозасыз',   nameEn:'Lactose-free'},
+  {id:'banana',   nameRu:'Банановое',      nameKz:'Банан сүті',   nameEn:'Banana'},
+  {id:'coconut',  nameRu:'Кокосовое',      nameKz:'Кокос сүті',   nameEn:'Coconut'},
+  {id:'oat',      nameRu:'Овсяное',        nameKz:'Сұлы сүті',    nameEn:'Oat'},
+  {id:'hazelnut', nameRu:'Фундучное',      nameKz:'Жаңғақ сүті',  nameEn:'Hazelnut'},
+]};
+
+const _SYRUP = {id:'syrup',nameRu:'Сироп',nameKz:'Сироп',nameEn:'Syrup',options:[
+  {id:'none',         nameRu:'Без сиропа',      nameKz:'Сиропсыз',       nameEn:'No syrup',       isDefault:true},
+  {id:'caramel',      nameRu:'Карамель',         nameKz:'Карамель',        nameEn:'Caramel'},
+  {id:'saltcaramel',  nameRu:'Солёная карамель', nameKz:'Тұзды карамель',  nameEn:'Salted caramel'},
+  {id:'irish',        nameRu:'Айриш',            nameKz:'Айриш',           nameEn:'Irish'},
+  {id:'chocolate',    nameRu:'Шоколад',          nameKz:'Шоколад',         nameEn:'Chocolate'},
+  {id:'popcorn',      nameRu:'Попкорн',          nameKz:'Попкорн',         nameEn:'Popcorn'},
+  {id:'forestnut',    nameRu:'Лесной орех',      nameKz:'Лесной орех',     nameEn:'Hazelnut syrup'},
+  {id:'vanilla',      nameRu:'Ваниль',           nameKz:'Ваниль',          nameEn:'Vanilla'},
+  {id:'coconutsy',    nameRu:'Кокос',            nameKz:'Кокос',           nameEn:'Coconut'},
+]};
+
 window.DETAILS = {
  1: { nutri:[800,37,46,60],
    compose:['Яйца куриные','Индейка холодного копчения','Картофельные дольки','Фасоль в томате','Шампиньоны','Томаты и черри','Багет','Зелень'],
@@ -147,4 +170,15 @@ window.DETAILS = {
    compose:['Грибной крем-суп','Шампиньоны','Багет'],
    desc:{ru:'Нежный грибной крем-суп из шампиньонов с гренками.',
           kz:'Шампиньоннан жасалған майда саңырауқұлақ крем-сорпасы, гренкимен.'} },
+
+ // Кофе — молоко + сироп
+ 38: { modifiers:[_SYRUP] },
+ 39: { modifiers:[_MILK, _SYRUP] },
+ 40: { modifiers:[_MILK, _SYRUP] },
+ 41: { modifiers:[_MILK, _SYRUP] },
+ 42: { modifiers:[_MILK, _SYRUP] },
+ 43: { modifiers:[_MILK, _SYRUP] },
+ 44: { modifiers:[_MILK, _SYRUP] },
+ 45: { modifiers:[_MILK, _SYRUP] },
+ 47: { modifiers:[_MILK, _SYRUP] },
 };

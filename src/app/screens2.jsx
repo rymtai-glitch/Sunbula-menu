@@ -408,7 +408,7 @@ function ModifierSheet({ t, lang, itemId, show, onClose, onConfirm }) {
   const handleConfirm = () => {
     const modText = modifiers.map(m => {
       const opt = m.options.find(o => o.id === modSels[m.id]);
-      if (!opt) return null;
+      if (!opt || opt.isDefault) return null;
       return nameFor(m, lang) + ': ' + nameFor(opt, lang);
     }).filter(Boolean).join(', ');
     let priceOverride = null;
@@ -430,7 +430,7 @@ function ModifierSheet({ t, lang, itemId, show, onClose, onConfirm }) {
           {modifiers.map(mod => (
             <div key={mod.id} style={{ marginBottom: 18 }}>
               <div className="eyebrow-muted" style={{ marginBottom: 10 }}>{nameFor(mod, lang)}</div>
-              <div style={{ display: 'grid', gridTemplateColumns: mod.options.length === 4 ? '1fr 1fr' : `repeat(${mod.options.length}, 1fr)`, gap: 10 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: mod.options.length >= 3 ? '1fr 1fr' : `repeat(${mod.options.length}, 1fr)`, gap: 10 }}>
                 {mod.options.map(opt => {
                   const on = modSels[mod.id] === opt.id;
                   return (
