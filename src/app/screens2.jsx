@@ -179,9 +179,12 @@ function Cart({ t, lang, table, show, groups, currentUser, total, count,
                         <div style={{ flex: 1, minWidth: 0 }}>
                           <div style={{ fontSize: 13, fontWeight: 600, lineHeight: 1.3 }}>{nameFor(item, lang)}</div>
                           <div className="price" style={{ fontSize: 12, color: 'var(--navy-55)', fontWeight: 600, marginTop: 2 }}>{fmtPrice(priceOverride || item.price)}</div>
-                          <input value={comment} onChange={(e) => onCommentFor(g.name, item.id, e.target.value)}
+                          <textarea value={comment} onChange={(e) => onCommentFor(g.name, item.id, e.target.value)}
                             placeholder={lang === 'en' ? 'Special request…' : lang === 'ru' ? 'Пожелание к блюду…' : 'Тілек…'}
-                            style={{ marginTop: 6, width: '100%', border: 'none', borderBottom: '1px solid var(--line)', background: 'transparent', fontFamily: 'var(--sans)', fontSize: 12, color: 'var(--navy)', padding: '3px 0', outline: 'none' }} />
+                            rows={1}
+                            style={{ marginTop: 6, width: '100%', border: 'none', borderBottom: '1px solid var(--line)', background: 'transparent', fontFamily: 'var(--sans)', fontSize: 12, color: 'var(--navy)', padding: '3px 0', outline: 'none', resize: 'none', overflow: 'hidden', lineHeight: 1.4, display: 'block', boxSizing: 'border-box' }}
+                            ref={el => { if (el) { el.style.height = 'auto'; el.style.height = el.scrollHeight + 'px'; } }}
+                            onInput={e => { e.target.style.height = 'auto'; e.target.style.height = e.target.scrollHeight + 'px'; }} />
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', justifyContent: 'space-between' }}>
                           <span className="price" style={{ fontSize: 13.5 }}>{fmtPrice((priceOverride || item.price) * qty)}</span>
