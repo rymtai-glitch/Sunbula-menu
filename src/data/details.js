@@ -3,24 +3,24 @@
 
 window._COFFEE_MILK = {id:'milk',nameRu:'Молоко',nameKz:'Сүт',nameEn:'Milk',options:[
   {id:'regular',  nameRu:'Обычное',        nameKz:'Кәдімгі',      nameEn:'Regular',       isDefault:true},
-  {id:'almond',   nameRu:'Миндальное',     nameKz:'Бадам сүті',   nameEn:'Almond'},
-  {id:'lactfree', nameRu:'Безлактозное',   nameKz:'Лактозасыз',   nameEn:'Lactose-free'},
-  {id:'banana',   nameRu:'Банановое',      nameKz:'Банан сүті',   nameEn:'Banana'},
-  {id:'coconut',  nameRu:'Кокосовое',      nameKz:'Кокос сүті',   nameEn:'Coconut'},
-  {id:'oat',      nameRu:'Овсяное',        nameKz:'Сұлы сүті',    nameEn:'Oat'},
-  {id:'hazelnut', nameRu:'Фундучное',      nameKz:'Жаңғақ сүті',  nameEn:'Hazelnut'},
+  {id:'almond',   nameRu:'Миндальное',     nameKz:'Бадам сүті',   nameEn:'Almond',        extraPrice:590},
+  {id:'lactfree', nameRu:'Безлактозное',   nameKz:'Лактозасыз',   nameEn:'Lactose-free',  extraPrice:590},
+  {id:'banana',   nameRu:'Банановое',      nameKz:'Банан сүті',   nameEn:'Banana',        extraPrice:590},
+  {id:'coconut',  nameRu:'Кокосовое',      nameKz:'Кокос сүті',   nameEn:'Coconut',       extraPrice:590},
+  {id:'oat',      nameRu:'Овсяное',        nameKz:'Сұлы сүті',    nameEn:'Oat',           extraPrice:590},
+  {id:'hazelnut', nameRu:'Фундучное',      nameKz:'Жаңғақ сүті',  nameEn:'Hazelnut',      extraPrice:590},
 ]};
 
 window._COFFEE_SYRUP = {id:'syrup',nameRu:'Сироп',nameKz:'Сироп',nameEn:'Syrup',options:[
   {id:'none',         nameRu:'Без сиропа',      nameKz:'Сиропсыз',       nameEn:'No syrup',       isDefault:true},
-  {id:'caramel',      nameRu:'Карамель',         nameKz:'Карамель',        nameEn:'Caramel'},
-  {id:'saltcaramel',  nameRu:'Солёная карамель', nameKz:'Тұзды карамель',  nameEn:'Salted caramel'},
-  {id:'irish',        nameRu:'Айриш',            nameKz:'Айриш',           nameEn:'Irish'},
-  {id:'chocolate',    nameRu:'Шоколад',          nameKz:'Шоколад',         nameEn:'Chocolate'},
-  {id:'popcorn',      nameRu:'Попкорн',          nameKz:'Попкорн',         nameEn:'Popcorn'},
-  {id:'forestnut',    nameRu:'Лесной орех',      nameKz:'Лесной орех',     nameEn:'Hazelnut syrup'},
-  {id:'vanilla',      nameRu:'Ваниль',           nameKz:'Ваниль',          nameEn:'Vanilla'},
-  {id:'coconutsy',    nameRu:'Кокос',            nameKz:'Кокос',           nameEn:'Coconut'},
+  {id:'caramel',      nameRu:'Карамель',         nameKz:'Карамель',        nameEn:'Caramel',        extraPrice:290},
+  {id:'saltcaramel',  nameRu:'Солёная карамель', nameKz:'Тұзды карамель',  nameEn:'Salted caramel', extraPrice:290},
+  {id:'irish',        nameRu:'Айриш',            nameKz:'Айриш',           nameEn:'Irish',          extraPrice:290},
+  {id:'chocolate',    nameRu:'Шоколад',          nameKz:'Шоколад',         nameEn:'Chocolate',      extraPrice:290},
+  {id:'popcorn',      nameRu:'Попкорн',          nameKz:'Попкорн',         nameEn:'Popcorn',        extraPrice:290},
+  {id:'forestnut',    nameRu:'Лесной орех',      nameKz:'Лесной орех',     nameEn:'Hazelnut syrup', extraPrice:290},
+  {id:'vanilla',      nameRu:'Ваниль',           nameKz:'Ваниль',          nameEn:'Vanilla',        extraPrice:290},
+  {id:'coconutsy',    nameRu:'Кокос',            nameKz:'Кокос',           nameEn:'Coconut',        extraPrice:290},
 ]};
 
 window.DETAILS = {

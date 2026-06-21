@@ -399,11 +399,13 @@ function ModifierSheet({ t, lang, itemId, show, onClose, onConfirm }) {
   }, [show, itemId]);
   if (!show || !item) return null;
   const selectedPrice = (() => {
+    if (!item) return 0;
+    let extra = 0;
     for (const m of modifiers) {
       const opt = m.options.find(o => o.id === modSels[m.id]);
-      if (opt && opt.price) return opt.price;
+      if (opt && opt.extraPrice) extra += opt.extraPrice;
     }
-    return item ? item.price : 0;
+    return item.price + extra;
   })();
   const handleConfirm = () => {
     const modText = modifiers.map(m => {
@@ -411,11 +413,7 @@ function ModifierSheet({ t, lang, itemId, show, onClose, onConfirm }) {
       if (!opt || opt.isDefault) return null;
       return nameFor(m, lang) + ': ' + nameFor(opt, lang);
     }).filter(Boolean).join(', ');
-    let priceOverride = null;
-    for (const m of modifiers) {
-      const opt = m.options.find(o => o.id === modSels[m.id]);
-      if (opt && opt.price) { priceOverride = opt.price; break; }
-    }
+    const priceOverride = selectedPrice !== item.price ? selectedPrice : null;
     onConfirm(item.id, modText || undefined, priceOverride);
   };
   return (
@@ -443,6 +441,7 @@ function ModifierSheet({ t, lang, itemId, show, onClose, onConfirm }) {
                         transition: 'border-color .18s, background .18s, color .18s',
                         boxShadow: on ? '0 0 0 3px rgba(2,80,206,.12)' : 'none' }}>
                       {nameFor(opt, lang)}
+                      {opt.extraPrice ? <span style={{ display: 'block', fontSize: 11, fontWeight: 600, opacity: 0.7, marginTop: 2 }}>+{opt.extraPrice} ₸</span> : null}
                     </button>
                   );
                 })}
