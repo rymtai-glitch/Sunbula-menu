@@ -403,12 +403,15 @@ function ModifierSheet({ t, lang, itemId, show, onClose, onConfirm }) {
   if (!show || !item) return null;
   const selectedPrice = (() => {
     if (!item) return 0;
+    let base = item.price;
     let extra = 0;
     for (const m of modifiers) {
       const opt = m.options.find(o => o.id === modSels[m.id]);
-      if (opt && opt.extraPrice) extra += opt.extraPrice;
+      if (!opt) continue;
+      if (typeof opt.price === 'number') base = opt.price;
+      else if (opt.extraPrice) extra += opt.extraPrice;
     }
-    return item.price + extra;
+    return base + extra;
   })();
   const handleConfirm = () => {
     const modText = modifiers.map(m => {
