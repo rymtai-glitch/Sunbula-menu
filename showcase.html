@@ -299,7 +299,6 @@
     /* category block */
     .cat-block{padding:64px 80px 0;}
     .cat-hd{display:flex;align-items:center;gap:14px;margin-bottom:28px;}
-    .cat-icon{font-size:20px;opacity:.7;}
     .cat-name-el{
       font-family:var(--serif);font-size:20px;font-weight:900;
       letter-spacing:-.01em;
@@ -589,7 +588,6 @@ function renderMenu(){
       block.className='cat-block';
       block.innerHTML=`
         <div class="cat-hd">
-          <span class="cat-icon">${CAT_EMOJI[catId]||'•'}</span>
           <span class="cat-name-el" data-ru="${cat.nameRu}" data-kz="${cat.nameKz||cat.nameRu}" data-en="${cat.nameEn||cat.nameRu}">${nameFor(cat,lang)}</span>
           <span class="cat-ct">${cat.items.length}</span>
         </div>
@@ -599,7 +597,7 @@ function renderMenu(){
           const desc=item[dk]||item.descRu||'';
           return `<div class="m-card">
             ${p?`<img class="m-card-img" src="${p}" alt="${nameFor(item,lang)}" loading="lazy">`:
-               `<div class="m-card-ph">${CAT_EMOJI[catId]||'🍽️'}</div>`}
+               `<div class="m-card-ph"></div>`}
             <div class="m-card-body">
               <div class="m-card-name" data-ru="${item.nameRu}" data-kz="${item.nameKz||item.nameRu}" data-en="${item.nameEn||item.nameRu}">${nameFor(item,lang)}</div>
               ${desc?`<div class="m-card-desc" data-ru="${item.descRu||''}" data-kz="${item.descKz||''}" data-en="${item.descEn||''}">${desc}</div>`:''}

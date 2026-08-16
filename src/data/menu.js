@@ -88,7 +88,6 @@ window.MENU = [
   "wide": false,
   "items": [
    {"id": 19, "nameRu": "Шницель", "nameKz": "Шницель", "nameEn": "Schnitzel", "descRu": "Классический шницель", "descKz": "Классикалық шницель", "descEn": "Classic schnitzel", "price": 3290, "nutri": [610,42,30,38]},
-   {"id": 20, "nameRu": "Говяжьи рёбрышки с пюре", "nameKz": "Сыр қабырғасы кремді пюремен", "nameEn": "Beef Ribs with Mash", "descRu": "NEW — нежные рёбра", "descKz": "NEW", "descEn": "NEW — tender ribs", "price": 5290, "isNew": true, "nutri": [610,42,30,38]},
    {"id": 21, "nameRu": "Курица в сливочном соусе", "nameKz": "Кілегейлі соусындағы тауық", "nameEn": "Chicken in Cream Sauce", "descRu": "NEW — с картофелем", "descKz": "NEW", "descEn": "NEW — with potatoes", "price": 3190, "isNew": true, "nutri": [610,42,30,38]},
    {"id": 22, "nameRu": "Судак с ароматным рисом", "nameKz": "Хош иісті күріш қосылған судак", "nameEn": "Pike Perch with Aromatic Rice", "descRu": "Нежное филе", "descKz": "Жұмсақ судак", "descEn": "Tender fillet", "price": 3690, "nutri": [610,42,30,38]},
    {"id": 23, "nameRu": "Имбирный цыплёнок", "nameKz": "Зімбір қосылған балапан", "nameEn": "Ginger Chicken", "descRu": "В имбирном маринаде", "descKz": "Зімбір маринадында", "descEn": "In ginger marinade", "price": 3490, "nutri": [610,42,30,38]},
@@ -119,7 +118,7 @@ window.MENU = [
    {"id": 76, "nameRu": "Сырная пицца", "nameKz": "Ірімшікті пицца", "nameEn": "Cheese Pizza", "descRu": "NEW", "descKz": "NEW", "descEn": "NEW", "price": 2290, "isNew": true, "nutri": [610,28,26,58]},
    {"id": 28, "nameRu": "Моно Пепперони", "nameKz": "Моно Пепперони", "nameEn": "Mono Pepperoni", "descRu": "NEW", "descKz": "NEW", "descEn": "NEW", "price": 2690, "isNew": true, "nutri": [610,42,30,38]},
    {"id": 29, "nameRu": "Моно грибная с трюфелем", "nameKz": "Моно саңырауқұлақты трюфель майымен", "nameEn": "Mono Mushroom with Truffle", "descRu": "NEW", "descKz": "NEW", "descEn": "NEW", "price": 2390, "isNew": true, "nutri": [610,42,30,38]},
-   {"id": 30, "nameRu": "Моно лосось Крем Чіз", "nameKz": "Моно лосось Крем Ірімшігімен", "nameEn": "Mono Salmon Cream Cheese", "descRu": "NEW", "descKz": "NEW", "descEn": "NEW", "price": 3090, "isNew": true, "nutri": [610,42,30,38]},
+   {"id": 30, "nameRu": "Моно лосось Крем Чиз", "nameKz": "Моно лосось Крем Ірімшігімен", "nameEn": "Mono Salmon Cream Cheese", "descRu": "NEW", "descKz": "NEW", "descEn": "NEW", "price": 3090, "isNew": true, "nutri": [610,42,30,38]},
    {"id": 31, "nameRu": "Моно Терияки Чикен", "nameKz": "Моно Терияки Тауық еті", "nameEn": "Mono Teriyaki Chicken", "descRu": "NEW", "descKz": "NEW", "descEn": "NEW", "price": 2890, "isNew": true, "nutri": [610,42,30,38]}
   ],
   "tone": "roast"
@@ -134,7 +133,6 @@ window.MENU = [
    {"id": 32, "nameRu": "Рамен с индейкой", "nameKz": "Күркетауық қосылған рамен", "nameEn": "Turkey Ramen", "descRu": "Насыщенный бульон", "descKz": "Қаныққан сорпа", "descEn": "Rich broth", "price": 3990, "nutri": [280,18,20,14]},
    {"id": 33, "nameRu": "Куриная лапша", "nameKz": "Тауық кеспе сорпасы", "nameEn": "Chicken Noodle Soup", "descRu": "Домашняя лапша", "descKz": "Үй кеспесі", "descEn": "Homemade noodles", "price": 1790, "nutri": [280,18,20,14]},
    {"id": 34, "nameRu": "Чечевичный крем-суп", "nameKz": "Жасымық крем-сорпасы", "nameEn": "Lentil Cream Soup", "descRu": "С кокосом и лимоном", "descKz": "Кокос пен лимонмен", "descEn": "With coconut & lemon", "price": 2190, "nutri": [280,18,20,14]},
-   {"id": 35, "nameRu": "Финский суп", "nameKz": "Фин сорпасы", "nameEn": "Finnish Soup", "descRu": "NEW — рыбный суп", "descKz": "NEW", "descEn": "NEW — fish soup", "price": 3090, "isNew": true, "nutri": [280,18,20,14]},
    {"id": 36, "nameRu": "Грибной крем-суп", "nameKz": "Саңырауқұлақ крем-сорпасы", "nameEn": "Mushroom Cream Soup", "descRu": "NEW — нежный", "descKz": "NEW", "descEn": "NEW — velvety", "price": 2490, "isNew": true, "nutri": [280,18,20,14]}
   ],
   "tone": "broth"
@@ -224,6 +222,19 @@ window.MENU = [
    {"id": 75, "nameRu": "Груша-ананас", "nameKz": "Алмұрт-ананас", "nameEn": "Pear Pineapple", "descRu": "Освежающий", "descKz": "Сергітетін", "descEn": "Refreshing", "price": 1890, "nutri": [120,0,30,0]}
   ],
   "tone": "citrus"
+ },
+ {
+  "id": "seasonal",
+  "nameRu": "Сезонное меню",
+  "nameKz": "Маусымдық мәзір",
+  "nameEn": "Seasonal Menu",
+  "wide": false,
+  "items": [
+   {"id": 77, "nameRu": "Матча-Жасмин", "nameKz": "Матча-Жасмин", "nameEn": "Matcha Jasmine", "descRu": "Охлаждённая матча с жасминовым молоком и льдом", "descKz": "Жасмин сүті мен мұзбен салқындатылған матча", "descEn": "Iced matcha with jasmine milk and ice", "price": 2290, "isNew": true, "nutri": [180,5,28,6]},
+   {"id": 78, "nameRu": "Summer Shot", "nameKz": "Summer Shot", "nameEn": "Summer Shot", "descRu": "Тропический микс: ананас, малина, освежающий лёд", "descKz": "Тропикалық микс: ананас, таңқурай, салқын мұз", "descEn": "Tropical mix: pineapple, raspberry, refreshing ice", "price": 2290, "isNew": true, "nutri": [180,5,28,6]},
+   {"id": 79, "nameRu": "Irish Frappuccino", "nameKz": "Irish Frappuccino", "nameEn": "Irish Frappuccino", "descRu": "Кофейный фраппе с шоколадом, сливками и мороженым", "descKz": "Шоколад, кілегей және балмұздақпен кофе фраппе", "descEn": "Coffee frappe with chocolate, cream and ice cream", "price": 2490, "isNew": true, "nutri": [180,5,28,6]}
+  ],
+  "tone": "seasonal"
  }
 ];
 
