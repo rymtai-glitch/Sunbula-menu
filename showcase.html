@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Sunbula — Меню кофейни</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue:#0250ce; --blue-deep:#0A3AA8; --blue-bright:#2F6BFF; --blue-tint:#E4EBFB;
+      --navy:#0B1020; --navy-60:rgba(11,16,32,.60); --navy-30:rgba(11,16,32,.30);
+      --paper:#fff; --ivory:#EEF2FB; --line:rgba(11,16,32,.10);
+      --serif:'Montserrat',system-ui,sans-serif;
+      --sans:'Manrope',system-ui,sans-serif;
+      --r:18px; --nav-h:64px;
+      --ease:cubic-bezier(.22,1,.36,1);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--sans);background:var(--ivory);color:var(--navy);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+
+    /* ── STICKY NAV ─────────────────── */
+    #nav{
+      position:sticky;top:0;z-index:100;
+      background:var(--paper);border-bottom:1.5px solid var(--line);
+      height:var(--nav-h);display:flex;align-items:stretch;
+    }
+    #nav-logo{
+      flex-shrink:0;display:flex;align-items:center;padding:0 20px;
+      border-right:1.5px solid var(--line);
+    }
+    #nav-logo img{height:30px;width:auto;}
+    #nav-tabs{
+      display:flex;align-items:stretch;overflow-x:auto;flex:1;
+      scrollbar-width:none;
+    }
+    #nav-tabs::-webkit-scrollbar{display:none;}
+    .nav-tab{
+      flex-shrink:0;padding:0 20px;
+      font-family:var(--serif);font-size:12px;font-weight:800;
+      letter-spacing:.06em;text-transform:uppercase;
+      color:var(--navy-60);cursor:pointer;border:none;background:none;
+      border-bottom:3px solid transparent;
+      transition:color .18s,border-color .18s,background .18s;white-space:nowrap;
+    }
+    .nav-tab:hover{color:var(--navy);background:var(--ivory);}
+    .nav-tab.active{color:var(--blue);border-bottom-color:var(--blue);}
+    #nav-lang{
+      flex-shrink:0;display:flex;align-items:center;padding:0 16px;gap:6px;
+      border-left:1.5px solid var(--line);
+    }
+    .lang-btn{
+      padding:5px 10px;border-radius:8px;border:1.5px solid var(--line);
+      background:none;font-family:var(--serif);font-size:11px;font-weight:800;
+      cursor:pointer;color:var(--navy-60);transition:all .15s;
+    }
+    .lang-btn.active{background:var(--blue);border-color:var(--blue);color:#fff;}
+
+    /* ── HERO ────────────────────────── */
+    #section-seasonal{
+      background:linear-gradient(135deg,var(--blue-deep) 0%,#1a5fe8 55%,#3a7fff 100%);
+      padding:64px 60px 72px;position:relative;overflow:hidden;
+      display:grid;grid-template-columns:1fr 420px;gap:40px;align-items:center;
+      min-height:500px;
+    }
+    #section-seasonal::before{
+      content:'';position:absolute;inset:0;pointer-events:none;
+      background:
+        radial-gradient(ellipse 60% 50% at 80% 20%,rgba(255,255,255,.08) 0%,transparent 70%),
+        radial-gradient(ellipse 40% 60% at 10% 90%,rgba(0,0,0,.18) 0%,transparent 60%);
+    }
+    /* decorative circles */
+    #section-seasonal::after{
+      content:'';position:absolute;
+      width:500px;height:500px;border-radius:50%;
+      border:1.5px solid rgba(255,255,255,.08);
+      right:-100px;top:-100px;pointer-events:none;
+    }
+
+    .hero-text{position:relative;z-index:2;}
+    .hero-eyebrow{
+      font-family:var(--serif);font-size:11px;font-weight:800;
+      letter-spacing:.2em;text-transform:uppercase;
+      color:rgba(255,255,255,.5);margin-bottom:16px;
+    }
+    .hero-title{
+      font-family:var(--serif);font-size:clamp(38px,4.5vw,62px);
+      font-weight:900;color:#fff;line-height:1.05;margin-bottom:20px;
+    }
+    .hero-desc{font-size:15px;color:rgba(255,255,255,.72);line-height:1.65;max-width:420px;margin-bottom:36px;}
+    .hero-items{display:flex;flex-direction:column;gap:10px;}
+    .hero-item{
+      display:flex;align-items:center;gap:14px;
+      background:rgba(255,255,255,.10);backdrop-filter:blur(12px);
+      border:1.5px solid rgba(255,255,255,.18);border-radius:16px;
+      padding:12px 18px;max-width:400px;
+      transition:background .2s;
+    }
+    .hero-item:hover{background:rgba(255,255,255,.16);}
+    .hero-item-img{
+      width:54px;height:54px;border-radius:12px;
+      object-fit:cover;flex-shrink:0;
+      background:rgba(255,255,255,.15);
+    }
+    .hero-item-name{font-weight:700;font-size:14px;color:#fff;}
+    .hero-item-price{font-size:13px;color:rgba(255,255,255,.65);margin-top:2px;}
+
+    /* ── 3D DRINK SCENE ─────────────── */
+    .drink-scene{
+      position:relative;z-index:2;
+      display:flex;align-items:center;justify-content:center;
+      perspective:900px;
+      perspective-origin:50% 40%;
+    }
+    .drink-platform{
+      position:relative;width:300px;height:360px;
+      display:flex;align-items:center;justify-content:center;
+    }
+
+    /* Rotating flipper */
+    .drink-flipper{
+      width:260px;height:320px;
+      transform-style:preserve-3d;
+      animation:cardSpin 6s cubic-bezier(.45,0,.55,1) infinite;
+      position:relative;
+    }
+    @keyframes cardSpin{
+      0%   {transform:rotateY(0deg)   translateY(0px);}
+      40%  {transform:rotateY(160deg) translateY(-14px);}
+      50%  {transform:rotateY(180deg) translateY(-14px);}
+      90%  {transform:rotateY(340deg) translateY(0px);}
+      100% {transform:rotateY(360deg) translateY(0px);}
+    }
+
+    /* Front face — photo */
+    .card-face{
+      position:absolute;inset:0;
+      backface-visibility:hidden;-webkit-backface-visibility:hidden;
+      border-radius:24px;overflow:hidden;
+    }
+    .card-face-front{
+      box-shadow:0 30px 70px rgba(0,0,0,.4),0 0 0 2px rgba(255,255,255,.15);
+    }
+    .card-face-front img{
+      width:100%;height:100%;object-fit:cover;display:block;
+    }
+    /* Glare on front */
+    .card-face-front::after{
+      content:'';position:absolute;inset:0;
+      background:linear-gradient(135deg,rgba(255,255,255,.25) 0%,transparent 50%);
+      pointer-events:none;
+    }
+
+    /* Back face — info */
+    .card-face-back{
+      transform:rotateY(180deg);
+      background:rgba(255,255,255,.12);
+      backdrop-filter:blur(20px);
+      border:1.5px solid rgba(255,255,255,.25);
+      box-shadow:0 30px 70px rgba(0,0,0,.35);
+      display:flex;flex-direction:column;
+      align-items:center;justify-content:center;
+      padding:28px 24px;text-align:center;gap:12px;
+    }
+    .back-label{
+      font-family:var(--serif);font-size:10px;font-weight:800;
+      letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);
+    }
+    .back-name{font-family:var(--serif);font-size:18px;font-weight:900;color:#fff;line-height:1.2;}
+    .back-desc{font-size:13px;color:rgba(255,255,255,.7);line-height:1.5;}
+    .back-price{
+      font-family:var(--serif);font-size:28px;font-weight:900;color:#FFE000;
+      text-shadow:0 2px 12px rgba(255,224,0,.35);
+    }
+
+    /* Orbit rings around the card */
+    .orbit{
+      position:absolute;inset:0;pointer-events:none;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .orbit-ring{
+      position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.12);
+      animation:orbitSpin 12s linear infinite;
+    }
+    .orbit-ring:nth-child(1){width:340px;height:340px;animation-duration:12s;}
+    .orbit-ring:nth-child(2){width:400px;height:400px;animation-direction:reverse;animation-duration:18s;border-color:rgba(255,255,255,.07);}
+    @keyframes orbitSpin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+
+    /* Floating badge */
+    .drink-badge{
+      position:absolute;top:8px;right:-18px;
+      background:#FFE000;color:var(--navy);
+      font-family:var(--serif);font-size:11px;font-weight:900;
+      letter-spacing:.08em;text-transform:uppercase;
+      padding:6px 14px;border-radius:20px;
+      box-shadow:0 4px 20px rgba(255,224,0,.45);
+      animation:badgeBounce 3.5s ease-in-out infinite;
+      z-index:10;
+    }
+    @keyframes badgeBounce{
+      0%,100%{transform:rotate(-3deg) scale(1);}
+      50%    {transform:rotate(-3deg) scale(1.06);}
+    }
+
+    /* Floating mini dots */
+    .dot-float{
+      position:absolute;border-radius:50%;
+      background:rgba(255,255,255,.18);
+      animation:dotFloat 5s ease-in-out infinite;
+    }
+    .dot-float:nth-child(1){width:12px;height:12px;top:5%;left:-30px;animation-delay:0s;}
+    .dot-float:nth-child(2){width:8px;height:8px;bottom:10%;right:-25px;animation-delay:1.5s;}
+    .dot-float:nth-child(3){width:6px;height:6px;top:55%;left:-15px;animation-delay:2.8s;}
+    @keyframes dotFloat{
+      0%,100%{transform:translateY(0);}
+      50%    {transform:translateY(-12px);}
+    }
+
+    /* Steam */
+    .steam-wrap{
+      position:absolute;top:-56px;left:50%;transform:translateX(-50%);
+      width:100px;height:60px;pointer-events:none;
+    }
+    .steam-dot{
+      position:absolute;bottom:0;width:10px;height:10px;border-radius:50%;
+      background:rgba(255,255,255,.5);filter:blur(4px);
+      opacity:0;animation:steamUp 2.8s ease-in infinite;
+    }
+    .steam-dot:nth-child(1){left:20%;animation-delay:0s;}
+    .steam-dot:nth-child(2){left:50%;animation-delay:.9s;}
+    .steam-dot:nth-child(3){left:75%;animation-delay:1.8s;}
+    @keyframes steamUp{
+      0%  {opacity:0;transform:translateY(0) scale(1);}
+      20% {opacity:.6;}
+      100%{opacity:0;transform:translateY(-56px) scale(3);}
+    }
+
+    /* ── SECTION ANCHOR ─────────────── */
+    .section-anchor{scroll-margin-top:calc(var(--nav-h) + 8px);}
+
+    /* ── SEASONAL CARDS ─────────────── */
+    #section-seasonal-cards{
+      padding:48px 60px 0;
+      background:linear-gradient(180deg,rgba(2,80,206,.05) 0%,transparent 100%);
+    }
+    .section-eyebrow{
+      font-family:var(--serif);font-size:11px;font-weight:800;
+      letter-spacing:.18em;text-transform:uppercase;
+      color:var(--blue);margin-bottom:8px;
+    }
+    .section-title{
+      font-family:var(--serif);font-size:28px;font-weight:900;margin-bottom:28px;
+    }
+    .seasonal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;}
+    .seasonal-card{
+      background:var(--paper);border-radius:22px;overflow:hidden;
+      border:2px solid var(--blue-tint);position:relative;
+      transition:transform .22s var(--ease),box-shadow .22s var(--ease);
+    }
+    .seasonal-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(2,80,206,.14);}
+    .seasonal-badge{
+      position:absolute;top:14px;left:14px;z-index:1;
+      background:var(--blue);color:#fff;
+      font-family:var(--serif);font-size:10px;font-weight:900;
+      letter-spacing:.1em;text-transform:uppercase;
+      padding:4px 10px;border-radius:10px;
+    }
+    .seasonal-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:var(--blue-tint);}
+    .seasonal-body{padding:18px 20px 22px;}
+    .seasonal-name{font-family:var(--serif);font-size:16px;font-weight:800;margin-bottom:6px;}
+    .seasonal-desc{font-size:13px;color:var(--navy-60);line-height:1.5;margin-bottom:14px;}
+    .seasonal-price{font-family:var(--serif);font-size:22px;font-weight:900;color:var(--blue);}
+
+    /* ── MENU SECTIONS ──────────────── */
+    .content{padding:0 0 100px;}
+    .cat-divider{height:1px;background:var(--line);margin:0 60px;}
+    .cat-section{padding:48px 60px 0;}
+    .cat-header{display:flex;align-items:baseline;gap:12px;margin-bottom:28px;}
+    .cat-emoji{font-size:22px;line-height:1;}
+    .cat-title{font-family:var(--serif);font-size:26px;font-weight:900;color:var(--navy);}
+    .cat-count{font-size:13px;color:var(--navy-30);font-weight:600;}
+
+    /* ── CARD GRID ──────────────────── */
+    .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;}
+    .card{
+      background:var(--paper);border-radius:16px;overflow:hidden;
+      display:flex;flex-direction:column;
+      transition:transform .22s var(--ease),box-shadow .22s var(--ease);
+    }
+    .card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(2,80,206,.11);}
+    .card-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:var(--blue-tint);}
+    .card-img-placeholder{
+      width:100%;aspect-ratio:4/3;background:var(--blue-tint);
+      display:flex;align-items:center;justify-content:center;font-size:34px;
+    }
+    .card-body{padding:12px 14px 16px;flex:1;display:flex;flex-direction:column;gap:6px;}
+    .card-name{font-family:var(--serif);font-size:13px;font-weight:800;line-height:1.3;color:var(--navy);}
+    .card-desc{font-size:11.5px;color:var(--navy-60);line-height:1.4;flex:1;}
+    .card-price{font-family:var(--serif);font-size:17px;font-weight:900;color:var(--blue);margin-top:4px;}
+
+    /* ── RESPONSIVE ─────────────────── */
+    @media(max-width:900px){
+      #section-seasonal{grid-template-columns:1fr;min-height:unset;padding:44px 24px 56px;}
+      .drink-scene{margin-top:24px;}
+      #section-seasonal-cards,.cat-section{padding-left:24px;padding-right:24px;}
+      .cat-divider{margin-left:24px;margin-right:24px;}
+      .drink-card{width:240px;height:240px;}
+    }
+    @media(max-width:640px){
+      .card-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));}
+      .seasonal-grid{grid-template-columns:1fr;}
+      #nav-logo img{height:24px;}
+      #nav-logo{padding:0 12px;}
+      .nav-tab{padding:0 14px;font-size:11px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div id="nav-logo">
+    <img id="logo-img" src="" alt="Sunbula">
+  </div>
+  <div id="nav-tabs"></div>
+  <div id="nav-lang">
+    <button class="lang-btn active" onclick="setLang('ru')">РУС</button>
+    <button class="lang-btn" onclick="setLang('kz')">ҚАЗ</button>
+    <button class="lang-btn" onclick="setLang('en')">ENG</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="section-seasonal" class="section-anchor">
+  <div class="hero-text">
+    <div class="hero-eyebrow" id="hero-eyebrow">Сезонное меню</div>
+    <div class="hero-title" id="hero-title">Летние<br>новинки</div>
+    <div class="hero-desc" id="hero-desc">Свежие вкусы, созданные нашими бариста специально для этого сезона.</div>
+    <div class="hero-items" id="hero-items"></div>
+  </div>
+
+  <div class="drink-scene">
+    <div class="drink-platform">
+      <div class="dot-float"></div>
+      <div class="dot-float"></div>
+      <div class="dot-float"></div>
+      <div class="steam-wrap">
+        <div class="steam-dot"></div>
+        <div class="steam-dot"></div>
+        <div class="steam-dot"></div>
+      </div>
+      <!-- orbit rings -->
+      <div class="orbit">
+        <div class="orbit-ring"></div>
+        <div class="orbit-ring"></div>
+      </div>
+      <!-- 3D flipping card -->
+      <div class="drink-flipper">
+        <div class="card-face card-face-front">
+          <img id="drink-img" src="" alt="Seasonal drink">
+        </div>
+        <div class="card-face card-face-back">
+          <div class="back-label" id="back-label">Сезонная новинка</div>
+          <div class="back-name" id="back-name">Айс-латте Крем-брюлле</div>
+          <div class="back-desc" id="back-desc">Холодный латте с карамельным сиропом крем-брюлле</div>
+          <div class="back-price" id="back-price">2 290 ₸</div>
+        </div>
+      </div>
+      <div class="drink-badge" id="drink-badge">Новинка</div>
+    </div>
+  </div>
+</section>
+
+<!-- SEASONAL CARDS -->
+<div id="section-seasonal-cards" class="section-anchor">
+  <div class="section-eyebrow" id="sec-eyebrow">Сезонное меню</div>
+  <div class="section-title" id="sec-title">Попробуйте прямо сейчас</div>
+  <div class="seasonal-grid" id="seasonal-cards-grid"></div>
+</div>
+
+<!-- MENU -->
+<div class="content" id="menu-content"></div>
+
+<!-- DATA -->
+<script src="src/data/menu.js"></script>
+<script src="src/data/photos.js"></script>
+<script src="src/data/logo.js"></script>
+
+<script>
+let currentLang = 'ru';
+
+const NAV_GROUPS = [
+  { id:'seasonal',  ru:'Сезонное',  kz:'Маусымдық', en:'Seasonal'  },
+  { id:'breakfast', ru:'Завтраки',  kz:'Таңғы ас',  en:'Breakfast', cats:['breakfast','porridge','sweet'] },
+  { id:'food',      ru:'Еда',       kz:'Тағам',      en:'Food',       cats:['salads','bowls','snacks','main','pasta','pizza','soups'] },
+  { id:'coffee',    ru:'Кофе',      kz:'Кофе',       en:'Coffee',     cats:['coffee','filter'] },
+  { id:'drinks',    ru:'Напитки',   kz:'Сусындар',   en:'Drinks',     cats:['signature','tea','lemonade'] },
+];
+
+const SEASONAL_IDS = [55, 43, 72, 73];
+
+const CAT_EMOJI = {
+  breakfast:'🍳',porridge:'🌾',sweet:'🧇',salads:'🥗',
+  bowls:'🥙',snacks:'🥐',main:'🍽️',pasta:'🍝',
+  pizza:'🍕',soups:'🍲',coffee:'☕',filter:'🫗',
+  signature:'🍵',tea:'🍃',lemonade:'🍋'
+};
+
+function n(obj,lang){
+  const k='name'+lang[0].toUpperCase()+lang.slice(1);
+  return obj[k]||obj.nameRu||'';
+}
+function fmt(p){return p.toLocaleString('ru-RU')+' ₸';}
+function photo(id){return window.PHOTOS&&window.PHOTOS[id]||null;}
+function findItem(id){
+  for(const c of window.MENU){const it=c.items.find(i=>i.id===id);if(it)return it;}
+  return null;
+}
+
+// Logo
+if(window.LOGO_WHITE){
+  document.getElementById('logo-img').src=LOGO_WHITE;
+}
+
+// 3D card — fill front photo + back info from first seasonal item
+const heroItem=findItem(SEASONAL_IDS[0]);
+if(heroItem){
+  const ph=photo(heroItem.id);
+  if(ph) document.getElementById('drink-img').src=ph;
+  document.getElementById('back-name').textContent=heroItem.nameRu;
+  document.getElementById('back-desc').textContent=heroItem.descRu||'';
+  document.getElementById('back-price').textContent=fmt(heroItem.price);
+}
+
+function renderHero(){
+  const texts={
+    eyebrow:{ru:'Сезонное меню',kz:'Маусымдық мәзір',en:'Seasonal menu'},
+    title:{ru:'Летние<br>новинки',kz:'Жаз<br>жаңалықтары',en:'Summer<br>specials'},
+    desc:{ru:'Свежие вкусы, созданные нашими бариста специально для этого сезона.',
+          kz:'Баристаларымыз осы маусым үшін арнайы жасаған жаңа дәмдер.',
+          en:'Fresh flavors crafted by our baristas for this season.'},
+    badge:{ru:'Новинка',kz:'Жаңалық',en:'New'},
+  };
+  document.getElementById('hero-eyebrow').textContent=texts.eyebrow[currentLang];
+  document.getElementById('hero-title').innerHTML=texts.title[currentLang];
+  document.getElementById('hero-desc').textContent=texts.desc[currentLang];
+  document.getElementById('drink-badge').textContent=texts.badge[currentLang];
+
+  const hi=document.getElementById('hero-items');
+  hi.innerHTML='';
+  SEASONAL_IDS.slice(0,2).forEach(sid=>{
+    const item=findItem(sid);if(!item)return;
+    const ph=photo(sid);
+    const descKey='desc'+currentLang[0].toUpperCase()+currentLang.slice(1);
+    hi.innerHTML+=`<div class="hero-item">
+      ${ph?`<img class="hero-item-img" src="${ph}" alt="">`:
+           `<div class="hero-item-img" style="display:flex;align-items:center;justify-content:center;font-size:22px">☕</div>`}
+      <div>
+        <div class="hero-item-name">${n(item,currentLang)}</div>
+        <div class="hero-item-price">${fmt(item.price)}</div>
+      </div>
+    </div>`;
+  });
+}
+
+function renderSeasonalCards(){
+  const labels={
+    ru:['Хит сезона','Специально','Бестселлер','Новинка'],
+    kz:['Маусым хиті','Арнайы','Бестселлер','Жаңалық'],
+    en:['Season hit','Special','Bestseller','New']
+  };
+  const secEyebrow={ru:'Сезонное меню',kz:'Маусымдық мәзір',en:'Seasonal menu'};
+  const secTitle={ru:'Попробуйте прямо сейчас',kz:'Қазір байқап көріңіз',en:'Try right now'};
+  document.getElementById('sec-eyebrow').textContent=secEyebrow[currentLang];
+  document.getElementById('sec-title').textContent=secTitle[currentLang];
+
+  const g=document.getElementById('seasonal-cards-grid');
+  g.innerHTML='';
+  SEASONAL_IDS.forEach((sid,i)=>{
+    const item=findItem(sid);if(!item)return;
+    const ph=photo(sid);
+    const descKey='desc'+currentLang[0].toUpperCase()+currentLang.slice(1);
+    const desc=item[descKey]||item.descRu||'';
+    g.innerHTML+=`<div class="seasonal-card">
+      <span class="seasonal-badge">${labels[currentLang][i]||labels.ru[i]}</span>
+      ${ph?`<img class="seasonal-img" src="${ph}" alt="${n(item,currentLang)}" loading="lazy">`:
+          `<div class="seasonal-img" style="display:flex;align-items:center;justify-content:center;font-size:48px;background:var(--blue-tint)">☕</div>`}
+      <div class="seasonal-body">
+        <div class="seasonal-name">${n(item,currentLang)}</div>
+        ${desc?`<div class="seasonal-desc">${desc}</div>`:''}
+        <div class="seasonal-price">${fmt(item.price)}</div>
+      </div>
+    </div>`;
+  });
+}
+
+function renderNav(){
+  const tabs=document.getElementById('nav-tabs');
+  tabs.innerHTML='';
+  NAV_GROUPS.forEach(g=>{
+    const btn=document.createElement('button');
+    btn.className='nav-tab';
+    btn.dataset.group=g.id;
+    btn.textContent=g[currentLang]||g.ru;
+    btn.addEventListener('click',()=>{
+      const el=document.getElementById('section-'+g.id);
+      if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+    tabs.appendChild(btn);
+  });
+  updateActiveTab();
+}
+
+function updateActiveTab(){
+  const navH=document.getElementById('nav').offsetHeight;
+  let active='seasonal';
+  NAV_GROUPS.forEach(g=>{
+    const el=document.getElementById('section-'+g.id);
+    if(el&&el.getBoundingClientRect().top<=navH+60)active=g.id;
+  });
+  document.querySelectorAll('.nav-tab').forEach(t=>{
+    t.classList.toggle('active',t.dataset.group===active);
+  });
+}
+
+function renderMenu(){
+  const c=document.getElementById('menu-content');
+  c.innerHTML='';
+  NAV_GROUPS.slice(1).forEach((group,gi)=>{
+    const groupEl=document.createElement('div');
+    groupEl.id='section-'+group.id;
+    groupEl.className='section-anchor';
+    if(gi>0){const d=document.createElement('div');d.className='cat-divider';groupEl.appendChild(d);}
+
+    const cats=group.cats||[group.id];
+    cats.forEach((catId,ci)=>{
+      const cat=window.MENU.find(c=>c.id===catId);
+      if(!cat||!cat.items.length)return;
+      const sec=document.createElement('div');
+      sec.className='cat-section';
+      sec.innerHTML=`
+        <div class="cat-header">
+          <span class="cat-emoji">${CAT_EMOJI[catId]||'•'}</span>
+          <span class="cat-title" data-ru="${cat.nameRu}" data-kz="${cat.nameKz||cat.nameRu}" data-en="${cat.nameEn||cat.nameRu}">${n(cat,currentLang)}</span>
+          <span class="cat-count">${cat.items.length} поз.</span>
+        </div>
+        <div class="card-grid">${cat.items.map(item=>{
+          const ph=photo(item.id);
+          const descKey='desc'+currentLang[0].toUpperCase()+currentLang.slice(1);
+          const desc=item[descKey]||item.descRu||'';
+          return `<div class="card">
+            ${ph?`<img class="card-img" src="${ph}" alt="${n(item,currentLang)}" loading="lazy">`:
+                 `<div class="card-img-placeholder">${CAT_EMOJI[catId]||'🍽️'}</div>`}
+            <div class="card-body">
+              <div class="card-name" data-ru="${item.nameRu}" data-kz="${item.nameKz||item.nameRu}" data-en="${item.nameEn||item.nameRu}">${n(item,currentLang)}</div>
+              ${desc?`<div class="card-desc" data-ru="${item.descRu||''}" data-kz="${item.descKz||''}" data-en="${item.descEn||''}">${desc}</div>`:''}
+              <div class="card-price">${fmt(item.price)}</div>
+            </div>
+          </div>`;
+        }).join('')}</div>`;
+      groupEl.appendChild(sec);
+      if(ci<cats.length-1){const d=document.createElement('div');d.className='cat-divider';groupEl.appendChild(d);}
+    });
+    c.appendChild(groupEl);
+  });
+}
+
+function setLang(lang){
+  currentLang=lang;
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.classList.toggle('active',b.textContent===({ru:'РУС',kz:'ҚАЗ',en:'ENG'}[lang]));
+  });
+  document.querySelectorAll('[data-ru]').forEach(el=>{
+    el.textContent=el.dataset[lang]||el.dataset.ru;
+  });
+  renderHero();renderSeasonalCards();renderNav();
+}
+
+window.addEventListener('scroll',updateActiveTab,{passive:true});
+renderNav();renderHero();renderSeasonalCards();renderMenu();
+</script>
+</body>
+</html>
