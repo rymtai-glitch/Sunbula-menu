@@ -447,21 +447,21 @@ const SEASONAL = [
     ru:{name:'Матча-Жасмин', desc:'Охлаждённая матча с жасминовым молоком и льдом', badge:'Хит лета'},
     kz:{name:'Матча-Жасмин', desc:'Жасмин сүті мен мұзбен салқындатылған матча', badge:'Жаз хиті'},
     en:{name:'Matcha Jasmine', desc:'Iced matcha with jasmine milk and ice', badge:'Summer hit'},
-    price: 1490,
+    price: 2290,
   },
   {
     img: 'images/s2-summer-shot.png',
     ru:{name:'Summer Shot', desc:'Тропический микс: ананас, малина, освежающий лёд', badge:'Специально'},
     kz:{name:'Summer Shot', desc:'Тропикалық микс: ананас, таңқурай, салқын мұз', badge:'Арнайы'},
     en:{name:'Summer Shot', desc:'Tropical mix: pineapple, raspberry, refreshing ice', badge:'Special'},
-    price: 1590,
+    price: 2290,
   },
   {
     img: 'images/s3-irish-frappucino.png',
     ru:{name:'Irish Frappuccino', desc:'Кофейный фраппе с шоколадом, сливками и мороженым', badge:'Бестселлер'},
     kz:{name:'Irish Frappuccino', desc:'Шоколад, кілегей және балмұздақпен кофе фраппе', badge:'Бестселлер'},
     en:{name:'Irish Frappuccino', desc:'Coffee frappe with chocolate, cream and ice cream', badge:'Bestseller'},
-    price: 1890,
+    price: 2490,
   },
 ];
 
@@ -620,6 +620,20 @@ function setLang(l){
   document.querySelectorAll('[data-ru]').forEach(el=>el.textContent=el.dataset[l]||el.dataset.ru);
   renderHero();renderSeasonalCards();renderNav();
 }
+
+// ── FLIP CARD CYCLE ────────────────────────────────
+let flipIdx = 0;
+function updateFlipCard(){
+  const s = SEASONAL[flipIdx];
+  document.getElementById('flip-img').src = s.img;
+  document.getElementById('flip-name').textContent = s[lang].name;
+  document.getElementById('flip-desc').textContent = s[lang].desc;
+  document.getElementById('flip-price').textContent = fmt(s.price);
+}
+document.querySelector('.card-flipper').addEventListener('animationiteration', ()=>{
+  flipIdx = (flipIdx + 1) % SEASONAL.length;
+  updateFlipCard();
+});
 
 window.addEventListener('scroll',updateActiveTab,{passive:true});
 renderNav();renderHero();renderSeasonalCards();renderMenu();
