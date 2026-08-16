@@ -18,6 +18,6 @@ window.PHOTOS = {
  69: "images/69.jpg", 70: "images/70.jpg", 71: "images/71.jpg", 72: "images/72.jpg",
  73: "images/73.jpg", 74: "images/74.jpg", 75: "images/75.jpg", 76: "images/76.png",
  77: "images/s1-matcha-jasmin.png", 78: "images/s2-summer-shot.png", 79: "images/s3-irish-frappucino.png",
- 80: "images/80.jpg"
+ 80: "images/80.png"
 };
 window.photoFor = function(id){ return window.PHOTOS[id] || null; };
