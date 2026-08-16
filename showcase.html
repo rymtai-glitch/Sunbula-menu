@@ -3,316 +3,373 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Sunbula — Меню кофейни</title>
+  <title>Sunbula — Меню</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --blue:#0250ce; --blue-deep:#0A3AA8; --blue-bright:#2F6BFF; --blue-tint:#E4EBFB;
-      --navy:#0B1020; --navy-60:rgba(11,16,32,.60); --navy-30:rgba(11,16,32,.30);
-      --paper:#fff; --ivory:#EEF2FB; --line:rgba(11,16,32,.10);
+    :root{
+      --blue:#0250ce;
+      --blue-bright:#2F6BFF;
+      --blue-glow:rgba(2,80,206,.35);
+      --navy:#080C18;
+      --navy-2:#0D1224;
+      --navy-3:#111830;
+      --surface:rgba(255,255,255,.04);
+      --surface-2:rgba(255,255,255,.07);
+      --border:rgba(255,255,255,.09);
+      --border-2:rgba(255,255,255,.15);
+      --text:#FFFFFF;
+      --text-60:rgba(255,255,255,.60);
+      --text-35:rgba(255,255,255,.35);
+      --gold:#FFE234;
       --serif:'Montserrat',system-ui,sans-serif;
       --sans:'Manrope',system-ui,sans-serif;
-      --r:18px; --nav-h:64px;
+      --r:16px; --r-lg:24px; --r-xl:32px;
+      --nav-h:60px;
       --ease:cubic-bezier(.22,1,.36,1);
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
-    body{font-family:var(--sans);background:var(--ivory);color:var(--navy);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+    body{
+      font-family:var(--sans);
+      background:var(--navy);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      overflow-x:hidden;
+    }
 
-    /* ── STICKY NAV ─────────────────── */
+    /* ─── NAV ──────────────────────────────────────── */
     #nav{
-      position:sticky;top:0;z-index:100;
-      background:var(--paper);border-bottom:1.5px solid var(--line);
-      height:var(--nav-h);display:flex;align-items:stretch;
+      position:sticky;top:0;z-index:200;height:var(--nav-h);
+      background:rgba(8,12,24,.85);
+      backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+      border-bottom:1px solid var(--border);
+      display:flex;align-items:stretch;
     }
     #nav-logo{
-      flex-shrink:0;display:flex;align-items:center;padding:0 20px;
-      border-right:1.5px solid var(--line);
+      flex-shrink:0;display:flex;align-items:center;
+      padding:0 22px;border-right:1px solid var(--border);
     }
-    #nav-logo img{height:30px;width:auto;}
-    #nav-tabs{
-      display:flex;align-items:stretch;overflow-x:auto;flex:1;
-      scrollbar-width:none;
-    }
+    #nav-logo img{height:28px;width:auto;filter:brightness(0) invert(1);}
+    #nav-tabs{display:flex;align-items:stretch;overflow-x:auto;flex:1;scrollbar-width:none;}
     #nav-tabs::-webkit-scrollbar{display:none;}
     .nav-tab{
-      flex-shrink:0;padding:0 20px;
-      font-family:var(--serif);font-size:12px;font-weight:800;
-      letter-spacing:.06em;text-transform:uppercase;
-      color:var(--navy-60);cursor:pointer;border:none;background:none;
-      border-bottom:3px solid transparent;
-      transition:color .18s,border-color .18s,background .18s;white-space:nowrap;
+      flex-shrink:0;padding:0 22px;border:none;background:none;
+      font-family:var(--serif);font-size:11px;font-weight:800;
+      letter-spacing:.1em;text-transform:uppercase;
+      color:var(--text-35);cursor:pointer;
+      border-bottom:2px solid transparent;
+      transition:color .18s,border-color .18s;white-space:nowrap;
     }
-    .nav-tab:hover{color:var(--navy);background:var(--ivory);}
-    .nav-tab.active{color:var(--blue);border-bottom-color:var(--blue);}
+    .nav-tab:hover{color:var(--text-60);}
+    .nav-tab.active{color:var(--text);border-bottom-color:var(--blue-bright);}
     #nav-lang{
-      flex-shrink:0;display:flex;align-items:center;padding:0 16px;gap:6px;
-      border-left:1.5px solid var(--line);
+      flex-shrink:0;display:flex;align-items:center;gap:4px;
+      padding:0 14px;border-left:1px solid var(--border);
     }
     .lang-btn{
-      padding:5px 10px;border-radius:8px;border:1.5px solid var(--line);
-      background:none;font-family:var(--serif);font-size:11px;font-weight:800;
-      cursor:pointer;color:var(--navy-60);transition:all .15s;
+      padding:4px 10px;border-radius:8px;border:1px solid var(--border);
+      background:none;font-family:var(--serif);font-size:10px;font-weight:800;
+      cursor:pointer;color:var(--text-35);transition:all .15s;letter-spacing:.06em;
     }
     .lang-btn.active{background:var(--blue);border-color:var(--blue);color:#fff;}
 
-    /* ── HERO ────────────────────────── */
+    .section-anchor{scroll-margin-top:calc(var(--nav-h) + 8px);}
+
+    /* ─── HERO ─────────────────────────────────────── */
     #section-seasonal{
-      background:linear-gradient(135deg,var(--blue-deep) 0%,#1a5fe8 55%,#3a7fff 100%);
-      padding:64px 60px 72px;position:relative;overflow:hidden;
-      display:grid;grid-template-columns:1fr 420px;gap:40px;align-items:center;
-      min-height:500px;
+      min-height:100svh;
+      display:grid;grid-template-columns:1fr 460px;
+      align-items:center;gap:0;
+      padding:0 80px 0 80px;
+      position:relative;overflow:hidden;
+      background:radial-gradient(ellipse 80% 80% at 70% 50%, rgba(2,80,206,.18) 0%, transparent 70%),
+                 var(--navy);
     }
+    /* big decorative oval — brand motif */
     #section-seasonal::before{
-      content:'';position:absolute;inset:0;pointer-events:none;
-      background:
-        radial-gradient(ellipse 60% 50% at 80% 20%,rgba(255,255,255,.08) 0%,transparent 70%),
-        radial-gradient(ellipse 40% 60% at 10% 90%,rgba(0,0,0,.18) 0%,transparent 60%);
+      content:'';position:absolute;
+      width:700px;height:700px;border-radius:50%;
+      border:1px solid rgba(2,80,206,.2);
+      right:-140px;top:50%;transform:translateY(-50%);
+      pointer-events:none;
     }
-    /* decorative circles */
     #section-seasonal::after{
       content:'';position:absolute;
-      width:500px;height:500px;border-radius:50%;
-      border:1.5px solid rgba(255,255,255,.08);
-      right:-100px;top:-100px;pointer-events:none;
-    }
-
-    .hero-text{position:relative;z-index:2;}
-    .hero-eyebrow{
-      font-family:var(--serif);font-size:11px;font-weight:800;
-      letter-spacing:.2em;text-transform:uppercase;
-      color:rgba(255,255,255,.5);margin-bottom:16px;
-    }
-    .hero-title{
-      font-family:var(--serif);font-size:clamp(38px,4.5vw,62px);
-      font-weight:900;color:#fff;line-height:1.05;margin-bottom:20px;
-    }
-    .hero-desc{font-size:15px;color:rgba(255,255,255,.72);line-height:1.65;max-width:420px;margin-bottom:36px;}
-    .hero-items{display:flex;flex-direction:column;gap:10px;}
-    .hero-item{
-      display:flex;align-items:center;gap:14px;
-      background:rgba(255,255,255,.10);backdrop-filter:blur(12px);
-      border:1.5px solid rgba(255,255,255,.18);border-radius:16px;
-      padding:12px 18px;max-width:400px;
-      transition:background .2s;
-    }
-    .hero-item:hover{background:rgba(255,255,255,.16);}
-    .hero-item-img{
-      width:54px;height:54px;border-radius:12px;
-      object-fit:cover;flex-shrink:0;
-      background:rgba(255,255,255,.15);
-    }
-    .hero-item-name{font-weight:700;font-size:14px;color:#fff;}
-    .hero-item-price{font-size:13px;color:rgba(255,255,255,.65);margin-top:2px;}
-
-    /* ── 3D DRINK SCENE ─────────────── */
-    .drink-scene{
-      position:relative;z-index:2;
-      display:flex;align-items:center;justify-content:center;
-      perspective:900px;
-      perspective-origin:50% 40%;
-    }
-    .drink-platform{
-      position:relative;width:300px;height:360px;
-      display:flex;align-items:center;justify-content:center;
-    }
-
-    /* Rotating flipper */
-    .drink-flipper{
-      width:260px;height:320px;
-      transform-style:preserve-3d;
-      animation:cardSpin 6s cubic-bezier(.45,0,.55,1) infinite;
-      position:relative;
-    }
-    @keyframes cardSpin{
-      0%   {transform:rotateY(0deg)   translateY(0px);}
-      40%  {transform:rotateY(160deg) translateY(-14px);}
-      50%  {transform:rotateY(180deg) translateY(-14px);}
-      90%  {transform:rotateY(340deg) translateY(0px);}
-      100% {transform:rotateY(360deg) translateY(0px);}
-    }
-
-    /* Front face — photo */
-    .card-face{
-      position:absolute;inset:0;
-      backface-visibility:hidden;-webkit-backface-visibility:hidden;
-      border-radius:24px;overflow:hidden;
-    }
-    .card-face-front{
-      box-shadow:0 30px 70px rgba(0,0,0,.4),0 0 0 2px rgba(255,255,255,.15);
-    }
-    .card-face-front img{
-      width:100%;height:100%;object-fit:cover;display:block;
-    }
-    /* Glare on front */
-    .card-face-front::after{
-      content:'';position:absolute;inset:0;
-      background:linear-gradient(135deg,rgba(255,255,255,.25) 0%,transparent 50%);
+      width:900px;height:900px;border-radius:50%;
+      border:1px solid rgba(2,80,206,.08);
+      right:-240px;top:50%;transform:translateY(-50%);
       pointer-events:none;
     }
 
-    /* Back face — info */
-    .card-face-back{
-      transform:rotateY(180deg);
-      background:rgba(255,255,255,.12);
-      backdrop-filter:blur(20px);
-      border:1.5px solid rgba(255,255,255,.25);
-      box-shadow:0 30px 70px rgba(0,0,0,.35);
-      display:flex;flex-direction:column;
-      align-items:center;justify-content:center;
-      padding:28px 24px;text-align:center;gap:12px;
+    .hero-left{position:relative;z-index:2;padding:80px 0;}
+    .hero-tag{
+      display:inline-flex;align-items:center;gap:8px;
+      background:rgba(2,80,206,.18);border:1px solid rgba(47,107,255,.35);
+      border-radius:100px;padding:5px 14px 5px 8px;
+      margin-bottom:28px;
     }
-    .back-label{
+    .hero-tag-dot{
+      width:6px;height:6px;border-radius:50%;background:var(--blue-bright);
+      animation:pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(.8);}}
+    .hero-tag-text{
       font-family:var(--serif);font-size:10px;font-weight:800;
-      letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);
+      letter-spacing:.14em;text-transform:uppercase;color:var(--blue-bright);
     }
-    .back-name{font-family:var(--serif);font-size:18px;font-weight:900;color:#fff;line-height:1.2;}
-    .back-desc{font-size:13px;color:rgba(255,255,255,.7);line-height:1.5;}
-    .back-price{
-      font-family:var(--serif);font-size:28px;font-weight:900;color:#FFE000;
-      text-shadow:0 2px 12px rgba(255,224,0,.35);
+    .hero-title{
+      font-family:var(--serif);
+      font-size:clamp(52px,5.5vw,80px);
+      font-weight:900;line-height:.95;
+      letter-spacing:-.03em;
+      color:var(--text);
+      margin-bottom:24px;
     }
+    .hero-title em{font-style:normal;color:var(--blue-bright);}
+    .hero-sub{
+      font-size:15px;color:var(--text-60);line-height:1.7;
+      max-width:400px;margin-bottom:48px;font-weight:400;
+    }
+    .hero-pills{display:flex;flex-direction:column;gap:10px;max-width:380px;}
+    .hero-pill{
+      display:flex;align-items:center;gap:14px;
+      background:var(--surface);border:1px solid var(--border);
+      border-radius:14px;padding:10px 14px;
+      transition:background .2s,border-color .2s;cursor:default;
+    }
+    .hero-pill:hover{background:var(--surface-2);border-color:var(--border-2);}
+    .hero-pill-img{
+      width:48px;height:48px;border-radius:10px;
+      object-fit:cover;flex-shrink:0;background:var(--navy-3);
+    }
+    .hero-pill-name{font-weight:700;font-size:14px;}
+    .hero-pill-price{font-size:12px;color:var(--text-60);margin-top:2px;}
 
-    /* Orbit rings around the card */
-    .orbit{
-      position:absolute;inset:0;pointer-events:none;
+    /* ─── 3D FLIP CARD ─────────────────────────────── */
+    .hero-right{
+      position:relative;z-index:2;
       display:flex;align-items:center;justify-content:center;
+      perspective:1100px;padding:80px 0;
     }
-    .orbit-ring{
-      position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.12);
-      animation:orbitSpin 12s linear infinite;
-    }
-    .orbit-ring:nth-child(1){width:340px;height:340px;animation-duration:12s;}
-    .orbit-ring:nth-child(2){width:400px;height:400px;animation-direction:reverse;animation-duration:18s;border-color:rgba(255,255,255,.07);}
-    @keyframes orbitSpin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+    .card-stage{position:relative;width:300px;height:380px;}
 
-    /* Floating badge */
-    .drink-badge{
-      position:absolute;top:8px;right:-18px;
-      background:#FFE000;color:var(--navy);
-      font-family:var(--serif);font-size:11px;font-weight:900;
-      letter-spacing:.08em;text-transform:uppercase;
-      padding:6px 14px;border-radius:20px;
-      box-shadow:0 4px 20px rgba(255,224,0,.45);
-      animation:badgeBounce 3.5s ease-in-out infinite;
-      z-index:10;
+    .card-flipper{
+      width:300px;height:380px;
+      transform-style:preserve-3d;
+      animation:flipCard 7s cubic-bezier(.45,0,.55,1) infinite;
+      position:relative;
     }
-    @keyframes badgeBounce{
-      0%,100%{transform:rotate(-3deg) scale(1);}
-      50%    {transform:rotate(-3deg) scale(1.06);}
+    @keyframes flipCard{
+      0%   {transform:rotateY(0deg)   translateY(0);}
+      35%  {transform:rotateY(165deg) translateY(-16px);}
+      50%  {transform:rotateY(180deg) translateY(-16px);}
+      85%  {transform:rotateY(345deg) translateY(0);}
+      100% {transform:rotateY(360deg) translateY(0);}
     }
-
-    /* Floating mini dots */
-    .dot-float{
-      position:absolute;border-radius:50%;
-      background:rgba(255,255,255,.18);
-      animation:dotFloat 5s ease-in-out infinite;
+    .c-face{
+      position:absolute;inset:0;border-radius:24px;overflow:hidden;
+      backface-visibility:hidden;-webkit-backface-visibility:hidden;
     }
-    .dot-float:nth-child(1){width:12px;height:12px;top:5%;left:-30px;animation-delay:0s;}
-    .dot-float:nth-child(2){width:8px;height:8px;bottom:10%;right:-25px;animation-delay:1.5s;}
-    .dot-float:nth-child(3){width:6px;height:6px;top:55%;left:-15px;animation-delay:2.8s;}
-    @keyframes dotFloat{
-      0%,100%{transform:translateY(0);}
-      50%    {transform:translateY(-12px);}
+    .c-front{
+      box-shadow:0 32px 80px rgba(0,0,0,.6),0 0 0 1px var(--border-2);
     }
-
-    /* Steam */
-    .steam-wrap{
-      position:absolute;top:-56px;left:50%;transform:translateX(-50%);
-      width:100px;height:60px;pointer-events:none;
+    .c-front img{width:100%;height:100%;object-fit:cover;display:block;}
+    .c-front::after{
+      content:'';position:absolute;inset:0;
+      background:linear-gradient(145deg,rgba(255,255,255,.12) 0%,transparent 55%);
+      pointer-events:none;
     }
-    .steam-dot{
-      position:absolute;bottom:0;width:10px;height:10px;border-radius:50%;
-      background:rgba(255,255,255,.5);filter:blur(4px);
-      opacity:0;animation:steamUp 2.8s ease-in infinite;
+    .c-back{
+      transform:rotateY(180deg);
+      background:linear-gradient(135deg,rgba(2,47,140,.7) 0%,rgba(6,18,50,.85) 100%);
+      backdrop-filter:blur(24px);
+      border:1px solid rgba(47,107,255,.35);
+      box-shadow:0 32px 80px rgba(0,0,0,.6);
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      gap:14px;padding:32px 26px;text-align:center;
     }
-    .steam-dot:nth-child(1){left:20%;animation-delay:0s;}
-    .steam-dot:nth-child(2){left:50%;animation-delay:.9s;}
-    .steam-dot:nth-child(3){left:75%;animation-delay:1.8s;}
-    @keyframes steamUp{
-      0%  {opacity:0;transform:translateY(0) scale(1);}
-      20% {opacity:.6;}
-      100%{opacity:0;transform:translateY(-56px) scale(3);}
+    .c-back-tag{
+      font-family:var(--serif);font-size:9px;font-weight:800;
+      letter-spacing:.2em;text-transform:uppercase;color:var(--blue-bright);opacity:.8;
+    }
+    .c-back-name{font-family:var(--serif);font-size:20px;font-weight:900;line-height:1.15;}
+    .c-back-desc{font-size:12px;color:var(--text-60);line-height:1.6;}
+    .c-back-price{
+      font-family:var(--serif);font-size:32px;font-weight:900;
+      color:var(--gold);text-shadow:0 0 30px rgba(255,226,52,.3);
+      letter-spacing:-.02em;
     }
 
-    /* ── SECTION ANCHOR ─────────────── */
-    .section-anchor{scroll-margin-top:calc(var(--nav-h) + 8px);}
-
-    /* ── SEASONAL CARDS ─────────────── */
-    #section-seasonal-cards{
-      padding:48px 60px 0;
-      background:linear-gradient(180deg,rgba(2,80,206,.05) 0%,transparent 100%);
-    }
-    .section-eyebrow{
-      font-family:var(--serif);font-size:11px;font-weight:800;
-      letter-spacing:.18em;text-transform:uppercase;
-      color:var(--blue);margin-bottom:8px;
-    }
-    .section-title{
-      font-family:var(--serif);font-size:28px;font-weight:900;margin-bottom:28px;
-    }
-    .seasonal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;}
-    .seasonal-card{
-      background:var(--paper);border-radius:22px;overflow:hidden;
-      border:2px solid var(--blue-tint);position:relative;
-      transition:transform .22s var(--ease),box-shadow .22s var(--ease);
-    }
-    .seasonal-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(2,80,206,.14);}
-    .seasonal-badge{
-      position:absolute;top:14px;left:14px;z-index:1;
-      background:var(--blue);color:#fff;
+    /* badge */
+    .card-badge{
+      position:absolute;top:-12px;right:-14px;z-index:10;
+      background:var(--gold);color:#000;
       font-family:var(--serif);font-size:10px;font-weight:900;
       letter-spacing:.1em;text-transform:uppercase;
-      padding:4px 10px;border-radius:10px;
+      padding:6px 14px;border-radius:100px;
+      box-shadow:0 4px 20px rgba(255,226,52,.4);
+      animation:badgePop 3s ease-in-out infinite;
     }
-    .seasonal-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:var(--blue-tint);}
-    .seasonal-body{padding:18px 20px 22px;}
-    .seasonal-name{font-family:var(--serif);font-size:16px;font-weight:800;margin-bottom:6px;}
-    .seasonal-desc{font-size:13px;color:var(--navy-60);line-height:1.5;margin-bottom:14px;}
-    .seasonal-price{font-family:var(--serif);font-size:22px;font-weight:900;color:var(--blue);}
+    @keyframes badgePop{
+      0%,100%{transform:rotate(-3deg) scale(1);}
+      50%    {transform:rotate(-3deg) scale(1.05);}
+    }
+    /* orbit rings */
+    .orbit-wrap{
+      position:absolute;inset:-80px;
+      display:flex;align-items:center;justify-content:center;
+      pointer-events:none;
+    }
+    .orbit-r{
+      position:absolute;border-radius:50%;
+      border:1px solid rgba(2,80,206,.2);
+      animation:orbitSpin 16s linear infinite;
+    }
+    .orbit-r:nth-child(1){width:380px;height:380px;}
+    .orbit-r:nth-child(2){width:460px;height:460px;animation-duration:24s;animation-direction:reverse;border-color:rgba(2,80,206,.10);}
+    @keyframes orbitSpin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
 
-    /* ── MENU SECTIONS ──────────────── */
-    .content{padding:0 0 100px;}
-    .cat-divider{height:1px;background:var(--line);margin:0 60px;}
-    .cat-section{padding:48px 60px 0;}
-    .cat-header{display:flex;align-items:baseline;gap:12px;margin-bottom:28px;}
-    .cat-emoji{font-size:22px;line-height:1;}
-    .cat-title{font-family:var(--serif);font-size:26px;font-weight:900;color:var(--navy);}
-    .cat-count{font-size:13px;color:var(--navy-30);font-weight:600;}
+    /* ─── SEASONAL SECTION ─────────────────────────── */
+    #section-seasonal-cards{padding:80px 80px 0;}
+    .sec-header{display:flex;align-items:baseline;gap:16px;margin-bottom:40px;}
+    .sec-label{
+      font-family:var(--serif);font-size:10px;font-weight:800;
+      letter-spacing:.2em;text-transform:uppercase;color:var(--blue-bright);
+    }
+    .sec-title{
+      font-family:var(--serif);font-size:36px;font-weight:900;
+      letter-spacing:-.02em;
+    }
 
-    /* ── CARD GRID ──────────────────── */
-    .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;}
-    .card{
-      background:var(--paper);border-radius:16px;overflow:hidden;
+    /* 3-col seasonal grid */
+    .seasonal-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+    .s-card{
+      position:relative;border-radius:var(--r-lg);overflow:hidden;
+      background:var(--navy-2);border:1px solid var(--border);
+      transition:transform .3s var(--ease),box-shadow .3s var(--ease);
+      cursor:default;
+    }
+    .s-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 0 1px rgba(47,107,255,.25);
+    }
+    .s-card-img-wrap{width:100%;aspect-ratio:1/1;overflow:hidden;position:relative;}
+    .s-card-img-wrap img{
+      width:100%;height:100%;object-fit:cover;display:block;
+      transition:transform .5s var(--ease);
+    }
+    .s-card:hover .s-card-img-wrap img{transform:scale(1.04);}
+    .s-card-img-wrap::after{
+      content:'';position:absolute;inset:0;
+      background:linear-gradient(to bottom,transparent 40%,rgba(8,12,24,.9) 100%);
+    }
+    .s-badge{
+      position:absolute;top:14px;left:14px;z-index:2;
+      background:var(--blue);
+      font-family:var(--serif);font-size:9px;font-weight:900;
+      letter-spacing:.14em;text-transform:uppercase;
+      padding:4px 10px;border-radius:100px;color:#fff;
+    }
+    .s-body{padding:18px 20px 22px;}
+    .s-name{
+      font-family:var(--serif);font-size:18px;font-weight:900;
+      letter-spacing:-.01em;margin-bottom:6px;
+    }
+    .s-desc{font-size:12.5px;color:var(--text-60);line-height:1.55;margin-bottom:14px;}
+    .s-price{
+      font-family:var(--serif);font-size:24px;font-weight:900;
+      color:var(--blue-bright);letter-spacing:-.02em;
+    }
+
+    /* ─── MENU CONTENT ─────────────────────────────── */
+    .content{padding:0 0 120px;}
+
+    /* group separator */
+    .group-sep{
+      height:1px;
+      background:linear-gradient(90deg,transparent,var(--border),transparent);
+      margin:72px 80px 0;
+    }
+
+    /* category block */
+    .cat-block{padding:64px 80px 0;}
+    .cat-hd{display:flex;align-items:center;gap:14px;margin-bottom:28px;}
+    .cat-icon{font-size:20px;opacity:.7;}
+    .cat-name-el{
+      font-family:var(--serif);font-size:20px;font-weight:900;
+      letter-spacing:-.01em;
+    }
+    .cat-ct{
+      font-size:12px;color:var(--text-35);font-weight:600;
+      background:var(--surface);border:1px solid var(--border);
+      border-radius:8px;padding:2px 8px;
+    }
+
+    /* ─── CARD GRID ─────────────────────────────────── */
+    .card-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
+      gap:12px;
+    }
+    .m-card{
+      background:var(--navy-2);border-radius:var(--r);
+      border:1px solid var(--border);overflow:hidden;
       display:flex;flex-direction:column;
-      transition:transform .22s var(--ease),box-shadow .22s var(--ease);
+      transition:transform .25s var(--ease),border-color .25s,box-shadow .25s;
     }
-    .card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(2,80,206,.11);}
-    .card-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:var(--blue-tint);}
-    .card-img-placeholder{
-      width:100%;aspect-ratio:4/3;background:var(--blue-tint);
-      display:flex;align-items:center;justify-content:center;font-size:34px;
+    .m-card:hover{
+      transform:translateY(-3px);
+      border-color:rgba(47,107,255,.3);
+      box-shadow:0 12px 36px rgba(0,0,0,.4);
     }
-    .card-body{padding:12px 14px 16px;flex:1;display:flex;flex-direction:column;gap:6px;}
-    .card-name{font-family:var(--serif);font-size:13px;font-weight:800;line-height:1.3;color:var(--navy);}
-    .card-desc{font-size:11.5px;color:var(--navy-60);line-height:1.4;flex:1;}
-    .card-price{font-family:var(--serif);font-size:17px;font-weight:900;color:var(--blue);margin-top:4px;}
+    .m-card-img{
+      width:100%;aspect-ratio:4/3;object-fit:cover;display:block;
+      background:var(--navy-3);
+    }
+    .m-card-ph{
+      width:100%;aspect-ratio:4/3;background:var(--navy-3);
+      display:flex;align-items:center;justify-content:center;font-size:30px;opacity:.4;
+    }
+    .m-card-body{
+      padding:12px 14px 16px;flex:1;
+      display:flex;flex-direction:column;gap:4px;
+    }
+    .m-card-name{
+      font-family:var(--serif);font-size:12.5px;font-weight:800;
+      line-height:1.3;color:var(--text);
+    }
+    .m-card-desc{
+      font-size:11px;color:var(--text-35);line-height:1.45;flex:1;
+    }
+    .m-card-price{
+      font-family:var(--serif);font-size:16px;font-weight:900;
+      color:var(--blue-bright);margin-top:6px;letter-spacing:-.01em;
+    }
 
-    /* ── RESPONSIVE ─────────────────── */
-    @media(max-width:900px){
-      #section-seasonal{grid-template-columns:1fr;min-height:unset;padding:44px 24px 56px;}
-      .drink-scene{margin-top:24px;}
-      #section-seasonal-cards,.cat-section{padding-left:24px;padding-right:24px;}
-      .cat-divider{margin-left:24px;margin-right:24px;}
-      .drink-card{width:240px;height:240px;}
+    /* ─── RESPONSIVE ────────────────────────────────── */
+    @media(max-width:1024px){
+      #section-seasonal{
+        grid-template-columns:1fr;padding:60px 40px;
+        min-height:auto;gap:48px;
+      }
+      .hero-left{padding:0;}
+      .hero-right{padding:0;justify-content:flex-start;}
+      #section-seasonal-cards,.cat-block{padding-left:40px;padding-right:40px;}
+      .group-sep{margin-left:40px;margin-right:40px;}
+      .seasonal-grid{grid-template-columns:1fr 1fr;}
     }
-    @media(max-width:640px){
-      .card-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));}
+    @media(max-width:700px){
+      #section-seasonal{padding:48px 24px;}
+      .hero-title{font-size:clamp(40px,10vw,60px);}
       .seasonal-grid{grid-template-columns:1fr;}
-      #nav-logo img{height:24px;}
-      #nav-logo{padding:0 12px;}
-      .nav-tab{padding:0 14px;font-size:11px;}
+      #section-seasonal-cards,.cat-block{padding-left:24px;padding-right:24px;}
+      .group-sep{margin-left:24px;margin-right:24px;}
+      .card-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));}
     }
   </style>
 </head>
@@ -320,9 +377,7 @@
 
 <!-- NAV -->
 <nav id="nav">
-  <div id="nav-logo">
-    <img id="logo-img" src="" alt="Sunbula">
-  </div>
+  <div id="nav-logo"><img id="logo-img" src="" alt="Sunbula"></div>
   <div id="nav-tabs"></div>
   <div id="nav-lang">
     <button class="lang-btn active" onclick="setLang('ru')">РУС</button>
@@ -333,50 +388,45 @@
 
 <!-- HERO -->
 <section id="section-seasonal" class="section-anchor">
-  <div class="hero-text">
-    <div class="hero-eyebrow" id="hero-eyebrow">Сезонное меню</div>
-    <div class="hero-title" id="hero-title">Летние<br>новинки</div>
-    <div class="hero-desc" id="hero-desc">Свежие вкусы, созданные нашими бариста специально для этого сезона.</div>
-    <div class="hero-items" id="hero-items"></div>
+  <div class="hero-left">
+    <div class="hero-tag">
+      <div class="hero-tag-dot"></div>
+      <span class="hero-tag-text" id="hero-tag">Сезонное меню</span>
+    </div>
+    <div class="hero-title" id="hero-title">Летние<br><em>новинки</em></div>
+    <div class="hero-sub" id="hero-sub">Три новых напитка, созданных специально для этого лета. Освежают, удивляют, остаются в памяти.</div>
+    <div class="hero-pills" id="hero-pills"></div>
   </div>
 
-  <div class="drink-scene">
-    <div class="drink-platform">
-      <div class="dot-float"></div>
-      <div class="dot-float"></div>
-      <div class="dot-float"></div>
-      <div class="steam-wrap">
-        <div class="steam-dot"></div>
-        <div class="steam-dot"></div>
-        <div class="steam-dot"></div>
+  <div class="hero-right">
+    <div class="card-stage">
+      <div class="orbit-wrap">
+        <div class="orbit-r"></div>
+        <div class="orbit-r"></div>
       </div>
-      <!-- orbit rings -->
-      <div class="orbit">
-        <div class="orbit-ring"></div>
-        <div class="orbit-ring"></div>
-      </div>
-      <!-- 3D flipping card -->
-      <div class="drink-flipper">
-        <div class="card-face card-face-front">
-          <img id="drink-img" src="" alt="Seasonal drink">
+      <div class="card-flipper">
+        <div class="c-face c-front">
+          <img id="flip-img" src="images/s1-matcha-jasmin.jpg" alt="">
         </div>
-        <div class="card-face card-face-back">
-          <div class="back-label" id="back-label">Сезонная новинка</div>
-          <div class="back-name" id="back-name">Айс-латте Крем-брюлле</div>
-          <div class="back-desc" id="back-desc">Холодный латте с карамельным сиропом крем-брюлле</div>
-          <div class="back-price" id="back-price">2 290 ₸</div>
+        <div class="c-face c-back">
+          <div class="c-back-tag" id="flip-tag">Сезонная новинка</div>
+          <div class="c-back-name" id="flip-name">Матча-Жасмин</div>
+          <div class="c-back-desc" id="flip-desc">Охлаждённая матча с нежным жасминовым молоком и льдом</div>
+          <div class="c-back-price" id="flip-price">1 490 ₸</div>
         </div>
       </div>
-      <div class="drink-badge" id="drink-badge">Новинка</div>
+      <div class="card-badge" id="flip-badge">Новинка</div>
     </div>
   </div>
 </section>
 
 <!-- SEASONAL CARDS -->
 <div id="section-seasonal-cards" class="section-anchor">
-  <div class="section-eyebrow" id="sec-eyebrow">Сезонное меню</div>
-  <div class="section-title" id="sec-title">Попробуйте прямо сейчас</div>
-  <div class="seasonal-grid" id="seasonal-cards-grid"></div>
+  <div class="sec-header">
+    <span class="sec-label" id="sec-label">Сезон 2025</span>
+    <span class="sec-title" id="sec-title">Попробуй прямо сейчас</span>
+  </div>
+  <div class="seasonal-grid" id="seasonal-grid"></div>
 </div>
 
 <!-- MENU -->
@@ -388,17 +438,40 @@
 <script src="src/data/logo.js"></script>
 
 <script>
-let currentLang = 'ru';
+let lang = 'ru';
 
-const NAV_GROUPS = [
-  { id:'seasonal',  ru:'Сезонное',  kz:'Маусымдық', en:'Seasonal'  },
-  { id:'breakfast', ru:'Завтраки',  kz:'Таңғы ас',  en:'Breakfast', cats:['breakfast','porridge','sweet'] },
-  { id:'food',      ru:'Еда',       kz:'Тағам',      en:'Food',       cats:['salads','bowls','snacks','main','pasta','pizza','soups'] },
-  { id:'coffee',    ru:'Кофе',      kz:'Кофе',       en:'Coffee',     cats:['coffee','filter'] },
-  { id:'drinks',    ru:'Напитки',   kz:'Сусындар',   en:'Drinks',     cats:['signature','tea','lemonade'] },
+// ── SEASONAL ITEMS (user's own seasonal drinks) ──
+const SEASONAL = [
+  {
+    img: 'images/s1-matcha-jasmin.jpg',
+    ru:{name:'Матча-Жасмин', desc:'Охлаждённая матча с жасминовым молоком и льдом', badge:'Хит лета'},
+    kz:{name:'Матча-Жасмин', desc:'Жасмин сүті мен мұзбен салқындатылған матча', badge:'Жаз хиті'},
+    en:{name:'Matcha Jasmine', desc:'Iced matcha with jasmine milk and ice', badge:'Summer hit'},
+    price: 1490,
+  },
+  {
+    img: 'images/s2-summer-shot.jpg',
+    ru:{name:'Summer Shot', desc:'Тропический микс: ананас, малина, освежающий лёд', badge:'Специально'},
+    kz:{name:'Summer Shot', desc:'Тропикалық микс: ананас, таңқурай, салқын мұз', badge:'Арнайы'},
+    en:{name:'Summer Shot', desc:'Tropical mix: pineapple, raspberry, refreshing ice', badge:'Special'},
+    price: 1590,
+  },
+  {
+    img: 'images/s3-irish-frappuccino.jpg',
+    ru:{name:'Irish Frappuccino', desc:'Кофейный фраппе с шоколадом, сливками и мороженым', badge:'Бестселлер'},
+    kz:{name:'Irish Frappuccino', desc:'Шоколад, кілегей және балмұздақпен кофе фраппе', badge:'Бестселлер'},
+    en:{name:'Irish Frappuccino', desc:'Coffee frappe with chocolate, cream and ice cream', badge:'Bestseller'},
+    price: 1890,
+  },
 ];
 
-const SEASONAL_IDS = [55, 43, 72, 73];
+const NAV_GROUPS = [
+  {id:'seasonal',  ru:'Сезонное',  kz:'Маусымдық', en:'Seasonal'},
+  {id:'breakfast', ru:'Завтраки',  kz:'Таңғы ас',  en:'Breakfast', cats:['breakfast','porridge','sweet']},
+  {id:'food',      ru:'Еда',       kz:'Тағам',      en:'Food',      cats:['salads','bowls','snacks','main','pasta','pizza','soups']},
+  {id:'coffee',    ru:'Кофе',      kz:'Кофе',       en:'Coffee',    cats:['coffee','filter']},
+  {id:'drinks',    ru:'Напитки',   kz:'Сусындар',   en:'Drinks',    cats:['signature','tea','lemonade']},
+];
 
 const CAT_EMOJI = {
   breakfast:'🍳',porridge:'🌾',sweet:'🧇',salads:'🥗',
@@ -407,107 +480,84 @@ const CAT_EMOJI = {
   signature:'🍵',tea:'🍃',lemonade:'🍋'
 };
 
-function n(obj,lang){
-  const k='name'+lang[0].toUpperCase()+lang.slice(1);
-  return obj[k]||obj.nameRu||'';
-}
+function n(obj,key){return obj[key]||obj.ru||'';}
 function fmt(p){return p.toLocaleString('ru-RU')+' ₸';}
-function photo(id){return window.PHOTOS&&window.PHOTOS[id]||null;}
+function ph(id){return window.PHOTOS&&window.PHOTOS[id]||null;}
 function findItem(id){
   for(const c of window.MENU){const it=c.items.find(i=>i.id===id);if(it)return it;}
-  return null;
 }
+function nameFor(obj,l){return obj['name'+l[0].toUpperCase()+l.slice(1)]||obj.nameRu||'';}
 
 // Logo
-if(window.LOGO_WHITE){
-  document.getElementById('logo-img').src=LOGO_WHITE;
-}
+if(window.LOGO_WHITE) document.getElementById('logo-img').src=LOGO_WHITE;
 
-// 3D card — fill front photo + back info from first seasonal item
-const heroItem=findItem(SEASONAL_IDS[0]);
-if(heroItem){
-  const ph=photo(heroItem.id);
-  if(ph) document.getElementById('drink-img').src=ph;
-  document.getElementById('back-name').textContent=heroItem.nameRu;
-  document.getElementById('back-desc').textContent=heroItem.descRu||'';
-  document.getElementById('back-price').textContent=fmt(heroItem.price);
-}
-
+// ── HERO ───────────────────────────────────────────
 function renderHero(){
-  const texts={
-    eyebrow:{ru:'Сезонное меню',kz:'Маусымдық мәзір',en:'Seasonal menu'},
-    title:{ru:'Летние<br>новинки',kz:'Жаз<br>жаңалықтары',en:'Summer<br>specials'},
-    desc:{ru:'Свежие вкусы, созданные нашими бариста специально для этого сезона.',
-          kz:'Баристаларымыз осы маусым үшін арнайы жасаған жаңа дәмдер.',
-          en:'Fresh flavors crafted by our baristas for this season.'},
-    badge:{ru:'Новинка',kz:'Жаңалық',en:'New'},
+  const tags  ={ru:'Сезонное меню',kz:'Маусымдық мәзір',en:'Seasonal menu'};
+  const titles={ru:'Летние<br><em>новинки</em>',kz:'Жаз<br><em>жаңалықтары</em>',en:'Summer<br><em>specials</em>'};
+  const subs  ={
+    ru:'Три новых напитка, созданных специально для этого лета. Освежают, удивляют.',
+    kz:'Осы жазға арнайы жасалған үш жаңа сусын. Сергітеді, таң қалдырады.',
+    en:'Three new drinks crafted for this summer. Refreshing, surprising, unforgettable.'
   };
-  document.getElementById('hero-eyebrow').textContent=texts.eyebrow[currentLang];
-  document.getElementById('hero-title').innerHTML=texts.title[currentLang];
-  document.getElementById('hero-desc').textContent=texts.desc[currentLang];
-  document.getElementById('drink-badge').textContent=texts.badge[currentLang];
+  const badges={ru:'Новинка',kz:'Жаңалық',en:'New'};
+  const btags ={ru:'Сезонная новинка',kz:'Маусымдық жаңалық',en:'Seasonal special'};
 
-  const hi=document.getElementById('hero-items');
-  hi.innerHTML='';
-  SEASONAL_IDS.slice(0,2).forEach(sid=>{
-    const item=findItem(sid);if(!item)return;
-    const ph=photo(sid);
-    const descKey='desc'+currentLang[0].toUpperCase()+currentLang.slice(1);
-    hi.innerHTML+=`<div class="hero-item">
-      ${ph?`<img class="hero-item-img" src="${ph}" alt="">`:
-           `<div class="hero-item-img" style="display:flex;align-items:center;justify-content:center;font-size:22px">☕</div>`}
+  document.getElementById('hero-tag').textContent=tags[lang];
+  document.getElementById('hero-title').innerHTML=titles[lang];
+  document.getElementById('hero-sub').textContent=subs[lang];
+  document.getElementById('flip-badge').textContent=badges[lang];
+  document.getElementById('flip-tag').textContent=btags[lang];
+
+  const s=SEASONAL[0];
+  document.getElementById('flip-name').textContent=s[lang].name;
+  document.getElementById('flip-desc').textContent=s[lang].desc;
+  document.getElementById('flip-price').textContent=fmt(s.price);
+
+  const pills=document.getElementById('hero-pills');
+  pills.innerHTML='';
+  SEASONAL.forEach(s=>{
+    pills.innerHTML+=`<div class="hero-pill">
+      <img class="hero-pill-img" src="${s.img}" alt="" onerror="this.style.display='none'">
       <div>
-        <div class="hero-item-name">${n(item,currentLang)}</div>
-        <div class="hero-item-price">${fmt(item.price)}</div>
+        <div class="hero-pill-name">${s[lang].name}</div>
+        <div class="hero-pill-price">${fmt(s.price)}</div>
       </div>
     </div>`;
   });
 }
 
+// ── SEASONAL CARDS ─────────────────────────────────
 function renderSeasonalCards(){
-  const labels={
-    ru:['Хит сезона','Специально','Бестселлер','Новинка'],
-    kz:['Маусым хиті','Арнайы','Бестселлер','Жаңалық'],
-    en:['Season hit','Special','Bestseller','New']
-  };
-  const secEyebrow={ru:'Сезонное меню',kz:'Маусымдық мәзір',en:'Seasonal menu'};
-  const secTitle={ru:'Попробуйте прямо сейчас',kz:'Қазір байқап көріңіз',en:'Try right now'};
-  document.getElementById('sec-eyebrow').textContent=secEyebrow[currentLang];
-  document.getElementById('sec-title').textContent=secTitle[currentLang];
+  const secLabels={ru:'Сезон 2025',kz:'2025 Маусымы',en:'Season 2025'};
+  const secTitles={ru:'Попробуй прямо сейчас',kz:'Қазір байқап көр',en:'Try right now'};
+  document.getElementById('sec-label').textContent=secLabels[lang];
+  document.getElementById('sec-title').textContent=secTitles[lang];
 
-  const g=document.getElementById('seasonal-cards-grid');
-  g.innerHTML='';
-  SEASONAL_IDS.forEach((sid,i)=>{
-    const item=findItem(sid);if(!item)return;
-    const ph=photo(sid);
-    const descKey='desc'+currentLang[0].toUpperCase()+currentLang.slice(1);
-    const desc=item[descKey]||item.descRu||'';
-    g.innerHTML+=`<div class="seasonal-card">
-      <span class="seasonal-badge">${labels[currentLang][i]||labels.ru[i]}</span>
-      ${ph?`<img class="seasonal-img" src="${ph}" alt="${n(item,currentLang)}" loading="lazy">`:
-          `<div class="seasonal-img" style="display:flex;align-items:center;justify-content:center;font-size:48px;background:var(--blue-tint)">☕</div>`}
-      <div class="seasonal-body">
-        <div class="seasonal-name">${n(item,currentLang)}</div>
-        ${desc?`<div class="seasonal-desc">${desc}</div>`:''}
-        <div class="seasonal-price">${fmt(item.price)}</div>
+  document.getElementById('seasonal-grid').innerHTML=SEASONAL.map(s=>`
+    <div class="s-card">
+      <div class="s-card-img-wrap">
+        <img src="${s.img}" alt="${s[lang].name}" loading="lazy" onerror="this.parentElement.style.background='var(--navy-3)'">
+        <span class="s-badge">${s[lang].badge}</span>
       </div>
-    </div>`;
-  });
+      <div class="s-body">
+        <div class="s-name">${s[lang].name}</div>
+        <div class="s-desc">${s[lang].desc}</div>
+        <div class="s-price">${fmt(s.price)}</div>
+      </div>
+    </div>`).join('');
 }
 
+// ── NAV ────────────────────────────────────────────
 function renderNav(){
   const tabs=document.getElementById('nav-tabs');
   tabs.innerHTML='';
   NAV_GROUPS.forEach(g=>{
-    const btn=document.createElement('button');
-    btn.className='nav-tab';
-    btn.dataset.group=g.id;
-    btn.textContent=g[currentLang]||g.ru;
-    btn.addEventListener('click',()=>{
-      const el=document.getElementById('section-'+g.id);
-      if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
-    });
-    tabs.appendChild(btn);
+    const b=document.createElement('button');
+    b.className='nav-tab';b.dataset.group=g.id;
+    b.textContent=g[lang]||g.ru;
+    b.onclick=()=>document.getElementById('section-'+g.id)?.scrollIntoView({behavior:'smooth',block:'start'});
+    tabs.appendChild(b);
   });
   updateActiveTab();
 }
@@ -517,63 +567,57 @@ function updateActiveTab(){
   let active='seasonal';
   NAV_GROUPS.forEach(g=>{
     const el=document.getElementById('section-'+g.id);
-    if(el&&el.getBoundingClientRect().top<=navH+60)active=g.id;
+    if(el&&el.getBoundingClientRect().top<=navH+80)active=g.id;
   });
-  document.querySelectorAll('.nav-tab').forEach(t=>{
-    t.classList.toggle('active',t.dataset.group===active);
-  });
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.toggle('active',t.dataset.group===active));
 }
 
+// ── MENU ───────────────────────────────────────────
 function renderMenu(){
-  const c=document.getElementById('menu-content');
-  c.innerHTML='';
+  const mc=document.getElementById('menu-content');
+  mc.innerHTML='';
   NAV_GROUPS.slice(1).forEach((group,gi)=>{
     const groupEl=document.createElement('div');
     groupEl.id='section-'+group.id;
     groupEl.className='section-anchor';
-    if(gi>0){const d=document.createElement('div');d.className='cat-divider';groupEl.appendChild(d);}
+    if(gi>0){const s=document.createElement('div');s.className='group-sep';groupEl.appendChild(s);}
 
-    const cats=group.cats||[group.id];
-    cats.forEach((catId,ci)=>{
+    (group.cats||[group.id]).forEach((catId,ci,arr)=>{
       const cat=window.MENU.find(c=>c.id===catId);
       if(!cat||!cat.items.length)return;
-      const sec=document.createElement('div');
-      sec.className='cat-section';
-      sec.innerHTML=`
-        <div class="cat-header">
-          <span class="cat-emoji">${CAT_EMOJI[catId]||'•'}</span>
-          <span class="cat-title" data-ru="${cat.nameRu}" data-kz="${cat.nameKz||cat.nameRu}" data-en="${cat.nameEn||cat.nameRu}">${n(cat,currentLang)}</span>
-          <span class="cat-count">${cat.items.length} поз.</span>
+      const block=document.createElement('div');
+      block.className='cat-block';
+      block.innerHTML=`
+        <div class="cat-hd">
+          <span class="cat-icon">${CAT_EMOJI[catId]||'•'}</span>
+          <span class="cat-name-el" data-ru="${cat.nameRu}" data-kz="${cat.nameKz||cat.nameRu}" data-en="${cat.nameEn||cat.nameRu}">${nameFor(cat,lang)}</span>
+          <span class="cat-ct">${cat.items.length}</span>
         </div>
         <div class="card-grid">${cat.items.map(item=>{
-          const ph=photo(item.id);
-          const descKey='desc'+currentLang[0].toUpperCase()+currentLang.slice(1);
-          const desc=item[descKey]||item.descRu||'';
-          return `<div class="card">
-            ${ph?`<img class="card-img" src="${ph}" alt="${n(item,currentLang)}" loading="lazy">`:
-                 `<div class="card-img-placeholder">${CAT_EMOJI[catId]||'🍽️'}</div>`}
-            <div class="card-body">
-              <div class="card-name" data-ru="${item.nameRu}" data-kz="${item.nameKz||item.nameRu}" data-en="${item.nameEn||item.nameRu}">${n(item,currentLang)}</div>
-              ${desc?`<div class="card-desc" data-ru="${item.descRu||''}" data-kz="${item.descKz||''}" data-en="${item.descEn||''}">${desc}</div>`:''}
-              <div class="card-price">${fmt(item.price)}</div>
+          const p=ph(item.id);
+          const dk='desc'+lang[0].toUpperCase()+lang.slice(1);
+          const desc=item[dk]||item.descRu||'';
+          return `<div class="m-card">
+            ${p?`<img class="m-card-img" src="${p}" alt="${nameFor(item,lang)}" loading="lazy">`:
+               `<div class="m-card-ph">${CAT_EMOJI[catId]||'🍽️'}</div>`}
+            <div class="m-card-body">
+              <div class="m-card-name" data-ru="${item.nameRu}" data-kz="${item.nameKz||item.nameRu}" data-en="${item.nameEn||item.nameRu}">${nameFor(item,lang)}</div>
+              ${desc?`<div class="m-card-desc" data-ru="${item.descRu||''}" data-kz="${item.descKz||''}" data-en="${item.descEn||''}">${desc}</div>`:''}
+              <div class="m-card-price">${fmt(item.price)}</div>
             </div>
           </div>`;
         }).join('')}</div>`;
-      groupEl.appendChild(sec);
-      if(ci<cats.length-1){const d=document.createElement('div');d.className='cat-divider';groupEl.appendChild(d);}
+      groupEl.appendChild(block);
     });
-    c.appendChild(groupEl);
+    mc.appendChild(groupEl);
   });
 }
 
-function setLang(lang){
-  currentLang=lang;
-  document.querySelectorAll('.lang-btn').forEach(b=>{
-    b.classList.toggle('active',b.textContent===({ru:'РУС',kz:'ҚАЗ',en:'ENG'}[lang]));
-  });
-  document.querySelectorAll('[data-ru]').forEach(el=>{
-    el.textContent=el.dataset[lang]||el.dataset.ru;
-  });
+// ── LANG ───────────────────────────────────────────
+function setLang(l){
+  lang=l;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===({ru:'РУС',kz:'ҚАЗ',en:'ENG'}[l])));
+  document.querySelectorAll('[data-ru]').forEach(el=>el.textContent=el.dataset[l]||el.dataset.ru);
   renderHero();renderSeasonalCards();renderNav();
 }
 
