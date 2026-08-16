@@ -88,6 +88,7 @@ window.MENU = [
   "wide": false,
   "items": [
    {"id": 19, "nameRu": "Шницель", "nameKz": "Шницель", "nameEn": "Schnitzel", "descRu": "Классический шницель", "descKz": "Классикалық шницель", "descEn": "Classic schnitzel", "price": 3290, "nutri": [610,42,30,38]},
+   {"id": 80, "nameRu": "Яннем Чикен", "nameKz": "Яннем Чикен", "nameEn": "Yannem Chicken", "descRu": "Острая корейская курица с рисом", "descKz": "Күріш қосылған өткір кәріс тауық", "descEn": "Spicy Korean chicken with rice", "price": 3290, "isNew": true, "nutri": [610,42,30,38]},
    {"id": 21, "nameRu": "Курица в сливочном соусе", "nameKz": "Кілегейлі соусындағы тауық", "nameEn": "Chicken in Cream Sauce", "descRu": "NEW — с картофелем", "descKz": "NEW", "descEn": "NEW — with potatoes", "price": 3190, "isNew": true, "nutri": [610,42,30,38]},
    {"id": 22, "nameRu": "Судак с ароматным рисом", "nameKz": "Хош иісті күріш қосылған судак", "nameEn": "Pike Perch with Aromatic Rice", "descRu": "Нежное филе", "descKz": "Жұмсақ судак", "descEn": "Tender fillet", "price": 3690, "nutri": [610,42,30,38]},
    {"id": 23, "nameRu": "Имбирный цыплёнок", "nameKz": "Зімбір қосылған балапан", "nameEn": "Ginger Chicken", "descRu": "В имбирном маринаде", "descKz": "Зімбір маринадында", "descEn": "In ginger marinade", "price": 3490, "nutri": [610,42,30,38]},
