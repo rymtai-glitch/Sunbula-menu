@@ -9,11 +9,11 @@ window.MENU = [
   "nameEn": "Breakfast",
   "wide": false,
   "items": [
-   {"id": 1, "nameRu": "Английский завтрак", "nameKz": "Ағылшын таңғы асы", "nameEn": "English Breakfast", "descRu": "Яйца, бекон, тосты, грибы", "descKz": "Жұмыртқа, бэкон, тост", "descEn": "Eggs, sausages, beans, mushrooms", "price": 3490, "nutri": [520,28,34,30]},
-   {"id": 2, "nameRu": "Белковый скрэмбл с семгой", "nameKz": "Ақсерке қосылған скрэмбл", "nameEn": "Protein Scramble with Salmon", "descRu": "Яйца скрэмбл с лососем", "descKz": "Ақсерке мен скрэмбл", "descEn": "Egg scramble with salmon", "price": 3590, "nutri": [520,28,34,30]},
-   {"id": 3, "nameRu": "Вафли с семгой и яйцом пашот", "nameKz": "Ақсерке мен пашот жұмыртқасы", "nameEn": "Waffles with Salmon & Poached Egg", "descRu": "Хрустящие вафли с лососем", "descKz": "Қытырлақ вафли", "descEn": "Crispy waffles with salmon", "price": 3790, "nutri": [520,28,34,30]},
-   {"id": 4, "nameRu": "Сытный завтрак", "nameKz": "Тойымды таңғы ас", "nameEn": "Hearty Breakfast", "descRu": "Сытный завтрак для энергии", "descKz": "Қуаттандыратын таңғы ас", "descEn": "Energizing breakfast", "price": 3590, "nutri": [520,28,34,30]},
-   {"id": 5, "nameRu": "Шакшука", "nameKz": "Шакшука", "nameEn": "Shakshuka", "descRu": "Яйца в томатном соусе", "descKz": "Томат соусындағы жұмыртқа", "descEn": "Eggs in tomato sauce", "price": 2390, "nutri": [520,28,34,30]}
+   {"id": 1, "nameRu": "Английский завтрак", "nameKz": "Ағылшын таңғы асы", "nameEn": "English Breakfast", "descRu": "Яйца, бекон, тосты, грибы", "descKz": "Жұмыртқа, бэкон, тост", "descEn": "Eggs, sausages, beans, mushrooms", "price": 3790, "nutri": [520,28,34,30]},
+   {"id": 2, "nameRu": "Белковый скрэмбл с семгой", "nameKz": "Ақсерке қосылған скрэмбл", "nameEn": "Protein Scramble with Salmon", "descRu": "Яйца скрэмбл с лососем", "descKz": "Ақсерке мен скрэмбл", "descEn": "Egg scramble with salmon", "price": 3890, "nutri": [520,28,34,30]},
+   {"id": 3, "nameRu": "Вафли с семгой и яйцом пашот", "nameKz": "Ақсерке мен пашот жұмыртқасы", "nameEn": "Waffles with Salmon & Poached Egg", "descRu": "Хрустящие вафли с лососем", "descKz": "Қытырлақ вафли", "descEn": "Crispy waffles with salmon", "price": 4190, "nutri": [520,28,34,30]},
+   {"id": 4, "nameRu": "Сытный завтрак", "nameKz": "Тойымды таңғы ас", "nameEn": "Hearty Breakfast", "descRu": "Сытный завтрак для энергии", "descKz": "Қуаттандыратын таңғы ас", "descEn": "Energizing breakfast", "price": 3890, "nutri": [520,28,34,30]},
+   {"id": 5, "nameRu": "Шакшука", "nameKz": "Шакшука", "nameEn": "Shakshuka", "descRu": "Яйца в томатном соусе", "descKz": "Томат соусындағы жұмыртқа", "descEn": "Eggs in tomato sauce", "price": 2590, "nutri": [520,28,34,30]}
   ],
   "tone": "sunrise"
  },
@@ -24,8 +24,8 @@ window.MENU = [
   "nameEn": "Porridges",
   "wide": false,
   "items": [
-   {"id": 6, "nameRu": "Овсяная каша с вишневым конфи", "nameKz": "Шие конфиі қосылған сұлы ботқасы", "nameEn": "Oatmeal with Cherry Confit", "descRu": "С хрустящими орешками", "descKz": "Қытырлақ жаңғақтармен", "descEn": "With crunchy nuts", "price": 1690, "nutri": [310,9,52,8]},
-   {"id": 7, "nameRu": "Рисовая каша с ягодным конфи", "nameKz": "Жидек конфиі қосылған күріш ботқасы", "nameEn": "Rice Porridge with Berry Confit", "descRu": "С карамелизированным миндалем", "descKz": "Карамельденген бадаммен", "descEn": "With caramelized almonds", "price": 1690, "nutri": [310,9,52,8]}
+   {"id": 6, "nameRu": "Овсяная каша с вишневым конфи", "nameKz": "Шие конфиі қосылған сұлы ботқасы", "nameEn": "Oatmeal with Cherry Confit", "descRu": "С хрустящими орешками", "descKz": "Қытырлақ жаңғақтармен", "descEn": "With crunchy nuts", "price": 1990, "nutri": [310,9,52,8]},
+   {"id": 7, "nameRu": "Рисовая каша с ягодным конфи", "nameKz": "Жидек конфиі қосылған күріш ботқасы", "nameEn": "Rice Porridge with Berry Confit", "descRu": "С карамелизированным миндалем", "descKz": "Карамельденген бадаммен", "descEn": "With caramelized almonds", "price": 1990, "nutri": [310,9,52,8]}
   ],
   "tone": "oat"
  },
@@ -36,9 +36,9 @@ window.MENU = [
   "nameEn": "Sweet Breakfast",
   "wide": false,
   "items": [
-   {"id": 8, "nameRu": "Вафли с мороженым и ягодным конфи", "nameKz": "Балмұздақ пен жидек конфиі қосылған вафли", "nameEn": "Waffles with Ice Cream & Berry Confit", "descRu": "С шариком мороженого", "descKz": "Балмұздақпен", "descEn": "With a scoop of ice cream", "price": 2490, "nutri": [440,11,58,16]},
-   {"id": 9, "nameRu": "Панкейки с лесными ягодами", "nameKz": "Орман жидектері қосылған панкейктер", "nameEn": "Pancakes with Wild Berries", "descRu": "Пышные панкейки с ягодами", "descKz": "Жидектермен панкейктер", "descEn": "Fluffy pancakes with berries", "price": 2490, "nutri": [440,11,58,16]},
-   {"id": 10, "nameRu": "Сырники со сгущенным молоком", "nameKz": "Қоюытылған сүтпен сырниктер", "nameEn": "Cottage Cheese Pancakes", "descRu": "Или с кокосовым молоком", "descKz": "Немесе кокос сүтімен", "descEn": "With condensed or coconut milk", "price": 3290, "nutri": [440,11,58,16]}
+   {"id": 8, "nameRu": "Вафли с мороженым и ягодным конфи", "nameKz": "Балмұздақ пен жидек конфиі қосылған вафли", "nameEn": "Waffles with Ice Cream & Berry Confit", "descRu": "С шариком мороженого", "descKz": "Балмұздақпен", "descEn": "With a scoop of ice cream", "price": 2990, "nutri": [440,11,58,16]},
+   {"id": 9, "nameRu": "Панкейки с лесными ягодами", "nameKz": "Орман жидектері қосылған панкейктер", "nameEn": "Pancakes with Wild Berries", "descRu": "Пышные панкейки с ягодами", "descKz": "Жидектермен панкейктер", "descEn": "Fluffy pancakes with berries", "price": 2990, "nutri": [440,11,58,16]},
+   {"id": 10, "nameRu": "Сырники со сгущенным молоком", "nameKz": "Қоюытылған сүтпен сырниктер", "nameEn": "Cottage Cheese Pancakes", "descRu": "Или с кокосовым молоком", "descKz": "Немесе кокос сүтімен", "descEn": "With condensed or coconut milk", "price": 3490, "nutri": [440,11,58,16]}
   ],
   "tone": "berry"
  },
@@ -49,9 +49,9 @@ window.MENU = [
   "nameEn": "Salads",
   "wide": false,
   "items": [
-   {"id": 11, "nameRu": "Цезарь с цыпленком", "nameKz": "Тауық еті қосылған Цезарь", "nameEn": "Chicken Caesar", "descRu": "Классический цезарь", "descKz": "Классикалық цезарь", "descEn": "Classic caesar", "price": 2890, "nutri": [290,22,14,18]},
-   {"id": 12, "nameRu": "Свежий салат", "nameKz": "Балғын салат", "nameEn": "Fresh Salad", "descRu": "Лёгкий овощной салат", "descKz": "Жеңіл көкөніс салаты", "descEn": "Light vegetable salad", "price": 1590, "nutri": [290,22,14,18]},
-   {"id": 13, "nameRu": "Зелёный салат с семгой и авокадо", "nameKz": "Ақсерке және авокадо қосылған жасыл салат", "nameEn": "Green Salad with Salmon & Avocado", "descRu": "Авокадо, семга, зелень", "descKz": "Авокадо, ақсерке", "descEn": "Avocado, salmon, greens", "price": 3590, "nutri": [290,22,14,18]}
+   {"id": 11, "nameRu": "Цезарь с цыпленком", "nameKz": "Тауық еті қосылған Цезарь", "nameEn": "Chicken Caesar", "descRu": "Классический цезарь", "descKz": "Классикалық цезарь", "descEn": "Classic caesar", "price": 2990, "nutri": [290,22,14,18]},
+   {"id": 12, "nameRu": "Свежий салат", "nameKz": "Балғын салат", "nameEn": "Fresh Salad", "descRu": "Лёгкий овощной салат", "descKz": "Жеңіл көкөніс салаты", "descEn": "Light vegetable salad", "price": 1690, "nutri": [290,22,14,18]},
+   {"id": 13, "nameRu": "Зелёный салат с семгой и авокадо", "nameKz": "Ақсерке және авокадо қосылған жасыл салат", "nameEn": "Green Salad with Salmon & Avocado", "descRu": "Авокадо, семга, зелень", "descKz": "Авокадо, ақсерке", "descEn": "Avocado, salmon, greens", "price": 3690, "nutri": [290,22,14,18]}
   ],
   "tone": "green"
  },
@@ -62,8 +62,8 @@ window.MENU = [
   "nameEn": "Bowls",
   "wide": false,
   "items": [
-   {"id": 14, "nameRu": "Боул с запеченной грудкой", "nameKz": "Қуырылған тауық еті қосылған боул", "nameEn": "Roasted Chicken Breast Bowl", "descRu": "С вялеными томатами", "descKz": "Кептірілген қызанақ", "descEn": "With sun-dried tomatoes", "price": 2790, "nutri": [290,22,14,18]},
-   {"id": 15, "nameRu": "Боул со стейком семги и брокколи", "nameKz": "Ақсерке стейкі және брокколи қосылған боул", "nameEn": "Salmon Steak & Broccoli Bowl", "descRu": "Питательный боул с лососем", "descKz": "Ақсеркелі боул", "descEn": "Nutritious salmon bowl", "price": 4390, "nutri": [290,22,14,18]}
+   {"id": 14, "nameRu": "Боул с запеченной грудкой", "nameKz": "Қуырылған тауық еті қосылған боул", "nameEn": "Roasted Chicken Breast Bowl", "descRu": "С вялеными томатами", "descKz": "Кептірілген қызанақ", "descEn": "With sun-dried tomatoes", "price": 2990, "nutri": [290,22,14,18]},
+   {"id": 15, "nameRu": "Боул со стейком семги и брокколи", "nameKz": "Ақсерке стейкі және брокколи қосылған боул", "nameEn": "Salmon Steak & Broccoli Bowl", "descRu": "Питательный боул с лососем", "descKz": "Ақсеркелі боул", "descEn": "Nutritious salmon bowl", "price": 4690, "nutri": [290,22,14,18]}
   ],
   "tone": "green"
  },
@@ -75,8 +75,8 @@ window.MENU = [
   "wide": true,
   "items": [
    {"id": 16, "nameRu": "Сэндвич с индейкой", "nameKz": "Күркетауық қосылған сэндвич", "nameEn": "Turkey Sandwich", "descRu": "Горячий тост с индейкой", "descKz": "Ыстық тост", "descEn": "Hot toast with turkey", "price": 2990, "nutri": [480,26,38,24]},
-   {"id": 17, "nameRu": "Сэндвич с семгой", "nameKz": "Ақсерке қосылған сэндвич", "nameEn": "Salmon Sandwich", "descRu": "Мягкий хлеб с лососем", "descKz": "Жұмсақ нанмен", "descEn": "Soft bread with salmon", "price": 3290, "nutri": [480,26,38,24]},
-   {"id": 18, "nameRu": "Тост с индейкой", "nameKz": "Күркетауық қосылған тост", "nameEn": "Turkey Toast", "descRu": "Хрустящий тост", "descKz": "Қытырлақ тост", "descEn": "Crispy toast", "price": 2290, "nutri": [480,26,38,24]}
+   {"id": 17, "nameRu": "Сэндвич с семгой", "nameKz": "Ақсерке қосылған сэндвич", "nameEn": "Salmon Sandwich", "descRu": "Мягкий хлеб с лососем", "descKz": "Жұмсақ нанмен", "descEn": "Soft bread with salmon", "price": 3390, "nutri": [480,26,38,24]},
+   {"id": 18, "nameRu": "Тост с индейкой", "nameKz": "Күркетауық қосылған тост", "nameEn": "Turkey Toast", "descRu": "Хрустящий тост", "descKz": "Қытырлақ тост", "descEn": "Crispy toast", "price": 2690, "nutri": [480,26,38,24]}
   ],
   "tone": "toast"
  },
@@ -87,13 +87,13 @@ window.MENU = [
   "nameEn": "Hot Dishes",
   "wide": false,
   "items": [
-   {"id": 19, "nameRu": "Шницель", "nameKz": "Шницель", "nameEn": "Schnitzel", "descRu": "Классический шницель", "descKz": "Классикалық шницель", "descEn": "Classic schnitzel", "price": 3290, "nutri": [610,42,30,38]},
-   {"id": 80, "nameRu": "Яннем Чикен", "nameKz": "Яннем Чикен", "nameEn": "Yannem Chicken", "descRu": "Курица в авторском кисло-сладком соусе с гарниром рис", "descKz": "Гарнир күріш қосылған авторлық қышқыл-тәтті соустағы тауық", "descEn": "Chicken in signature sweet & sour sauce with rice", "price": 3290, "isNew": true, "nutri": [610,42,30,38]},
-   {"id": 21, "nameRu": "Курица в сливочном соусе", "nameKz": "Кілегейлі соусындағы тауық", "nameEn": "Chicken in Cream Sauce", "descRu": "NEW — с картофелем", "descKz": "NEW", "descEn": "NEW — with potatoes", "price": 3190, "isNew": true, "nutri": [610,42,30,38]},
-   {"id": 22, "nameRu": "Судак с ароматным рисом", "nameKz": "Хош иісті күріш қосылған судак", "nameEn": "Pike Perch with Aromatic Rice", "descRu": "Нежное филе", "descKz": "Жұмсақ судак", "descEn": "Tender fillet", "price": 3690, "nutri": [610,42,30,38]},
-   {"id": 23, "nameRu": "Имбирный цыплёнок", "nameKz": "Зімбір қосылған балапан", "nameEn": "Ginger Chicken", "descRu": "В имбирном маринаде", "descKz": "Зімбір маринадында", "descEn": "In ginger marinade", "price": 3490, "nutri": [610,42,30,38]},
-   {"id": 24, "nameRu": "Томлёное мясо с картофелем", "nameKz": "Зауытша бүктырылған ет", "nameEn": "Slow-Cooked Meat with Potatoes", "descRu": "NEW — по-деревенски", "descKz": "NEW", "descEn": "NEW — rustic style", "price": 3490, "isNew": true, "nutri": [610,42,30,38]},
-   {"id": 25, "nameRu": "Куриные котлеты с пюре", "nameKz": "Картоп езбесімен тауық котлеттері", "nameEn": "Chicken Cutlets with Mash", "descRu": "С картофельным пюре", "descKz": "Картоп езбесімен", "descEn": "With mashed potatoes", "price": 4290, "nutri": [610,42,30,38]}
+   {"id": 19, "nameRu": "Шницель", "nameKz": "Шницель", "nameEn": "Schnitzel", "descRu": "Классический шницель", "descKz": "Классикалық шницель", "descEn": "Classic schnitzel", "price": 3790, "nutri": [610,42,30,38]},
+   {"id": 80, "nameRu": "Яннем Чикен", "nameKz": "Яннем Чикен", "nameEn": "Yannem Chicken", "descRu": "Курица в авторском кисло-сладком соусе с гарниром рис", "descKz": "Гарнир күріш қосылған авторлық қышқыл-тәтті соустағы тауық", "descEn": "Chicken in signature sweet & sour sauce with rice", "price": 3590, "isNew": true, "nutri": [610,42,30,38]},
+   {"id": 21, "nameRu": "Курица в сливочном соусе", "nameKz": "Кілегейлі соусындағы тауық", "nameEn": "Chicken in Cream Sauce", "descRu": "NEW — с картофелем", "descKz": "NEW", "descEn": "NEW — with potatoes", "price": 3490, "isNew": true, "nutri": [610,42,30,38]},
+   {"id": 22, "nameRu": "Судак с ароматным рисом", "nameKz": "Хош иісті күріш қосылған судак", "nameEn": "Pike Perch with Aromatic Rice", "descRu": "Нежное филе", "descKz": "Жұмсақ судак", "descEn": "Tender fillet", "price": 3990, "nutri": [610,42,30,38]},
+   {"id": 23, "nameRu": "Имбирный цыплёнок", "nameKz": "Зімбір қосылған балапан", "nameEn": "Ginger Chicken", "descRu": "В имбирном маринаде", "descKz": "Зімбір маринадында", "descEn": "In ginger marinade", "price": 3790, "nutri": [610,42,30,38]},
+   {"id": 24, "nameRu": "Томлёное мясо с картофелем", "nameKz": "Зауытша бүктырылған ет", "nameEn": "Slow-Cooked Meat with Potatoes", "descRu": "NEW — по-деревенски", "descKz": "NEW", "descEn": "NEW — rustic style", "price": 3790, "isNew": true, "nutri": [610,42,30,38]},
+   {"id": 25, "nameRu": "Куриные котлеты с пюре", "nameKz": "Картоп езбесімен тауық котлеттері", "nameEn": "Chicken Cutlets with Mash", "descRu": "С картофельным пюре", "descKz": "Картоп езбесімен", "descEn": "With mashed potatoes", "price": 4390, "nutri": [610,42,30,38]}
   ],
   "tone": "roast"
  },
@@ -104,8 +104,8 @@ window.MENU = [
   "nameEn": "Pasta",
   "wide": false,
   "items": [
-   {"id": 26, "nameRu": "Арабьята", "nameKz": "Арабьята", "nameEn": "Arrabbiata", "descRu": "В остром томатном соусе", "descKz": "Ащы томат соусы", "descEn": "In spicy tomato sauce", "price": 2690, "nutri": [560,20,62,24]},
-   {"id": 27, "nameRu": "Паста феттучини с курицей и грибами", "nameKz": "Тауық еті мен саңырауқұлақ феттучини", "nameEn": "Fettuccine with Chicken & Mushrooms", "descRu": "Сливочная паста", "descKz": "Кілегейлі паста", "descEn": "Creamy pasta", "price": 3190, "nutri": [560,20,62,24]}
+   {"id": 26, "nameRu": "Арабьята", "nameKz": "Арабьята", "nameEn": "Arrabbiata", "descRu": "В остром томатном соусе", "descKz": "Ащы томат соусы", "descEn": "In spicy tomato sauce", "price": 3190, "nutri": [560,20,62,24]},
+   {"id": 27, "nameRu": "Паста феттучини с курицей и грибами", "nameKz": "Тауық еті мен саңырауқұлақ феттучини", "nameEn": "Fettuccine with Chicken & Mushrooms", "descRu": "Сливочная паста", "descKz": "Кілегейлі паста", "descEn": "Creamy pasta", "price": 3490, "nutri": [560,20,62,24]}
   ],
   "tone": "cream"
  },
@@ -116,11 +116,10 @@ window.MENU = [
   "nameEn": "Pizzas",
   "wide": false,
   "items": [
-   {"id": 76, "nameRu": "Сырная пицца", "nameKz": "Ірімшікті пицца", "nameEn": "Cheese Pizza", "descRu": "NEW", "descKz": "NEW", "descEn": "NEW", "price": 2290, "isNew": true, "nutri": [610,28,26,58]},
-   {"id": 28, "nameRu": "Моно Пепперони", "nameKz": "Моно Пепперони", "nameEn": "Mono Pepperoni", "descRu": "NEW", "descKz": "NEW", "descEn": "NEW", "price": 2690, "isNew": true, "nutri": [610,42,30,38]},
-   {"id": 29, "nameRu": "Моно грибная с трюфелем", "nameKz": "Моно саңырауқұлақты трюфель майымен", "nameEn": "Mono Mushroom with Truffle", "descRu": "NEW", "descKz": "NEW", "descEn": "NEW", "price": 2390, "isNew": true, "nutri": [610,42,30,38]},
-   {"id": 30, "nameRu": "Моно лосось Крем Чиз", "nameKz": "Моно лосось Крем Ірімшігімен", "nameEn": "Mono Salmon Cream Cheese", "descRu": "NEW", "descKz": "NEW", "descEn": "NEW", "price": 3090, "isNew": true, "nutri": [610,42,30,38]},
-   {"id": 31, "nameRu": "Моно Терияки Чикен", "nameKz": "Моно Терияки Тауық еті", "nameEn": "Mono Teriyaki Chicken", "descRu": "NEW", "descKz": "NEW", "descEn": "NEW", "price": 2890, "isNew": true, "nutri": [610,42,30,38]}
+   {"id": 76, "nameRu": "Сырная пицца", "nameKz": "Ірімшікті пицца", "nameEn": "Cheese Pizza", "descRu": "NEW", "descKz": "NEW", "descEn": "NEW", "price": 2490, "isNew": true, "nutri": [610,28,26,58]},
+   {"id": 28, "nameRu": "Моно Пепперони", "nameKz": "Моно Пепперони", "nameEn": "Mono Pepperoni", "descRu": "NEW", "descKz": "NEW", "descEn": "NEW", "price": 2890, "isNew": true, "nutri": [610,42,30,38]},
+   {"id": 29, "nameRu": "Моно грибная с трюфелем", "nameKz": "Моно саңырауқұлақты трюфель майымен", "nameEn": "Mono Mushroom with Truffle", "descRu": "NEW", "descKz": "NEW", "descEn": "NEW", "price": 2590, "isNew": true, "nutri": [610,42,30,38]},
+   {"id": 31, "nameRu": "Моно Терияки Чикен", "nameKz": "Моно Терияки Тауық еті", "nameEn": "Mono Teriyaki Chicken", "descRu": "NEW", "descKz": "NEW", "descEn": "NEW", "price": 3190, "isNew": true, "nutri": [610,42,30,38]}
   ],
   "tone": "roast"
  },
@@ -132,8 +131,8 @@ window.MENU = [
   "wide": true,
   "items": [
    {"id": 32, "nameRu": "Рамен с индейкой", "nameKz": "Күркетауық қосылған рамен", "nameEn": "Turkey Ramen", "descRu": "Насыщенный бульон", "descKz": "Қаныққан сорпа", "descEn": "Rich broth", "price": 3990, "nutri": [280,18,20,14]},
-   {"id": 33, "nameRu": "Куриная лапша", "nameKz": "Тауық кеспе сорпасы", "nameEn": "Chicken Noodle Soup", "descRu": "Домашняя лапша", "descKz": "Үй кеспесі", "descEn": "Homemade noodles", "price": 1790, "nutri": [280,18,20,14]},
-   {"id": 34, "nameRu": "Чечевичный крем-суп", "nameKz": "Жасымық крем-сорпасы", "nameEn": "Lentil Cream Soup", "descRu": "С кокосом и лимоном", "descKz": "Кокос пен лимонмен", "descEn": "With coconut & lemon", "price": 2190, "nutri": [280,18,20,14]},
+   {"id": 33, "nameRu": "Куриная лапша", "nameKz": "Тауық кеспе сорпасы", "nameEn": "Chicken Noodle Soup", "descRu": "Домашняя лапша", "descKz": "Үй кеспесі", "descEn": "Homemade noodles", "price": 2190, "nutri": [280,18,20,14]},
+   {"id": 34, "nameRu": "Чечевичный крем-суп", "nameKz": "Жасымық крем-сорпасы", "nameEn": "Lentil Cream Soup", "descRu": "С кокосом и лимоном", "descKz": "Кокос пен лимонмен", "descEn": "With coconut & lemon", "price": 2490, "nutri": [280,18,20,14]},
    {"id": 36, "nameRu": "Грибной крем-суп", "nameKz": "Саңырауқұлақ крем-сорпасы", "nameEn": "Mushroom Cream Soup", "descRu": "NEW — нежный", "descKz": "NEW", "descEn": "NEW — velvety", "price": 2490, "isNew": true, "nutri": [280,18,20,14]}
   ],
   "tone": "broth"
@@ -145,17 +144,17 @@ window.MENU = [
   "nameEn": "Coffee",
   "wide": true,
   "items": [
-   {"id": 37, "nameRu": "Эспрессо", "nameKz": "Эспрессо", "nameEn": "Espresso", "descRu": "30 мл", "descKz": "30 мл", "descEn": "30 ml", "price": 990, "nutri": [90,4,9,4]},
-   {"id": 38, "nameRu": "Американо", "nameKz": "Американо", "nameEn": "Americano", "descRu": "Горячий / Холодный", "descKz": "Ыстық / Суық", "descEn": "Hot / Iced", "price": 990, "nutri": [90,4,9,4]},
-   {"id": 39, "nameRu": "Латте", "nameKz": "Латте", "nameEn": "Latte", "descRu": "350мл / 450мл", "descKz": "350мл / 450мл", "descEn": "350ml / 450ml", "price": 1390, "nutri": [90,4,9,4]},
-   {"id": 40, "nameRu": "Капучино", "nameKz": "Капучино", "nameEn": "Cappuccino", "descRu": "250 / 350 / 450мл", "descKz": "250 / 350 / 450мл", "descEn": "250 / 350 / 450ml", "price": 1090, "nutri": [90,4,9,4]},
-   {"id": 41, "nameRu": "Флэт-Уайт", "nameKz": "Флэт-Уайт", "nameEn": "Flat White", "descRu": "250 мл", "descKz": "250 мл", "descEn": "250 ml", "price": 1190, "nutri": [90,4,9,4]},
-   {"id": 42, "nameRu": "Раф", "nameKz": "Раф", "nameEn": "Raf Coffee", "descRu": "350 мл", "descKz": "350 мл", "descEn": "350 ml", "price": 1690, "nutri": [90,4,9,4]},
-   {"id": 43, "nameRu": "Матча-латте", "nameKz": "Матча-латте", "nameEn": "Matcha Latte", "descRu": "350 мл", "descKz": "350 мл", "descEn": "350 ml", "price": 1690, "nutri": [90,4,9,4]},
-   {"id": 44, "nameRu": "Какао", "nameKz": "Какао", "nameEn": "Cocoa", "descRu": "350 мл", "descKz": "350 мл", "descEn": "350 ml", "price": 1490, "nutri": [90,4,9,4]},
+   {"id": 37, "nameRu": "Эспрессо", "nameKz": "Эспрессо", "nameEn": "Espresso", "descRu": "30 мл", "descKz": "30 мл", "descEn": "30 ml", "price": 1090, "nutri": [90,4,9,4]},
+   {"id": 38, "nameRu": "Американо", "nameKz": "Американо", "nameEn": "Americano", "descRu": "Горячий / Холодный", "descKz": "Ыстық / Суық", "descEn": "Hot / Iced", "price": 1090, "nutri": [90,4,9,4]},
+   {"id": 39, "nameRu": "Латте", "nameKz": "Латте", "nameEn": "Latte", "descRu": "350мл / 450мл", "descKz": "350мл / 450мл", "descEn": "350ml / 450ml", "price": 1490, "nutri": [90,4,9,4]},
+   {"id": 40, "nameRu": "Капучино", "nameKz": "Капучино", "nameEn": "Cappuccino", "descRu": "250 / 350 / 450мл", "descKz": "250 / 350 / 450мл", "descEn": "250 / 350 / 450ml", "price": 1290, "nutri": [90,4,9,4]},
+   {"id": 41, "nameRu": "Флэт-Уайт", "nameKz": "Флэт-Уайт", "nameEn": "Flat White", "descRu": "250 мл", "descKz": "250 мл", "descEn": "250 ml", "price": 1290, "nutri": [90,4,9,4]},
+   {"id": 42, "nameRu": "Раф", "nameKz": "Раф", "nameEn": "Raf Coffee", "descRu": "350 мл", "descKz": "350 мл", "descEn": "350 ml", "price": 1790, "nutri": [90,4,9,4]},
+   {"id": 43, "nameRu": "Матча-латте", "nameKz": "Матча-латте", "nameEn": "Matcha Latte", "descRu": "350 мл", "descKz": "350 мл", "descEn": "350 ml", "price": 1790, "nutri": [90,4,9,4]},
+   {"id": 44, "nameRu": "Какао", "nameKz": "Какао", "nameEn": "Cocoa", "descRu": "350 мл", "descKz": "350 мл", "descEn": "350 ml", "price": 1590, "nutri": [90,4,9,4]},
    {"id": 45, "nameRu": "Горячий шоколад", "nameKz": "Ыстық шоколад", "nameEn": "Hot Chocolate", "descRu": "350 мл", "descKz": "350 мл", "descEn": "350 ml", "price": 1690, "nutri": [90,4,9,4]},
-   {"id": 46, "nameRu": "Эспрессо-тоник", "nameKz": "Эспрессо-тоник", "nameEn": "Espresso Tonic", "descRu": "450 мл", "descKz": "450 мл", "descEn": "450 ml", "price": 1890, "nutri": [90,4,9,4]},
-   {"id": 47, "nameRu": "Мокко", "nameKz": "Мокко", "nameEn": "Mocha", "descRu": "350мл / 450мл", "descKz": "350мл / 450мл", "descEn": "350ml / 450ml", "price": 1590, "nutri": [90,4,9,4]}
+   {"id": 46, "nameRu": "Эспрессо-тоник", "nameKz": "Эспрессо-тоник", "nameEn": "Espresso Tonic", "descRu": "450 мл", "descKz": "450 мл", "descEn": "450 ml", "price": 1990, "nutri": [90,4,9,4]},
+   {"id": 47, "nameRu": "Мокко", "nameKz": "Мокко", "nameEn": "Mocha", "descRu": "350мл / 450мл", "descKz": "350мл / 450мл", "descEn": "350ml / 450ml", "price": 1690, "nutri": [90,4,9,4]}
   ],
   "tone": "espresso"
  },
@@ -166,10 +165,10 @@ window.MENU = [
   "nameEn": "Filter Coffee",
   "wide": true,
   "items": [
-   {"id": 48, "nameRu": "Батч-брю", "nameKz": "Батч-брю", "nameEn": "Batch Brew", "descRu": "250 мл · Заваренный фильтр", "descKz": "250 мл · Сүзгі кофе", "descEn": "250 ml · Filter coffee", "price": 1290, "nutri": [90,4,9,4]},
+   {"id": 48, "nameRu": "Батч-брю", "nameKz": "Батч-брю", "nameEn": "Batch Brew", "descRu": "250 мл · Заваренный фильтр", "descKz": "250 мл · Сүзгі кофе", "descEn": "250 ml · Filter coffee", "price": 1350, "nutri": [90,4,9,4]},
    {"id": 49, "nameRu": "Колд-брю", "nameKz": "Колд-брю", "nameEn": "Cold Brew", "descRu": "Холодный экстракт", "descKz": "Суық экстракт", "descEn": "Cold extract", "price": 1490, "nutri": [90,4,9,4]},
-   {"id": 50, "nameRu": "Колд-брю малина", "nameKz": "Колд-брю таңқурай", "nameEn": "Cold Brew Raspberry", "descRu": "С малиновым сиропом", "descKz": "Таңқурай сиропымен", "descEn": "With raspberry syrup", "price": 1590, "nutri": [90,4,9,4]},
-   {"id": 51, "nameRu": "V-60 / Origami", "nameKz": "V-60 / Origami", "nameEn": "V-60 / Origami", "descRu": "250 мл · Альтернативная заварка", "descKz": "250 мл · Балама демдеу", "descEn": "250 ml · Pour-over", "price": 1790, "nutri": [90,4,9,4]}
+   {"id": 50, "nameRu": "Колд-брю малина", "nameKz": "Колд-брю таңқурай", "nameEn": "Cold Brew Raspberry", "descRu": "С малиновым сиропом", "descKz": "Таңқурай сиропымен", "descEn": "With raspberry syrup", "price": 1690, "nutri": [90,4,9,4]},
+   {"id": 51, "nameRu": "V-60 / Origami", "nameKz": "V-60 / Origami", "nameEn": "V-60 / Origami", "descRu": "250 мл · Альтернативная заварка", "descKz": "250 мл · Балама демдеу", "descEn": "250 ml · Pour-over", "price": 1890, "nutri": [90,4,9,4]}
   ],
   "tone": "espresso"
  },
@@ -180,14 +179,14 @@ window.MENU = [
   "nameEn": "Signature Drinks",
   "wide": false,
   "items": [
-   {"id": 52, "nameRu": "Нитро-классик", "nameKz": "Нитро-классик", "nameEn": "Nitro Classic", "descRu": "Нитро кофе", "descKz": "Нитро кофе", "descEn": "Nitro coffee", "price": 2290, "nutri": [180,5,28,6]},
-   {"id": 53, "nameRu": "Нитро-апельсин", "nameKz": "Нитро-апельсин", "nameEn": "Nitro Orange", "descRu": "С апельсиновым вкусом", "descKz": "Апельсин дәмімен", "descEn": "With orange flavor", "price": 2290, "nutri": [180,5,28,6]},
-   {"id": 55, "nameRu": "Айс-латте Крем-брюлле", "nameKz": "Айс-латте Крем-брюлле", "nameEn": "Iced Crème Brûlée Latte", "descRu": "Холодный латте", "descKz": "Суық латте", "descEn": "Iced latte", "price": 2290, "nutri": [180,5,28,6]},
-{"id": 57, "nameRu": "Матча-манго", "nameKz": "Матча-манго", "nameEn": "Matcha Mango", "descRu": "Тропическая матча", "descKz": "Тропикалық", "descEn": "Tropical matcha", "price": 2290, "nutri": [180,5,28,6]},
-   {"id": 58, "nameRu": "Матча с малиной", "nameKz": "Таңқурайлы матча", "nameEn": "Matcha with Raspberry", "descRu": "+290 малиновая шапка", "descKz": "+290 таңқурай қасы", "descEn": "+290 raspberry topping", "price": 2290, "nutri": [180,5,28,6]},
-   {"id": 60, "nameRu": "Матча бамбл", "nameKz": "Матча бамбл", "nameEn": "Matcha Bumble", "descRu": "NEW", "descKz": "NEW", "descEn": "NEW", "price": 2290, "isNew": true, "nutri": [180,5,28,6]},
-   {"id": 61, "nameRu": "Кофе бамбл", "nameKz": "Кофе бамбл", "nameEn": "Coffee Bumble", "descRu": "NEW", "descKz": "NEW", "descEn": "NEW", "price": 2290, "isNew": true, "nutri": [180,5,28,6]},
-   {"id": 62, "nameRu": "Матча-банан", "nameKz": "Матча-банан", "nameEn": "Matcha Banana", "descRu": "NEW", "descKz": "NEW", "descEn": "NEW", "price": 2290, "isNew": true, "nutri": [180,5,28,6]}
+   {"id": 52, "nameRu": "Нитро-классик", "nameKz": "Нитро-классик", "nameEn": "Nitro Classic", "descRu": "Нитро кофе", "descKz": "Нитро кофе", "descEn": "Nitro coffee", "price": 2390, "nutri": [180,5,28,6]},
+   {"id": 53, "nameRu": "Нитро-апельсин", "nameKz": "Нитро-апельсин", "nameEn": "Nitro Orange", "descRu": "С апельсиновым вкусом", "descKz": "Апельсин дәмімен", "descEn": "With orange flavor", "price": 2390, "nutri": [180,5,28,6]},
+   {"id": 55, "nameRu": "Айс-латте Крем-брюлле", "nameKz": "Айс-латте Крем-брюлле", "nameEn": "Iced Crème Brûlée Latte", "descRu": "Холодный латте", "descKz": "Суық латте", "descEn": "Iced latte", "price": 2390, "nutri": [180,5,28,6]},
+{"id": 57, "nameRu": "Матча-манго", "nameKz": "Матча-манго", "nameEn": "Matcha Mango", "descRu": "Тропическая матча", "descKz": "Тропикалық", "descEn": "Tropical matcha", "price": 2390, "nutri": [180,5,28,6]},
+   {"id": 58, "nameRu": "Матча с малиной", "nameKz": "Таңқурайлы матча", "nameEn": "Matcha with Raspberry", "descRu": "+290 малиновая шапка", "descKz": "+290 таңқурай қасы", "descEn": "+290 raspberry topping", "price": 2390, "nutri": [180,5,28,6]},
+   {"id": 60, "nameRu": "Матча бамбл", "nameKz": "Матча бамбл", "nameEn": "Matcha Bumble", "descRu": "NEW", "descKz": "NEW", "descEn": "NEW", "price": 2390, "isNew": true, "nutri": [180,5,28,6]},
+   {"id": 61, "nameRu": "Кофе бамбл", "nameKz": "Кофе бамбл", "nameEn": "Coffee Bumble", "descRu": "NEW", "descKz": "NEW", "descEn": "NEW", "price": 2390, "isNew": true, "nutri": [180,5,28,6]},
+   {"id": 62, "nameRu": "Матча-банан", "nameKz": "Матча-банан", "nameEn": "Matcha Banana", "descRu": "NEW", "descKz": "NEW", "descEn": "NEW", "price": 2390, "isNew": true, "nutri": [180,5,28,6]}
   ],
   "tone": "matcha"
  },
@@ -231,8 +230,8 @@ window.MENU = [
   "nameEn": "Seasonal Menu",
   "wide": false,
   "items": [
-   {"id": 77, "nameRu": "Матча-Жасмин", "nameKz": "Матча-Жасмин", "nameEn": "Matcha Jasmine", "descRu": "Охлаждённая матча с жасминовым молоком и льдом", "descKz": "Жасмин сүті мен мұзбен салқындатылған матча", "descEn": "Iced matcha with jasmine milk and ice", "price": 2290, "isNew": true, "nutri": [180,5,28,6]},
-   {"id": 78, "nameRu": "Summer Shot", "nameKz": "Summer Shot", "nameEn": "Summer Shot", "descRu": "Тропический микс: ананас, малина, освежающий лёд", "descKz": "Тропикалық микс: ананас, таңқурай, салқын мұз", "descEn": "Tropical mix: pineapple, raspberry, refreshing ice", "price": 2290, "isNew": true, "nutri": [180,5,28,6]},
+   {"id": 77, "nameRu": "Матча-Жасмин", "nameKz": "Матча-Жасмин", "nameEn": "Matcha Jasmine", "descRu": "Охлаждённая матча с жасминовым молоком и льдом", "descKz": "Жасмин сүті мен мұзбен салқындатылған матча", "descEn": "Iced matcha with jasmine milk and ice", "price": 2390, "isNew": true, "nutri": [180,5,28,6]},
+   {"id": 78, "nameRu": "Summer Shot", "nameKz": "Summer Shot", "nameEn": "Summer Shot", "descRu": "Тропический микс: ананас, малина, освежающий лёд", "descKz": "Тропикалық микс: ананас, таңқурай, салқын мұз", "descEn": "Tropical mix: pineapple, raspberry, refreshing ice", "price": 2390, "isNew": true, "nutri": [180,5,28,6]},
    {"id": 79, "nameRu": "Irish Frappuccino", "nameKz": "Irish Frappuccino", "nameEn": "Irish Frappuccino", "descRu": "Кофейный фраппе с шоколадом, сливками и мороженым", "descKz": "Шоколад, кілегей және балмұздақпен кофе фраппе", "descEn": "Coffee frappe with chocolate, cream and ice cream", "price": 2490, "isNew": true, "nutri": [180,5,28,6]}
   ],
   "tone": "seasonal"
