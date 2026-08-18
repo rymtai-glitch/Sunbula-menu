@@ -123,7 +123,8 @@ function MenuCard({ cat, item, lang, qty, stopList, onOpen, onAdd, onInc, onDec 
       style={{ cursor: unavailable ? 'default' : 'pointer', display: 'flex', flexDirection: 'column', opacity: unavailable ? 0.45 : 1 }}>
       {item.isNew && !unavailable && <span className="tag-new">New</span>}
       <Photo tone={cat.tone} icon={catIconName[cat.id]} src={photoFor(item.id)} tag={nameFor(cat, lang)}
-        style={{ height: 134 }} radius="0" />
+        fit={cat.id==='seasonal'?'contain':'cover'}
+        style={{ height: 134, background: cat.id==='seasonal'?'#0250ce':undefined }} radius="0" />
       <div style={{ padding: '12px 13px 13px', display: 'flex', flexDirection: 'column', flex: 1 }}>
         <div style={{ fontSize: 13.5, fontWeight: 600, lineHeight: 1.28, letterSpacing: '.1px' }}>{name}</div>
         <div style={{ fontSize: 11.5, color: unavailable ? 'var(--navy-38)' : 'var(--navy-55)', lineHeight: 1.4, marginTop: 4, minHeight: 32,

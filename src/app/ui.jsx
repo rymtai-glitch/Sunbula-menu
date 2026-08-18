@@ -54,14 +54,14 @@ const TONES = {
   cream:['#EEF2FC','#DCE6F8'], broth:['#EAEFF8','#D6E0F1'], espresso:['#E4E9F6','#CCD6EC'],
   matcha:['#E7F0EC','#D2E6DA'], tea:['#EFEDF8','#DEDAF0'], citrus:['#EEF1FA','#DEE3F2'],
 };
-function Photo({ tone = 'oat', icon = 'main', tag, radius, style, big = false, noIcon = false, src = null }) {
+function Photo({ tone = 'oat', icon = 'main', tag, radius, style, big = false, noIcon = false, src = null, fit = 'cover' }) {
   const [a, b] = TONES[tone] || TONES.oat;
   const [err, setErr] = useState(false);
   if (src && !err) {
     return (
       <div className="ph" style={{ borderRadius: radius, ...style }}>
         <img src={src} alt="" loading="lazy" onError={() => setErr(true)}
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: fit, display: 'block' }} />
         {tag && <span className="ph-tag" style={{ color: '#fff', textShadow: '0 1px 4px rgba(0,0,0,.5)' }}>{tag}</span>}
       </div>
     );

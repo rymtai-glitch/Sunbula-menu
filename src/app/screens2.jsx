@@ -27,7 +27,7 @@ function Product({ t, lang, itemId, cart, onBack, onAdd, onInc, onDec, onOpenIte
     <div className="sb-app">
       <div className="sb-scroll" style={{ paddingBottom: 110 }}>
         <div style={{ position: 'relative' }}>
-          <Photo tone={cat.tone} icon={catIconName[cat.id]} src={photoFor(item.id)} big style={{ height: 380, borderRadius: 0 }} />
+          <Photo tone={cat.tone} icon={catIconName[cat.id]} src={photoFor(item.id)} big fit={cat.id==='seasonal'?'contain':'cover'} style={{ height: 380, borderRadius: 0, background: cat.id==='seasonal'?'#0250ce':undefined }} />
           <div style={{ position: 'absolute', top: 56, left: 18, right: 18, display: 'flex', justifyContent: 'space-between', zIndex: 4 }}>
             <button onClick={onBack} aria-label="back" style={glassBtn}><Icon name="back" size={20} /></button>
             {cartCount > 0 && (
