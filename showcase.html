@@ -420,12 +420,54 @@
       .seasonal-grid{grid-template-columns:1fr 1fr;}
     }
     @media(max-width:700px){
-      #section-seasonal{padding:48px 24px;}
-      .hero-title{font-size:clamp(40px,10vw,60px);}
+      #section-seasonal{padding:40px 20px;gap:32px;}
+      .hero-title{font-size:clamp(36px,9vw,56px);}
+      .seasonal-grid{grid-template-columns:1fr 1fr;}
+      #section-seasonal-cards,.cat-block,#section-sets{padding-left:16px;padding-right:16px;}
+      .group-sep{margin-left:16px;margin-right:16px;}
+      .card-grid{grid-template-columns:1fr 1fr;gap:8px;}
+      .hero-right{display:none;}
+      .hero-pills{gap:8px;}
+      .hero-pill{padding:8px 12px;}
+      .hero-pill-img{width:40px;height:40px;}
+      .hero-sub{margin-bottom:28px;}
+      .sec-title{font-size:24px;}
+      .s-name{font-size:15px;}
+      .s-price{font-size:20px;}
+      .cat-name-el{font-size:17px;}
+      .cat-block{padding-top:40px;}
+      .group-sep{margin-top:40px;}
+      #section-seasonal-cards{padding-top:40px;}
+      #section-sets{padding-top:40px;}
+      .sets-grid{grid-template-columns:1fr 1fr;gap:10px;}
+      .set-card-body{padding:12px 14px 16px;}
+      .set-card-name{font-size:13px;}
+      .set-card-desc{font-size:10px;}
+      .set-card-price{font-size:18px;}
+      .set-card-old{font-size:11px;}
+      .set-save-badge{font-size:8px;padding:4px 8px;top:8px;right:8px;}
+      .m-card-name{font-size:11.5px;}
+      .m-card-price{font-size:14px;}
+      .m-card-body{padding:8px 10px 12px;}
+    }
+    @media(max-width:480px){
+      :root{--nav-h:52px;}
+      #nav-logo{padding:0 12px;}
+      #nav-logo img{height:22px;}
+      .lang-btn{padding:3px 7px;font-size:9px;}
+      #nav-lang{padding:0 8px;gap:3px;}
+      #section-seasonal{padding:32px 16px;}
+      .hero-tag{margin-bottom:16px;}
+      .hero-tag-text{font-size:9px;}
+      .hero-title{font-size:clamp(32px,8.5vw,48px);margin-bottom:14px;}
+      .hero-sub{font-size:13px;margin-bottom:20px;}
+      .hero-pill-name{font-size:13px;}
+      .hero-pill-price{font-size:11px;}
       .seasonal-grid{grid-template-columns:1fr;}
-      #section-seasonal-cards,.cat-block{padding-left:24px;padding-right:24px;}
-      .group-sep{margin-left:24px;margin-right:24px;}
-      .card-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));}
+      .s-card-img-wrap{aspect-ratio:16/9;}
+      .sets-grid{grid-template-columns:1fr;}
+      .set-card-img,.set-card-img-ph{aspect-ratio:16/9;}
+      .card-grid{grid-template-columns:1fr 1fr;gap:7px;}
     }
   </style>
 </head>
