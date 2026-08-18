@@ -3,6 +3,23 @@
 
 window.MENU = [
  {
+  "id": "sets",
+  "nameRu": "Сеты",
+  "nameKz": "Сеттер",
+  "nameEn": "Sets",
+  "wide": false,
+  "items": [
+   {"id": 81, "nameRu": "Сет Sunset", "nameKz": "Сет Sunset", "nameEn": "Set Sunset", "descRu": "Шницель · Чечевичный суп · Пита · Тары чай", "descKz": "Шницель · Жасымық сорпасы · Пита · Тары шай", "descEn": "Schnitzel · Lentil soup · Pita · Millet tea", "price": 6590, "oldPrice": 8020, "nutri": [0,0,0,0]},
+   {"id": 82, "nameRu": "Сет Daily", "nameKz": "Сет Daily", "nameEn": "Set Daily", "descRu": "Куриная лапша · Куриные котлеты с пюре · Пита · Тары чай", "descKz": "Тауық кеспе · Тауық котлеттері · Пита · Тары шай", "descEn": "Chicken noodle soup · Chicken cutlets · Pita · Millet tea", "price": 6790, "oldPrice": 8320, "nutri": [0,0,0,0]},
+   {"id": 83, "nameRu": "Сет Имбирный", "nameKz": "Сет Имбирь", "nameEn": "Set Ginger", "descRu": "Имбирный цыплёнок · Чечевичный суп · Пита · Тары чай", "descKz": "Зімбір балапан · Жасымық сорпасы · Пита · Тары шай", "descEn": "Ginger chicken · Lentil soup · Pita · Millet tea", "price": 6590, "oldPrice": 8020, "nutri": [0,0,0,0]},
+   {"id": 84, "nameRu": "Сет Urban Lunch", "nameKz": "Сет Urban Lunch", "nameEn": "Set Urban Lunch", "descRu": "Грибной суп · Паста феттучини с курицей · Пита · Тары чай", "descKz": "Саңырауқұлақ сорпасы · Феттучини · Пита · Тары шай", "descEn": "Mushroom soup · Fettuccine with chicken · Pita · Millet tea", "price": 6290, "oldPrice": 7720, "nutri": [0,0,0,0]},
+   {"id": 85, "nameRu": "Сет Утренний", "nameKz": "Сет Таңғы", "nameEn": "Set Morning", "descRu": "Панкейки · Каша на выбор · Кофе 350мл на выбор", "descKz": "Панкейктер · Таңдаулы ботқа · Таңдаулы кофе 350мл", "descEn": "Pancakes · Porridge of choice · Coffee 350ml of choice", "price": 4990, "oldPrice": 6470, "nutri": [0,0,0,0]},
+   {"id": 86, "nameRu": "Сет Белковый", "nameKz": "Сет Ақсерке", "nameEn": "Set Protein", "descRu": "Белковый скрэмбл · Каша на выбор · Кофе 350мл на выбор", "descKz": "Ақуызды скрэмбл · Таңдаулы ботқа · Таңдаулы кофе 350мл", "descEn": "Protein scramble · Porridge of choice · Coffee 350ml of choice", "price": 5790, "oldPrice": 7370, "nutri": [0,0,0,0]},
+   {"id": 87, "nameRu": "Сет Английский", "nameKz": "Сет Ағылшын", "nameEn": "Set English", "descRu": "Английский завтрак · Каша на выбор · Кофе 350мл на выбор", "descKz": "Ағылшын таңғы асы · Таңдаулы ботқа · Таңдаулы кофе 350мл", "descEn": "English breakfast · Porridge of choice · Coffee 350ml of choice", "price": 5690, "oldPrice": 7270, "nutri": [0,0,0,0]}
+  ],
+  "tone": "sets"
+ },
+ {
   "id": "breakfast",
   "nameRu": "Завтраки",
   "nameKz": "Таңғы ас",

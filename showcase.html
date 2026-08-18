@@ -286,6 +286,63 @@
       color:var(--blue-bright);letter-spacing:-.02em;
     }
 
+    /* ─── SETS ──────────────────────────────────────── */
+    #section-sets{padding:80px 80px 0;}
+    .sets-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+      gap:16px;
+    }
+    .set-card{
+      position:relative;border-radius:var(--r-lg);overflow:hidden;
+      background:var(--navy-2);border:1px solid var(--border);
+      display:flex;flex-direction:column;
+      transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s;
+    }
+    .set-card:hover{
+      transform:translateY(-5px);
+      box-shadow:0 24px 60px rgba(0,0,0,.5);
+      border-color:rgba(47,107,255,.3);
+    }
+    .set-card-img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;}
+    .set-card-img-ph{
+      width:100%;aspect-ratio:3/4;background:var(--navy-3);
+      display:flex;align-items:center;justify-content:center;
+      font-size:48px;opacity:.3;
+    }
+    .set-card-body{padding:20px 22px 24px;display:flex;flex-direction:column;gap:8px;}
+    .set-card-name{
+      font-family:var(--serif);font-size:20px;font-weight:900;
+      letter-spacing:-.01em;
+    }
+    .set-card-desc{font-size:12px;color:var(--text-60);line-height:1.6;}
+    .set-card-prices{display:flex;align-items:baseline;gap:10px;margin-top:4px;}
+    .set-card-old{
+      font-family:var(--serif);font-size:14px;font-weight:700;
+      color:var(--text-35);text-decoration:line-through;
+    }
+    .set-card-price{
+      font-family:var(--serif);font-size:26px;font-weight:900;
+      color:var(--blue-bright);letter-spacing:-.02em;
+    }
+    .set-save-badge{
+      position:absolute;top:14px;right:14px;
+      background:rgba(255,70,70,.9);backdrop-filter:blur(8px);
+      font-family:var(--serif);font-size:10px;font-weight:900;
+      letter-spacing:.1em;text-transform:uppercase;
+      color:#fff;padding:5px 12px;border-radius:100px;
+    }
+
+    @media(max-width:1024px){
+      #section-sets{padding-left:40px;padding-right:40px;}
+      .sets-grid{grid-template-columns:repeat(auto-fill,minmax(250px,1fr));}
+    }
+    @media(max-width:700px){
+      #section-sets{padding-left:24px;padding-right:24px;}
+      .sets-grid{grid-template-columns:1fr 1fr;}
+      .set-card-img,.set-card-img-ph{aspect-ratio:4/3;}
+    }
+
     /* ─── MENU CONTENT ─────────────────────────────── */
     .content{padding:0 0 120px;}
 
@@ -428,6 +485,15 @@
   <div class="seasonal-grid" id="seasonal-grid"></div>
 </div>
 
+<!-- SETS -->
+<div id="section-sets" class="section-anchor">
+  <div class="sec-header">
+    <span class="sec-label" id="sets-label">Выгодно</span>
+    <span class="sec-title" id="sets-title">Сеты</span>
+  </div>
+  <div class="sets-grid" id="sets-grid"></div>
+</div>
+
 <!-- MENU -->
 <div class="content" id="menu-content"></div>
 
@@ -466,6 +532,7 @@ const SEASONAL = [
 
 const NAV_GROUPS = [
   {id:'seasonal',  ru:'Сезонное',  kz:'Маусымдық', en:'Seasonal'},
+  {id:'sets',      ru:'Сеты',     kz:'Сеттер',    en:'Sets'},
   {id:'breakfast', ru:'Завтраки',  kz:'Таңғы ас',  en:'Breakfast', cats:['breakfast','porridge','sweet']},
   {id:'food',      ru:'Еда',       kz:'Тағам',      en:'Food',      cats:['salads','bowls','snacks','main','pasta','pizza','soups']},
   {id:'coffee',    ru:'Кофе',      kz:'Кофе',       en:'Coffee',    cats:['coffee','filter']},
@@ -611,12 +678,46 @@ function renderMenu(){
   });
 }
 
+// ── SETS ───────────────────────────────────────────
+function renderSets(){
+  const labels={ru:'Выгодно',kz:'Тиімді',en:'Best value'};
+  const titles={ru:'Сеты',kz:'Сеттер',en:'Sets'};
+  document.getElementById('sets-label').textContent=labels[lang];
+  document.getElementById('sets-title').textContent=titles[lang];
+
+  const setsCat=window.MENU.find(c=>c.id==='sets');
+  if(!setsCat)return;
+
+  document.getElementById('sets-grid').innerHTML=setsCat.items.map(item=>{
+    const imgSrc=ph(item.id);
+    const save=item.oldPrice-item.price;
+    const dk='desc'+lang[0].toUpperCase()+lang.slice(1);
+    const desc=item[dk]||item.descRu||'';
+    const nameKey='name'+lang[0].toUpperCase()+lang.slice(1);
+    const name=item[nameKey]||item.nameRu;
+    return `<div class="set-card">
+      ${imgSrc
+        ?`<img class="set-card-img" src="${imgSrc}" alt="${name}" loading="lazy">`
+        :`<div class="set-card-img-ph">🍽️</div>`}
+      <div class="set-save-badge">−${fmt(save)}</div>
+      <div class="set-card-body">
+        <div class="set-card-name">${name}</div>
+        <div class="set-card-desc">${desc}</div>
+        <div class="set-card-prices">
+          <span class="set-card-old">${fmt(item.oldPrice)}</span>
+          <span class="set-card-price">${fmt(item.price)}</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
 // ── LANG ───────────────────────────────────────────
 function setLang(l){
   lang=l;
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===({ru:'РУС',kz:'ҚАЗ',en:'ENG'}[l])));
   document.querySelectorAll('[data-ru]').forEach(el=>el.textContent=el.dataset[l]||el.dataset.ru);
-  renderHero();renderSeasonalCards();renderNav();
+  renderHero();renderSeasonalCards();renderSets();renderNav();
 }
 
 // ── FLIP CARD CYCLE ────────────────────────────────
@@ -634,7 +735,7 @@ document.querySelector('.card-flipper').addEventListener('animationiteration', (
 });
 
 window.addEventListener('scroll',updateActiveTab,{passive:true});
-renderNav();renderHero();renderSeasonalCards();renderMenu();
+renderNav();renderHero();renderSeasonalCards();renderSets();renderMenu();
 </script>
 </body>
 </html>
