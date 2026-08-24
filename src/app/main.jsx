@@ -78,7 +78,7 @@ function App() {
   uE(() => {
     const load = async () => {
       try {
-        const r = await fetch('/api/stoplist');
+        const r = await fetch('https://sunbula-ai-os-production.up.railway.app/api/stoplist');
         if (!r.ok) return;
         const { stoppedIikoIds, stoppedMenuIds } = await r.json();
         const map = window.IIKO_MAP || {};
