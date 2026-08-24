@@ -14,6 +14,42 @@ async function tgSend(text) {
 }
 const tgTime = () => new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
 
+const RAILWAY_URL = 'https://sunbula-ai-os-production.up.railway.app';
+
+// Обратная карта: menuId → iikoId (берём первый попавшийся UUID)
+function buildReverseIikoMap() {
+  const fwd = window.IIKO_MAP || {};
+  const rev = {};
+  for (const [iikoId, menuId] of Object.entries(fwd)) {
+    if (!rev[menuId]) rev[menuId] = iikoId;
+  }
+  return rev;
+}
+
+async function sendOrderToIiko({ tableNumber, groups }) {
+  const rev = buildReverseIikoMap();
+  const items = [];
+  const unknownItems = [];
+  for (const g of groups) {
+    for (const { item, qty, comment, priceOverride } of g.items) {
+      const iikoId = rev[item.id] || null;
+      if (iikoId) {
+        items.push({ menuId: item.id, name: item.nameRu, qty, iikoId, comment: comment || '' });
+      } else {
+        unknownItems.push(item.nameRu + ' \xd7' + qty);
+      }
+    }
+  }
+  const guestNames = groups.map(g => g.name);
+  try {
+    await fetch(RAILWAY_URL + '/api/order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tableNumber, items, unknownItems, guestNames }),
+    });
+  } catch (e) {}
+}
+
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "accent": "#0250ce",
   "cta": "#0250ce",
@@ -206,6 +242,7 @@ function App() {
       items: groups.flatMap(g => g.items.map(({ item, qty, comment, priceOverride }) => ({ nameRu: item.nameRu, nameKz: item.nameKz, qty, price: priceOverride || item.price, comment }))),
     });
     tgSend(buildOrderText());
+    sendOrderToIiko({ tableNumber: table, groups });
     setCartOpen(false);
     setTimeout(() => setSending(true), 280);
     setTimeout(() => {
