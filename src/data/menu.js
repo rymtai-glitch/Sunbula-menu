@@ -223,7 +223,7 @@ window.MENU = [
    {"id": 69, "nameRu": "Облепиха-апельсин", "nameKz": "Шырғанақ-апельсин", "nameEn": "Sea Buckthorn Orange", "descRu": "Чашка 1690₸ / Чайник 2790₸", "descKz": "Кесе 1690₸ / Шәйнек 2790₸", "descEn": "Cup 1690₸ / Teapot 2790₸", "price": 1690, "nutri": [40,0,9,0]},
    {"id": 70, "nameRu": "Тары-чай", "nameKz": "Тары-шай", "nameEn": "Millet Tea", "descRu": "Чашка 1490₸ / Чайник 2690₸", "descKz": "Кесе 1490₸ / Шәйнек 2690₸", "descEn": "Cup 1490₸ / Teapot 2690₸", "price": 1490, "nutri": [40,0,9,0]},
    {"id": 71, "nameRu": "Груша-улун", "nameKz": "Алмұртты улун", "nameEn": "Pear Oolong", "descRu": "Чашка 1490₸ / Чайник 2690₸", "descKz": "Кесе 1490₸ / Шәйнек 2690₸", "descEn": "Cup 1490₸ / Teapot 2690₸", "price": 1490, "nutri": [40,0,9,0]},
-   {"id": 92, "nameRu": "Зелёный чай манго-маракуйя", "nameKz": "Манго-маракуйя жасыл шай", "nameEn": "Green Tea Mango Passion Fruit", "descRu": "Чашка 1490₸ / Чайник 2690₸", "descKz": "Кесе 1490₸ / Шәйнек 2690₸", "descEn": "Cup 1490₸ / Teapot 2690₸", "price": 1490, "isNew": true, "nutri": [60,0,14,0]}
+   {"id": 92, "nameRu": "Зелёный чай манго-маракуйя", "nameKz": "Манго-маракуйя жасыл шай", "nameEn": "Green Tea Mango Passion Fruit", "descRu": "Чашка 1690₸ / Чайник 2790₸", "descKz": "Кесе 1690₸ / Шәйнек 2790₸", "descEn": "Cup 1690₸ / Teapot 2790₸", "price": 1690, "isNew": true, "nutri": [60,0,14,0]}
   ],
   "tone": "tea"
  },
@@ -238,7 +238,7 @@ window.MENU = [
    {"id": 73, "nameRu": "Малина-маракуйя", "nameKz": "Таңқурай-маракуйя", "nameEn": "Raspberry Passion Fruit", "descRu": "Тропический", "descKz": "Тропикалық", "descEn": "Tropical", "price": 1890, "nutri": [120,0,30,0]},
    {"id": 74, "nameRu": "Экзотик", "nameKz": "Экзотик", "nameEn": "Exotic", "descRu": "Экзотический микс", "descKz": "Экзотикалық", "descEn": "Exotic mix", "price": 1890, "nutri": [120,0,30,0]},
    {"id": 75, "nameRu": "Груша-ананас", "nameKz": "Алмұрт-ананас", "nameEn": "Pear Pineapple", "descRu": "Освежающий", "descKz": "Сергітетін", "descEn": "Refreshing", "price": 1890, "nutri": [120,0,30,0]},
-   {"id": 91, "nameRu": "Мохито клубничный", "nameKz": "Құлпынайлы мохито", "nameEn": "Strawberry Mojito", "descRu": "Клубника, мята, лайм, содовая, лёд", "descKz": "Құлпынай, жалбыз, лайм, содалы су, мұз", "descEn": "Strawberry, mint, lime, soda, ice", "price": 2190, "isNew": true, "nutri": [120,0,28,0]}
+   {"id": 91, "nameRu": "Мохито клубничный", "nameKz": "Құлпынайлы мохито", "nameEn": "Strawberry Mojito", "descRu": "Клубника, мята, лайм, содовая, лёд", "descKz": "Құлпынай, жалбыз, лайм, содалы су, мұз", "descEn": "Strawberry, mint, lime, soda, ice", "price": 1890, "isNew": true, "nutri": [120,0,28,0]}
   ],
   "tone": "citrus"
  },
@@ -252,9 +252,9 @@ window.MENU = [
    {"id": 77, "nameRu": "Матча-Жасмин", "nameKz": "Матча-Жасмин", "nameEn": "Matcha Jasmine", "descRu": "Охлаждённая матча с жасминовым молоком и льдом", "descKz": "Жасмин сүті мен мұзбен салқындатылған матча", "descEn": "Iced matcha with jasmine milk and ice", "price": 2390, "isNew": true, "nutri": [180,5,28,6]},
    {"id": 78, "nameRu": "Summer Shot", "nameKz": "Summer Shot", "nameEn": "Summer Shot", "descRu": "Тропический микс: ананас, малина, освежающий лёд", "descKz": "Тропикалық микс: ананас, таңқурай, салқын мұз", "descEn": "Tropical mix: pineapple, raspberry, refreshing ice", "price": 2390, "isNew": true, "nutri": [180,5,28,6]},
    {"id": 79, "nameRu": "Irish Frappuccino", "nameKz": "Irish Frappuccino", "nameEn": "Irish Frappuccino", "descRu": "Кофейный фраппе с шоколадом, сливками и мороженым", "descKz": "Шоколад, кілегей және балмұздақпен кофе фраппе", "descEn": "Coffee frappe with chocolate, cream and ice cream", "price": 2490, "isNew": true, "nutri": [180,5,28,6]},
-   {"id": 88, "nameRu": "Мятный чай по-мароккански", "nameKz": "Мароккандық тәтті шай", "nameEn": "Moroccan Mint Tea", "descRu": "Зелёный чай с мятой, ананасом и анисом · Чайник 0,8 л", "descKz": "Жасыл шай, жалбыз, ананас, бадьян · Шәйнек 0,8 л", "descEn": "Green tea with mint, pineapple and star anise · Teapot 0.8 l", "price": 2690, "isNew": true, "nutri": [40,0,9,0]},
-   {"id": 89, "nameRu": "Лимонад облепиха-маракуйя", "nameKz": "Теңіз жидегі-маракуйя лимонады", "nameEn": "Sea Buckthorn Passion Fruit Lemonade", "descRu": "Облепиха, маракуйя, мята, лёд", "descKz": "Теңіз жидегі, маракуйя, жалбыз, мұз", "descEn": "Sea buckthorn, passion fruit, mint, ice", "price": 2390, "isNew": true, "nutri": [120,0,28,0]},
-   {"id": 90, "nameRu": "Горячий шоколад с клубникой", "nameKz": "Құлпынайлы ыстық шоколад", "nameEn": "Hot Chocolate with Strawberry", "descRu": "Бельгийский шоколад с клубничным пюре · 350 мл", "descKz": "Бельгиялық шоколад және құлпынай пюресі · 350 мл", "descEn": "Belgian chocolate with strawberry purée · 350 ml", "price": 2190, "isNew": true, "nutri": [280,6,32,12]}
+   {"id": 88, "nameRu": "Мятный чай по-мароккански", "nameKz": "Мароккандық тәтті шай", "nameEn": "Moroccan Mint Tea", "descRu": "Чашка 1690₸ / Чайник 2790₸", "descKz": "Кесе 1690₸ / Шәйнек 2790₸", "descEn": "Cup 1690₸ / Teapot 2790₸", "price": 1690, "isNew": true, "nutri": [40,0,9,0]},
+   {"id": 89, "nameRu": "Лимонад облепиха-маракуйя", "nameKz": "Теңіз жидегі-маракуйя лимонады", "nameEn": "Sea Buckthorn Passion Fruit Lemonade", "descRu": "Облепиха, маракуйя, мята, лёд", "descKz": "Теңіз жидегі, маракуйя, жалбыз, мұз", "descEn": "Sea buckthorn, passion fruit, mint, ice", "price": 1890, "isNew": true, "nutri": [120,0,28,0]},
+   {"id": 90, "nameRu": "Какао клубничный", "nameKz": "Құлпынайлы какао", "nameEn": "Strawberry Cocoa", "descRu": "400 мл", "descKz": "400 мл", "descEn": "400 ml", "price": 2390, "isNew": true, "nutri": [280,6,32,12]}
   ],
   "tone": "seasonal"
  }
