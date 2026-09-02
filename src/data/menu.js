@@ -222,7 +222,8 @@ window.MENU = [
    {"id": 68, "nameRu": "Персик-лайм", "nameKz": "Шабдалы-лайм", "nameEn": "Peach Lime", "descRu": "Чашка 1690₸ / Чайник 2790₸", "descKz": "Кесе 1690₸ / Шәйнек 2790₸", "descEn": "Cup 1690₸ / Teapot 2790₸", "price": 1690, "nutri": [40,0,9,0]},
    {"id": 69, "nameRu": "Облепиха-апельсин", "nameKz": "Шырғанақ-апельсин", "nameEn": "Sea Buckthorn Orange", "descRu": "Чашка 1690₸ / Чайник 2790₸", "descKz": "Кесе 1690₸ / Шәйнек 2790₸", "descEn": "Cup 1690₸ / Teapot 2790₸", "price": 1690, "nutri": [40,0,9,0]},
    {"id": 70, "nameRu": "Тары-чай", "nameKz": "Тары-шай", "nameEn": "Millet Tea", "descRu": "Чашка 1490₸ / Чайник 2690₸", "descKz": "Кесе 1490₸ / Шәйнек 2690₸", "descEn": "Cup 1490₸ / Teapot 2690₸", "price": 1490, "nutri": [40,0,9,0]},
-   {"id": 71, "nameRu": "Груша-улун", "nameKz": "Алмұртты улун", "nameEn": "Pear Oolong", "descRu": "Чашка 1490₸ / Чайник 2690₸", "descKz": "Кесе 1490₸ / Шәйнек 2690₸", "descEn": "Cup 1490₸ / Teapot 2690₸", "price": 1490, "nutri": [40,0,9,0]}
+   {"id": 71, "nameRu": "Груша-улун", "nameKz": "Алмұртты улун", "nameEn": "Pear Oolong", "descRu": "Чашка 1490₸ / Чайник 2690₸", "descKz": "Кесе 1490₸ / Шәйнек 2690₸", "descEn": "Cup 1490₸ / Teapot 2690₸", "price": 1490, "nutri": [40,0,9,0]},
+   {"id": 92, "nameRu": "Зелёный чай манго-маракуйя", "nameKz": "Манго-маракуйя жасыл шай", "nameEn": "Green Tea Mango Passion Fruit", "descRu": "Чашка 1490₸ / Чайник 2690₸", "descKz": "Кесе 1490₸ / Шәйнек 2690₸", "descEn": "Cup 1490₸ / Teapot 2690₸", "price": 1490, "isNew": true, "nutri": [60,0,14,0]}
   ],
   "tone": "tea"
  },
@@ -236,7 +237,8 @@ window.MENU = [
    {"id": 72, "nameRu": "Персик-Ваниль", "nameKz": "Шабдалы-Ваниль", "nameEn": "Peach Vanilla", "descRu": "Освежающий", "descKz": "Сергітетін", "descEn": "Refreshing", "price": 1890, "nutri": [120,0,30,0]},
    {"id": 73, "nameRu": "Малина-маракуйя", "nameKz": "Таңқурай-маракуйя", "nameEn": "Raspberry Passion Fruit", "descRu": "Тропический", "descKz": "Тропикалық", "descEn": "Tropical", "price": 1890, "nutri": [120,0,30,0]},
    {"id": 74, "nameRu": "Экзотик", "nameKz": "Экзотик", "nameEn": "Exotic", "descRu": "Экзотический микс", "descKz": "Экзотикалық", "descEn": "Exotic mix", "price": 1890, "nutri": [120,0,30,0]},
-   {"id": 75, "nameRu": "Груша-ананас", "nameKz": "Алмұрт-ананас", "nameEn": "Pear Pineapple", "descRu": "Освежающий", "descKz": "Сергітетін", "descEn": "Refreshing", "price": 1890, "nutri": [120,0,30,0]}
+   {"id": 75, "nameRu": "Груша-ананас", "nameKz": "Алмұрт-ананас", "nameEn": "Pear Pineapple", "descRu": "Освежающий", "descKz": "Сергітетін", "descEn": "Refreshing", "price": 1890, "nutri": [120,0,30,0]},
+   {"id": 91, "nameRu": "Мохито клубничный", "nameKz": "Құлпынайлы мохито", "nameEn": "Strawberry Mojito", "descRu": "Клубника, мята, лайм, содовая, лёд", "descKz": "Құлпынай, жалбыз, лайм, содалы су, мұз", "descEn": "Strawberry, mint, lime, soda, ice", "price": 2190, "isNew": true, "nutri": [120,0,28,0]}
   ],
   "tone": "citrus"
  },
