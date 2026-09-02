@@ -18,6 +18,7 @@ window.PHOTOS = {
  69: "images/69.jpg", 70: "images/70.jpg", 71: "images/71.jpg", 72: "images/72.jpg",
  73: "images/73.jpg", 74: "images/74.jpg", 75: "images/75.jpg", 76: "images/76.png",
  77: "images/s1-matcha-jasmin.png", 78: "images/s2-summer-shot.png", 79: "images/s3-irish-frappucino.png",
+ 88: "images/autumn-tea-moroccan.png", 89: "images/autumn-lemonade-seabuckthorn.png", 90: "images/autumn-hot-chocolate-strawberry.png",
  80: "images/80.png",
  81: "images/set-sunset.png", 82: "images/set-daily.png", 83: "images/set-ginger.png",
  84: "images/set-urban.png", 85: "images/set-morning.png", 86: "images/set-protein.png",

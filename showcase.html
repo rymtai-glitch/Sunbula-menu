@@ -504,7 +504,7 @@
       </div>
       <div class="card-flipper">
         <div class="c-face c-front">
-          <img id="flip-img" src="images/s1-matcha-jasmin.png" alt="">
+          <img id="flip-img" src="images/autumn-tea-moroccan.png" alt="">
         </div>
         <div class="c-face c-back">
           <div class="c-back-tag" id="flip-tag">Сезонная новинка</div>
@@ -550,25 +550,25 @@ let lang = 'ru';
 // ── SEASONAL ITEMS (user's own seasonal drinks) ──
 const SEASONAL = [
   {
-    img: 'images/s1-matcha-jasmin.png',
-    ru:{name:'Матча-Жасмин', desc:'Охлаждённая матча с жасминовым молоком и льдом', badge:'Хит лета'},
-    kz:{name:'Матча-Жасмин', desc:'Жасмин сүті мен мұзбен салқындатылған матча', badge:'Жаз хиті'},
-    en:{name:'Matcha Jasmine', desc:'Iced matcha with jasmine milk and ice', badge:'Summer hit'},
+    img: 'images/autumn-tea-moroccan.png',
+    ru:{name:'Мятный чай по-мароккански', desc:'Зелёный чай с мятой, ананасом и анисом · Чайник 0,8 л', badge:'Осенний хит'},
+    kz:{name:'Мароккандық тәтті шай', desc:'Жасыл шай, жалбыз, ананас, бадьян · Шәйнек 0,8 л', badge:'Күзгі хит'},
+    en:{name:'Moroccan Mint Tea', desc:'Green tea with mint, pineapple and star anise · Teapot 0.8 l', badge:'Autumn hit'},
+    price: 2690,
+  },
+  {
+    img: 'images/autumn-lemonade-seabuckthorn.png',
+    ru:{name:'Лимонад облепиха-маракуйя', desc:'Облепиха, маракуйя, мята, лёд', badge:'Новинка'},
+    kz:{name:'Теңіз жидегі-маракуйя лимонады', desc:'Теңіз жидегі, маракуйя, жалбыз, мұз', badge:'Жаңалық'},
+    en:{name:'Sea Buckthorn Passion Fruit Lemonade', desc:'Sea buckthorn, passion fruit, mint, ice', badge:'New'},
     price: 2390,
   },
   {
-    img: 'images/s2-summer-shot.png',
-    ru:{name:'Summer Shot', desc:'Тропический микс: ананас, малина, освежающий лёд', badge:'Специально'},
-    kz:{name:'Summer Shot', desc:'Тропикалық микс: ананас, таңқурай, салқын мұз', badge:'Арнайы'},
-    en:{name:'Summer Shot', desc:'Tropical mix: pineapple, raspberry, refreshing ice', badge:'Special'},
-    price: 2390,
-  },
-  {
-    img: 'images/s3-irish-frappucino.png',
-    ru:{name:'Irish Frappuccino', desc:'Кофейный фраппе с шоколадом, сливками и мороженым', badge:'Бестселлер'},
-    kz:{name:'Irish Frappuccino', desc:'Шоколад, кілегей және балмұздақпен кофе фраппе', badge:'Бестселлер'},
-    en:{name:'Irish Frappuccino', desc:'Coffee frappe with chocolate, cream and ice cream', badge:'Bestseller'},
-    price: 2490,
+    img: 'images/autumn-hot-chocolate-strawberry.png',
+    ru:{name:'Горячий шоколад с клубникой', desc:'Бельгийский шоколад с клубничным пюре · 350 мл', badge:'Согревает'},
+    kz:{name:'Құлпынайлы ыстық шоколад', desc:'Бельгиялық шоколад және құлпынай пюресі · 350 мл', badge:'Жылытады'},
+    en:{name:'Hot Chocolate with Strawberry', desc:'Belgian chocolate with strawberry purée · 350 ml', badge:'Warms up'},
+    price: 2190,
   },
 ];
 
@@ -601,12 +601,12 @@ if(window.LOGO_WHITE) document.getElementById('logo-img').src=LOGO_WHITE;
 
 // ── HERO ───────────────────────────────────────────
 function renderHero(){
-  const tags  ={ru:'Сезонное меню',kz:'Маусымдық мәзір',en:'Seasonal menu'};
-  const titles={ru:'Летние<br><em>новинки</em>',kz:'Жаз<br><em>жаңалықтары</em>',en:'Summer<br><em>specials</em>'};
+  const tags  ={ru:'Осеннее меню',kz:'Күзгі мәзір',en:'Autumn menu'};
+  const titles={ru:'Осенние<br><em>новинки</em>',kz:'Күзгі<br><em>жаңалықтар</em>',en:'Autumn<br><em>specials</em>'};
   const subs  ={
-    ru:'Три новых напитка, созданных специально для этого лета. Освежают, удивляют.',
-    kz:'Осы жазға арнайы жасалған үш жаңа сусын. Сергітеді, таң қалдырады.',
-    en:'Three new drinks crafted for this summer. Refreshing, surprising, unforgettable.'
+    ru:'Три новых напитка, созданных специально для осени. Согревают, удивляют.',
+    kz:'Осы күзге арнайы жасалған үш жаңа сусын. Жылытады, таң қалдырады.',
+    en:'Three new drinks crafted for autumn. Warming, surprising, memorable.'
   };
   const badges={ru:'Новинка',kz:'Жаңалық',en:'New'};
   const btags ={ru:'Сезонная новинка',kz:'Маусымдық жаңалық',en:'Seasonal special'};
