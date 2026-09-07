@@ -171,4 +171,17 @@ window.DETAILS = {
    desc:{ru:'Нежный грибной крем-суп из шампиньонов с гренками.',
           kz:'Шампиньоннан жасалған майда саңырауқұлақ крем-сорпасы, гренкимен.'} },
 
+ // ── ЧАЙ: модификатор чашка/чайник ──
+ 63: { modifiers:[{id:'size',nameRu:'Объём',nameKz:'Көлем',nameEn:'Size',required:true,options:[{id:'cup',nameRu:'Чашка',nameKz:'Кесе',nameEn:'Cup',price:890},{id:'pot',nameRu:'Чайник',nameKz:'Шәйнек',nameEn:'Teapot',price:1790}]}] },
+ 64: { modifiers:[{id:'size',nameRu:'Объём',nameKz:'Көлем',nameEn:'Size',required:true,options:[{id:'cup',nameRu:'Чашка',nameKz:'Кесе',nameEn:'Cup',price:890},{id:'pot',nameRu:'Чайник',nameKz:'Шәйнек',nameEn:'Teapot',price:1790}]}] },
+ 65: { modifiers:[{id:'size',nameRu:'Объём',nameKz:'Көлем',nameEn:'Size',required:true,options:[{id:'cup',nameRu:'Чашка',nameKz:'Кесе',nameEn:'Cup',price:1490},{id:'pot',nameRu:'Чайник',nameKz:'Шәйнек',nameEn:'Teapot',price:2590}]}] },
+ 66: { modifiers:[{id:'size',nameRu:'Объём',nameKz:'Көлем',nameEn:'Size',required:true,options:[{id:'cup',nameRu:'Чашка',nameKz:'Кесе',nameEn:'Cup',price:990},{id:'pot',nameRu:'Чайник',nameKz:'Шәйнек',nameEn:'Teapot',price:1890}]}] },
+ 67: { modifiers:[{id:'size',nameRu:'Объём',nameKz:'Көлем',nameEn:'Size',required:true,options:[{id:'cup',nameRu:'Чашка',nameKz:'Кесе',nameEn:'Cup',price:1490},{id:'pot',nameRu:'Чайник',nameKz:'Шәйнек',nameEn:'Teapot',price:2590}]}] },
+ 68: { modifiers:[{id:'size',nameRu:'Объём',nameKz:'Көлем',nameEn:'Size',required:true,options:[{id:'cup',nameRu:'Чашка',nameKz:'Кесе',nameEn:'Cup',price:1690},{id:'pot',nameRu:'Чайник',nameKz:'Шәйнек',nameEn:'Teapot',price:2790}]}] },
+ 69: { modifiers:[{id:'size',nameRu:'Объём',nameKz:'Көлем',nameEn:'Size',required:true,options:[{id:'cup',nameRu:'Чашка',nameKz:'Кесе',nameEn:'Cup',price:1690},{id:'pot',nameRu:'Чайник',nameKz:'Шәйнек',nameEn:'Teapot',price:2790}]}] },
+ 70: { modifiers:[{id:'size',nameRu:'Объём',nameKz:'Көлем',nameEn:'Size',required:true,options:[{id:'cup',nameRu:'Чашка',nameKz:'Кесе',nameEn:'Cup',price:1490},{id:'pot',nameRu:'Чайник',nameKz:'Шәйнек',nameEn:'Teapot',price:2690}]}] },
+ 71: { modifiers:[{id:'size',nameRu:'Объём',nameKz:'Көлем',nameEn:'Size',required:true,options:[{id:'cup',nameRu:'Чашка',nameKz:'Кесе',nameEn:'Cup',price:1490},{id:'pot',nameRu:'Чайник',nameKz:'Шәйнек',nameEn:'Teapot',price:2690}]}] },
+ 88: { modifiers:[{id:'size',nameRu:'Объём',nameKz:'Көлем',nameEn:'Size',required:true,options:[{id:'cup',nameRu:'Чашка',nameKz:'Кесе',nameEn:'Cup',price:1690},{id:'pot',nameRu:'Чайник',nameKz:'Шәйнек',nameEn:'Teapot',price:2790}]}] },
+ 92: { modifiers:[{id:'size',nameRu:'Объём',nameKz:'Көлем',nameEn:'Size',required:true,options:[{id:'cup',nameRu:'Чашка',nameKz:'Кесе',nameEn:'Cup',price:1690},{id:'pot',nameRu:'Чайник',nameKz:'Шәйнек',nameEn:'Teapot',price:2790}]}] },
+
 };
