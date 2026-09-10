@@ -172,7 +172,7 @@ window.DETAILS = {
           kz:'Шампиньоннан жасалған майда саңырауқұлақ крем-сорпасы, гренкимен.'} },
 
  // ── ТАКО: модификатор начинка ──
- 93: { modifiers:[{id:'filling',nameRu:'Начинка',nameKz:'Толтырғыш',nameEn:'Filling',required:true,options:[{id:'chicken',nameRu:'Куриный',nameKz:'Тауық',nameEn:'Chicken',price:2490},{id:'beef',nameRu:'Томлёная говядина',nameKz:'Томленген сиыр еті',nameEn:'Braised Beef',price:2690}]}] },
+ 93: { desc:{ru:'Тортилья с салатом, помидорами и сальсой.',kz:'Салат, қызанақ және сальсамен тортилья.'}, modifiers:[{id:'filling',nameRu:'Начинка',nameKz:'Толтырғыш',nameEn:'Filling',required:true,options:[{id:'chicken',nameRu:'Куриный',nameKz:'Тауық',nameEn:'Chicken',price:2490},{id:'beef',nameRu:'Томлёная говядина',nameKz:'Томленген сиыр еті',nameEn:'Braised Beef',price:2690}]}] },
 
  // ── ЧАЙ: модификатор чашка/чайник ──
  63: { modifiers:[{id:'size',nameRu:'Объём',nameKz:'Көлем',nameEn:'Size',required:true,options:[{id:'cup',nameRu:'Чашка',nameKz:'Кесе',nameEn:'Cup',price:890},{id:'pot',nameRu:'Чайник',nameKz:'Шәйнек',nameEn:'Teapot',price:1790}]}] },

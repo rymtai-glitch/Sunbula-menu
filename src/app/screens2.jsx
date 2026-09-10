@@ -12,9 +12,9 @@ function Product({ t, lang, itemId, cart, onBack, onAdd, onInc, onDec, onOpenIte
   const det = (window.DETAILS && window.DETAILS[item.id]) || null;
   const name = nameFor(item, lang);
   const shortDesc = descFor(item, lang);
-  const fullDesc = det ? (det.desc[lang] || det.desc.ru) : (shortDesc + (lang === 'en' ? '. Made from quality ingredients and served fresh.' : lang === 'ru' ? '. Готовится из отборных продуктов и подаётся свежим.' : '. Таңдаулы өнімдерден дайындалады.'));
+  const fullDesc = (det && det.desc) ? (det.desc[lang] || det.desc.ru) : (shortDesc + (lang === 'en' ? '. Made from quality ingredients and served fresh.' : lang === 'ru' ? '. Готовится из отборных продуктов и подаётся свежим.' : '. Таңдаулы өнімдерден дайындалады.'));
   const qty = cart[item.id] || 0;
-  const [kcal, prot, fat, carb] = det ? det.nutri : item.nutri;
+  const [kcal, prot, fat, carb] = (det && det.nutri) ? det.nutri : (item.nutri || [0,0,0,0]);
   const compose = det ? det.compose : null;
   const pairs = ((window.PAIRINGS && window.PAIRINGS[item.id]) || []).map(id => {
     for (const c of MENU) { const f = c.items.find(i => i.id === id); if (f) return { ...f, _tone: c.tone, _cid: c.id }; }
