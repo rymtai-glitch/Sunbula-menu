@@ -93,7 +93,9 @@ window.MENU = [
   "items": [
    {"id": 16, "nameRu": "Сэндвич с индейкой", "nameKz": "Күркетауық қосылған сэндвич", "nameEn": "Turkey Sandwich", "descRu": "Горячий тост с индейкой", "descKz": "Ыстық тост", "descEn": "Hot toast with turkey", "price": 2990, "nutri": [480,26,38,24]},
    {"id": 17, "nameRu": "Сэндвич с семгой", "nameKz": "Ақсерке қосылған сэндвич", "nameEn": "Salmon Sandwich", "descRu": "Мягкий хлеб с лососем", "descKz": "Жұмсақ нанмен", "descEn": "Soft bread with salmon", "price": 3390, "nutri": [480,26,38,24]},
-   {"id": 18, "nameRu": "Тост с индейкой", "nameKz": "Күркетауық қосылған тост", "nameEn": "Turkey Toast", "descRu": "Хрустящий тост", "descKz": "Қытырлақ тост", "descEn": "Crispy toast", "price": 2690, "nutri": [480,26,38,24]}
+   {"id": 18, "nameRu": "Тост с индейкой", "nameKz": "Күркетауық қосылған тост", "nameEn": "Turkey Toast", "descRu": "Хрустящий тост", "descKz": "Қытырлақ тост", "descEn": "Crispy toast", "price": 2690, "nutri": [480,26,38,24]},
+   {"id": 93, "nameRu": "Тако", "nameKz": "Тако", "nameEn": "Taco", "descRu": "Куриный 2490₸ / Томлёная говядина 2690₸", "descKz": "Тауық 2490₸ / Томленген сиыр еті 2690₸", "descEn": "Chicken 2490₸ / Braised Beef 2690₸", "price": 2490, "isNew": true, "nutri": [0,0,0,0]},
+   {"id": 94, "nameRu": "Кесадилья", "nameKz": "Кесадилья", "nameEn": "Quesadilla", "descRu": "С курицей, сыром и сальсой", "descKz": "Тауық, ірімшік және сальсамен", "descEn": "With chicken, cheese and salsa", "price": 2490, "isNew": true, "nutri": [0,0,0,0]}
   ],
   "tone": "toast"
  },
