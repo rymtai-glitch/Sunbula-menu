@@ -1,18 +1,17 @@
 // app/main.jsx — Sunbula app shell: state, navigation, per-guest table orders, checkout, tweaks
 const { useState: uS, useEffect: uE, useRef: uR } = React;
 
-const BOT_TOKEN = '8887485175:AAHHzVqYEckiiW-91xomf9VB6LkPkWsAo1o';
-const CHAT_ID = '-1003958886663';
-async function tgSend(text) {
+// Orders and waiter calls go through our server, which holds the bot key
+const NOTIFY_URL = 'https://sunbula-menu.vercel.app/api/notify';
+async function tgSend(payload) {
   try {
-    const r = await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
+    const r = await fetch(NOTIFY_URL, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: CHAT_ID, text, parse_mode: 'HTML', disable_web_page_preview: true }),
+      body: JSON.stringify(payload),
     });
     return r.ok;
   } catch (e) { return false; }
 }
-const tgTime = () => new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
 
 const RAILWAY_URL = 'https://sunbula-ai-os-production.up.railway.app';
 
@@ -203,8 +202,7 @@ function App() {
   const toggleLang = () => setLang(l => l === 'ru' ? 'kz' : l === 'kz' ? 'en' : 'ru');
   const waiter = () => setWaiterOpen(true);
   const sendWaiter = (label, customText) => {
-    const detail = customText ? ('\n✍️ ' + customText) : '';
-    tgSend('🔔 <b>ВЫЗОВ ОФИЦИАНТА</b>\nСтол №' + table + (currentUser ? ' — ' + currentUser : '') + '\n📌 ' + label + detail + '\n🕒 ' + tgTime());
+    tgSend({ type: 'waiter', table, guest: currentUser || '', label, text: customText || '' });
     setWaiterOpen(false);
     flash(tr.waiterReqSent);
   };
@@ -216,23 +214,13 @@ function App() {
     flash(tr.switchedTo + ' ' + nm);
   };
 
-  const buildOrderText = () => {
-    const L = [];
-    L.push('🧾 <b>НОВЫЙ ЗАКАЗ</b> — Стол №' + table);
-    L.push('');
-    groups.forEach(g => {
-      L.push('👤 <b>' + g.name + '</b> (' + g.count + ')');
-      g.items.forEach(({ item, qty, comment, priceOverride }) => {
-        L.push('   • ' + item.nameRu + ' \xd7' + qty + ' — ' + fmtPrice((priceOverride || item.price) * qty));
-        if (comment && comment.trim()) L.push('     💬 ' + comment.trim());
-      });
-      L.push('   <i>Подытог: ' + fmtPrice(g.subtotal) + '</i>');
-      L.push('');
-    });
-    L.push('💰 <b>Итого: ' + fmtPrice(tableTotal) + '</b>');
-    L.push('🕒 ' + tgTime());
-    return L.join('\n');
-  };
+  const buildOrderPayload = () => ({
+    type: 'order', table, total: tableTotal,
+    groups: groups.map(g => ({
+      name: g.name, count: g.count, subtotal: g.subtotal,
+      items: g.items.map(({ item, qty, comment, priceOverride }) => ({ name: item.nameRu, qty, price: priceOverride || item.price, comment: comment || '' })),
+    })),
+  });
 
   const checkout = () => {
     const snapshot = groups.map(g => ({ name: g.name, subtotal: g.subtotal, count: g.count }));
@@ -241,7 +229,7 @@ function App() {
       orderNo, ts: Date.now(), table, total: tableTotal,
       items: groups.flatMap(g => g.items.map(({ item, qty, comment, priceOverride }) => ({ nameRu: item.nameRu, nameKz: item.nameKz, qty, price: priceOverride || item.price, comment }))),
     });
-    tgSend(buildOrderText());
+    tgSend(buildOrderPayload());
     sendOrderToIiko({ tableNumber: table, groups });
     setCartOpen(false);
     setTimeout(() => setSending(true), 280);
